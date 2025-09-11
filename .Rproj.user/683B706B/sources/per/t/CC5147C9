@@ -1,14 +1,14 @@
 {
-    "id": "86D78E0F",
-    "path": "~/Desktop/gis-masters-course/02-data-models.qmd",
-    "project_path": "02-data-models.qmd",
+    "id": "CC5147C9",
+    "path": "~/Desktop/gis-masters-course/01-gis-intro.qmd",
+    "project_path": "01-gis-intro.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "3697913298",
     "contents": "",
     "dirty": false,
-    "created": 1757578454618.0,
+    "created": 1757423802706.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 4,
     "properties": {
         "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
@@ -18,14 +18,14 @@
         "rmdVisualCollapsedChunks": "",
         "cursorPosition": "0,0",
         "scrollLine": "0",
-        "rmdVisualModeLocation": "363:0"
+        "rmdVisualModeLocation": "400:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1757579225,
+    "lastKnownWriteTime": 1757605157,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1757579225678,
+    "last_content_update": 1757605157607,
     "read_only": false,
     "read_only_alternatives": []
 }
