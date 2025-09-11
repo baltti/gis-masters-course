@@ -14,3 +14,8 @@ $presentation-heading-color: #34353D;
 .title {
   color: #1010B5 !important;
 }
+
+.footnotes ol li p {
+  font-size: 0.9em; /* Adjust font size */
+  color: #666; /* Change text color */
+}

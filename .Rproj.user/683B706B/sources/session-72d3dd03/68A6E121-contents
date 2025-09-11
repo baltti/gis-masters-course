@@ -1,0 +1,21 @@
+/*-- scss:defaults --*/
+
+$presentation-font-size-root: 45px;
+$code-block-font-size: 0.8em;
+$presentation-h1-font-size: 1.2em;
+
+$presentation-heading-color: #34353D;
+
+/*-- scss:rules --*/
+.reveal a {
+  line-height: 1.3em;
+}
+
+.title {
+  color: #1010B5 !important;
+}
+
+.footnotes ol li p {
+  font-size: 0.9em; /* Adjust font size */
+  color: #666; /* Change text color */
+}

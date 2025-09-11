@@ -579,72 +579,15 @@
 
 <img data-src="images/clipboard-368845347.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section>
-<section id="kml" class="title-slide slide level1 center">
-<h1>KML</h1>
-<p><strong>KML</strong>&nbsp;- это формат файлов, который используется для отображения географических данных в геобраузерах, таких как Google Планета Земля, Google Карты и Google Карты для мобильных устройств. KML создан на основе стандарта XML и использует основанную на тегах структуру с вложенными элементами и атрибутами<a href="#/footnotes" class="footnote-ref" id="fnref10" role="doc-noteref" data-footnote-href="#/fn10" onclick=""><sup>10</sup></a>.</p>
-<div class="fragment">
-<p><em>Заголовок XML</em>: с него начинается каждый KML-файл. Перед заголовком не должно быть никаких символов или пробелов.</p>
-<p><em>Декларация пространства имен KML</em>: вторая строка каждого файла формата KML&nbsp;2.2.</p>
-<p><em>Объект Placemark</em>, содержащий следующие элементы: name&nbsp;- имя, которое используется в качестве ярлыка метки;</p>
-<p><em>description</em>&nbsp;- описание, которое отображается во всплывающем окне, привязанном к метке;</p>
-<p><em>Point</em>&nbsp;- координаты, определяющие положение метки на земной поверхности (долгота и широта, иногда также&nbsp;высота).</p>
-</div>
+<section id="прочие-векторные-форматы" class="title-slide slide level1 center">
+<h1>Прочие векторные форматы</h1>
+<p>Кроме уже перечисленных форматов есть еще несколько, которые менее распространены и используются, как правило, в отдельных специфических приложениях, например, <strong>GPX</strong><a href="#/footnotes" class="footnote-ref" id="fnref10" role="doc-noteref" data-footnote-href="#/fn10" onclick=""><sup>10</sup></a> (формат обмена данными GPS), <strong>KML</strong><a href="#/footnotes" class="footnote-ref" id="fnref11" role="doc-noteref" data-footnote-href="#/fn11" onclick=""><sup>11</sup></a> (формат файлов, который используется для отображения географических данных в геобраузерах, таких как Google Планета Земля, Google Карты и Google Карты для мобильных устройств; создан на основе стандарта XML).</p>
 <aside></aside></section>
-<section class="slide level2">
-
-<pre><code>KML-код простой метки. 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-      &lt;kml xmlns="http://www.opengis.net/kml/2.2"&gt; &lt;Placemark&gt;
-      &lt;name&gt;Простая метка&lt;/name&gt;
-      description&gt;Привязана к земной поверхности. Приспосабливается к рельефу местности.&lt;/description&gt;
-      &lt;Point&gt;
-      &lt;coordinates&gt;-122.0822035425683,37.42228990140251,0&lt;/coordinates&gt;
-      &lt;/Point&gt;
-      &lt;/Placemark&gt; &lt;/kml&gt;</code></pre>
-</section></section>
-<section>
-<section id="gpx" class="title-slide slide level1 center">
-<h1>GPX</h1>
-<p><a href="https://ru.wikipedia.org/wiki/GPX"><strong>GPX</strong></a> <strong>(англ. GPS eXchange Format)</strong> - свободный текстовый формат хранения и обмена данными GPS, основанный на XML.</p>
-<p>Формат позволяет хранить информацию об <em>ориентирах (waypoints), маршрутах (routes) и треках (tracklogs)</em>.</p>
-<div class="fragment">
-<p>Для каждой точки хранятся её <strong><em>долгота, широта и высота над уровнем моря</em></strong> (если имеется информация о высоте). Для точек трека хранится также время прохождения точки.</p>
-</div>
-</section>
-<section class="slide level2">
-
-<p>XML-схема предусматривает также хранение <em>произвольной пользовательской информации</em> по каждой точке, обязательными являются только долгота и широта.</p>
-<div class="fragment">
-<p>Широта и долгота в GPX указывается в градусах в общегеографической системе координат.</p>
-<p>Высота указывается в метрах над уровнем моря.</p>
-<p>Примером пользовательской информации может быть <em>высота местности (ele), скорость, частота пульса (hr), число шагов, темп вращения педалей (каденс, cad)</em>, температура и им подобные параметры.</p>
-</div>
-</section>
-<section class="slide level2">
-
-<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;gpx version="1.0"&gt;
-    &lt;name&gt;Example gpx&lt;/name&gt;
-    &lt;wpt lat="46.57638889" lon="8.89263889"&gt;
-        &lt;ele&gt;2372&lt;/ele&gt;
-        &lt;name&gt;LAGORETICO&lt;/name&gt;
-    &lt;/wpt&gt;
-    &lt;trk&gt;&lt;name&gt;Example gpx&lt;/name&gt;&lt;number&gt;1&lt;/number&gt;&lt;trkseg&gt;
-        &lt;trkpt lat="46.57608333" lon="8.89241667"&gt;&lt;ele&gt;2376&lt;/ele&gt;&lt;time&gt;2007-10-14T10:09:57Z&lt;/time&gt;&lt;/trkpt&gt;
-        &lt;trkpt lat="46.57619444" lon="8.89252778"&gt;&lt;ele&gt;2375&lt;/ele&gt;&lt;time&gt;2007-10-14T10:10:52Z&lt;/time&gt;&lt;/trkpt&gt;
-        &lt;trkpt lat="46.57641667" lon="8.89266667"&gt;&lt;ele&gt;2372&lt;/ele&gt;&lt;time&gt;2007-10-14T10:12:39Z&lt;/time&gt;&lt;/trkpt&gt;
-        &lt;trkpt lat="46.57650000" lon="8.89280556"&gt;&lt;ele&gt;2373&lt;/ele&gt;&lt;time&gt;2007-10-14T10:13:12Z&lt;/time&gt;&lt;/trkpt&gt;
-        &lt;trkpt lat="46.57638889" lon="8.89302778"&gt;&lt;ele&gt;2374&lt;/ele&gt;&lt;time&gt;2007-10-14T10:13:20Z&lt;/time&gt;&lt;/trkpt&gt;
-        &lt;trkpt lat="46.57652778" lon="8.89322222"&gt;&lt;ele&gt;2375&lt;/ele&gt;&lt;time&gt;2007-10-14T10:13:48Z&lt;/time&gt;&lt;/trkpt&gt;
-        &lt;trkpt lat="46.57661111" lon="8.89344444"&gt;&lt;ele&gt;2376&lt;/ele&gt;&lt;time&gt;2007-10-14T10:14:08Z&lt;/time&gt;&lt;/trkpt&gt;
-    &lt;/trkseg&gt;&lt;/trk&gt;
-&lt;/gpx&gt;</code></pre>
-</section>
 <section id="web-feature-service-wfs-и-векторные-тайлы" class="slide level2">
 <h2>Web feature service (WFS) и векторные тайлы</h2>
 <p><strong>Web Feature Service (WFS)</strong> — стандарт, который позволяет возвращать векторные геометрии и их атрибуты.</p>
 <blockquote>
-<p>В отличие от растровых тайлов, векторные представляют собой не изображения, а двоичные файлы в формате PBF (protobuf, бинарная альтернатива XML; хотя более современные стандарты поддерживают формат JSON). Они содержат всю необходимую информацию для генерации карты на стороне клиента. В стиле карты также указывается, следует ли вообще отображать элемент веб-карты, и какой шрифт и язык использовать для надписей<a href="#/footnotes" class="footnote-ref" id="fnref11" role="doc-noteref" data-footnote-href="#/fn11" onclick=""><sup>11</sup></a>.</p>
+<p>В отличие от растровых тайлов, векторные представляют собой не изображения, а двоичные файлы в формате PBF (protobuf, бинарная альтернатива XML; хотя более современные стандарты поддерживают формат JSON). Они содержат всю необходимую информацию для генерации карты на стороне клиента. В стиле карты также указывается, следует ли вообще отображать элемент веб-карты, и какой шрифт и язык использовать для надписей<a href="#/footnotes" class="footnote-ref" id="fnref12" role="doc-noteref" data-footnote-href="#/fn12" onclick=""><sup>12</sup></a>.</p>
 </blockquote>
 <p>Как правило, векторные тайлы менее ресурсоемки, чем растровые, так как передаваемые файлы меньше. На их загрузку нужно меньше времени, достаточно меньшей пропускной способности.</p>
 <p>Кроме того, как и любой векторный формат представления данных они предполагают лучшее качество, чем растры, при меньшем размере файлов.</p>
@@ -671,8 +614,9 @@
 <li id="fn7"><p><a href="https://geojson.org/" class="uri">https://geojson.org/</a></p></li>
 <li id="fn8"><p><a href="https://github.com/topojson/topojson" class="uri">https://github.com/topojson/topojson</a></p></li>
 <li id="fn9"><p><a href="https://ru.wikipedia.org/wiki/WKT" class="uri">https://ru.wikipedia.org/wiki/WKT</a></p></li>
-<li id="fn10"><p>О формате KML <a href="https://cartetika.ru/tpost/jl4hk9a1r1-o-formate-kml" class="uri">https://cartetika.ru/tpost/jl4hk9a1r1-o-formate-kml</a></p></li>
-<li id="fn11"><p><strong>Разница между векторными и растровыми тайлами в веб-картах</strong> <a href="https://cartetika.ru/tpost/2tecy4r8f1-raznitsa-mezhdu-vektornimi-i-rastrovimi" class="uri">https://cartetika.ru/tpost/2tecy4r8f1-raznitsa-mezhdu-vektornimi-i-rastrovimi</a></p></li>
+<li id="fn10"><p>GPX: the GPS Exchange Format <a href="https://www.topografix.com/gpx.asp" class="uri">https://www.topografix.com/gpx.asp</a>, <a href="https://ru.wikipedia.org/wiki/GPX" class="uri">https://ru.wikipedia.org/wiki/GPX</a></p></li>
+<li id="fn11"><p>О формате KML <a href="https://cartetika.ru/tpost/jl4hk9a1r1-o-formate-kml" class="uri">https://cartetika.ru/tpost/jl4hk9a1r1-o-formate-kml</a>, Руководство по KML <a href="https://developers.google.com/kml/documentation/kml_tut?hl=ru" class="uri">https://developers.google.com/kml/documentation/kml_tut?hl=ru</a></p></li>
+<li id="fn12"><p><strong>Разница между векторными и растровыми тайлами в веб-картах</strong> <a href="https://cartetika.ru/tpost/2tecy4r8f1-raznitsa-mezhdu-vektornimi-i-rastrovimi" class="uri">https://cartetika.ru/tpost/2tecy4r8f1-raznitsa-mezhdu-vektornimi-i-rastrovimi</a></p></li>
 </ol>
 </section>
     </div>
