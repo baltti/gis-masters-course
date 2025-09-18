@@ -1,0 +1,14 @@
+---
+title: "Все, что вы (не) хотели знать о системах координат"
+subtitle: "Геоинформатика и геоинформационные системы. Лекция 3"
+author: "Балтыжакова Татьяна Игоревна"
+format: 
+  revealjs:
+    slide-number: true
+    theme: [default, custom.css]
+    footer: "Балтыжакова Т.И. Геоинформатика и геоинформационные системы: лекции"
+    margin: 0.1
+    reference-location: document
+    width: 1800
+    height: 1000
+---

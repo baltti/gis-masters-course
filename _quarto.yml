@@ -12,12 +12,26 @@ website:
         text: Лекции
       - href: exam.qmd
         text: Экзамен
+      - sidebar:practice
+      
     right: 
       - href: https://t.me/geomess
         icon: telegram
       - icon: github
         href: https://github.com/baltti/gis-masters-course   
       
+  sidebar:
+    - id: practice
+      title: "Практикум"
+      style: "docked"
+      collapse-level: 2
+      contents:
+        - start.qmd
+      
+    
+  
+    
+            
 
 format:
   html:

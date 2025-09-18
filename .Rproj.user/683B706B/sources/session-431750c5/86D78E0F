@@ -3,7 +3,7 @@
     "path": "~/Desktop/gis-masters-course/02-data-models.qmd",
     "project_path": "02-data-models.qmd",
     "type": "quarto_markdown",
-    "hash": "168535177",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1757578454618.0,
@@ -14,11 +14,11 @@
         "rmdVisualWrapConfigured": "true",
         "source_window_id": "",
         "Source": "Source",
-        "docOutlineVisible": "1",
+        "docOutlineVisible": "0",
         "rmdVisualCollapsedChunks": "",
         "cursorPosition": "67,0",
         "scrollLine": "0",
-        "rmdVisualModeLocation": "2028:3369"
+        "rmdVisualModeLocation": "2:646"
     },
     "folds": "",
     "lastKnownWriteTime": 1757605154,
