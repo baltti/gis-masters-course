@@ -1,0 +1,32 @@
+{
+    "id": "30558C25",
+    "path": "~/Desktop/gis-masters-course/03-coordinate-reference-systems.qmd",
+    "project_path": "03-coordinate-reference-systems.qmd",
+    "type": "quarto_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1758190116458.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "0",
+        "rmdVisualCollapsedChunks": "",
+        "cursorPosition": "203,5",
+        "scrollLine": "0",
+        "rmdVisualModeLocation": "10348:14689"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1758273520,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1758273520031,
+    "read_only": false,
+    "read_only_alternatives": []
+}

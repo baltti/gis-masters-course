@@ -16,5 +16,11 @@
   },
   "03-coordinate-reference-systems.qmd": {
     "03-coordinate-reference-systems.html": "5034b2bb"
+  },
+  "basics.qmd": {
+    "basics.html": "1a4ae009"
+  },
+  "georeferencing.qmd": {
+    "georeferencing.html": "b67328e8"
   }
 }
