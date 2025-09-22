@@ -28,8 +28,6 @@ website:
       collapse-level: 1
       contents:
         - start.qmd
-        - basics.qmd
-        - osm.qmd
 
 format:
   html:
