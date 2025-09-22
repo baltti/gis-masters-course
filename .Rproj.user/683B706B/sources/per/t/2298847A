@@ -1,0 +1,32 @@
+{
+    "id": "2298847A",
+    "path": "~/Desktop/gis-masters-course/basics.qmd",
+    "project_path": "basics.qmd",
+    "type": "quarto_markdown",
+    "hash": "743044320",
+    "contents": "",
+    "dirty": false,
+    "created": 1758265981661.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "0",
+        "rmdVisualCollapsedChunks": "",
+        "cursorPosition": "454,57",
+        "scrollLine": "417",
+        "rmdVisualModeLocation": "16734:0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1758451858,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1758451858022,
+    "read_only": false,
+    "read_only_alternatives": []
+}

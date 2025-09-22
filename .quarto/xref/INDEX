@@ -22,5 +22,8 @@
   },
   "georeferencing.qmd": {
     "georeferencing.html": "b67328e8"
+  },
+  "osm.qmd": {
+    "osm.html": "fcff3ca2"
   }
 }

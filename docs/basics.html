@@ -131,6 +131,10 @@ window.Quarto = {
     <a class="dropdown-item" href="./basics.html">
  <span class="dropdown-text">Начало работы</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./osm.html">
+ <span class="dropdown-text">Работа с OSM</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -188,6 +192,12 @@ window.Quarto = {
  <span class="menu-text">Начало работы</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./osm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с OSM</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -207,6 +217,15 @@ window.Quarto = {
   <li><a href="#черно-белая-подложка" id="toc-черно-белая-подложка" class="nav-link" data-scroll-target="#черно-белая-подложка">Черно-белая подложка</a></li>
   <li><a href="#тонирование-карты" id="toc-тонирование-карты" class="nav-link" data-scroll-target="#тонирование-карты">Тонирование карты</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#работа-с-векторными-слоями" id="toc-работа-с-векторными-слоями" class="nav-link" data-scroll-target="#работа-с-векторными-слоями">Работа с векторными слоями</a>
+  <ul class="collapse">
+  <li><a href="#создание-слоя" id="toc-создание-слоя" class="nav-link" data-scroll-target="#создание-слоя">Создание слоя</a></li>
+  <li><a href="#создание-и-редактирование-объектов" id="toc-создание-и-редактирование-объектов" class="nav-link" data-scroll-target="#создание-и-редактирование-объектов">Создание и редактирование объектов</a></li>
+  <li><a href="#привязка-объектов" id="toc-привязка-объектов" class="nav-link" data-scroll-target="#привязка-объектов">Привязка объектов</a></li>
+  <li><a href="#редактирование-формы-объектов" id="toc-редактирование-формы-объектов" class="nav-link" data-scroll-target="#редактирование-формы-объектов">Редактирование формы объектов</a></li>
+  <li><a href="#редактирование-структуры-таблицы-атрибутов" id="toc-редактирование-структуры-таблицы-атрибутов" class="nav-link" data-scroll-target="#редактирование-структуры-таблицы-атрибутов">Редактирование структуры таблицы атрибутов</a></li>
+  <li><a href="#автоматическое-заполнение-атрибутов" id="toc-автоматическое-заполнение-атрибутов" class="nav-link" data-scroll-target="#автоматическое-заполнение-атрибутов">Автоматическое заполнение атрибутов</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -559,9 +578,357 @@ window.Quarto = {
 <p><img src="images/clipboard-2465586496.png" class="img-fluid"></p>
 </div>
 </div>
-
-
 </section>
+</section>
+</section>
+<section id="работа-с-векторными-слоями" class="level1">
+<h1>Работа с векторными слоями</h1>
+<section id="создание-слоя" class="level2">
+<h2 class="anchored" data-anchor-id="создание-слоя">Создание слоя</h2>
+<p>Новый векторный слой можно создать из панели инструментов (кнопка <img src="images/clipboard-4258986521.png" class="img-fluid" width="39"> <em>Создать слой GeoPackage</em>) или из строки меню: <em>Слой</em> <span class="math inline">\(\longrightarrow\)</span> Создать слой.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-4193668470.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="906"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>На этом этапе вам сразу нужно выбрать тип файла, который вы будете создавать. Рекомендую выбирать формат GeoPackage.</p>
+</div>
+</div>
+<p>Далее необходимо выбрать куда и под каким именем вы будете сохранять свой файл. Так как у меня на картинке показан именно GeoPackage, то вместо слов <em>Имя файла</em> указано <em>База данных</em>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Предупреждение
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В пункте <em>База данных</em> (или <em>Имя файла</em>) недостаточно указать просто имя файла, там должен быть отображен полный путь к файлу, поэтому необходимо нажать кнопку обзора <img src="images/clipboard-3642390843.png" width="39" height="36">, выбрать папку для сохранения и задать имя файла.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-979152897.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="617"></p>
+</figure>
+</div>
+<p><em>Имя таблицы</em>, как правило, соответствует имени файла.</p>
+<p>Тип геометрии вы для создания примера можете выбрать любой, в моем случае будут рассмотрены полигоны, так как они дают больше всего возможностей для редактирования.</p>
+<p>По типом геометрии вам предлагают выбрать систему координат для слоя, предлагая одну из них по умолчанию. О системах координат мы поговорим чуть позднее, поэтому пока оставим предложенный нам вариант.</p>
+<p>Ниже под заголовком <strong>Новое поле</strong> вы можете создать структуру своей атрибутивной таблицы, то есть какие столбцы с какими названиями и типами данных в ней будут. Для этого нужно указать имя столбца и тип данных.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Имена столбцов обязательно должны быть уникальными.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Если на этом этапе вы ошибетесь в списке полей или вообще ничего не укажете, то это не страшно, так как потом вы можете отредактировать это средствами работы с таблицей атрибутов.</p>
+</div>
+</div>
+<p>Для того, чтобы столбец был добавлен в таблицу атрибутов, нужно нажать кнопку <em>Добавить в список полей</em>, после чего он будет отображен в списке ниже.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Очень рекомендую впоследствии стараться давать осмысленные имена своим слоям и файлам, чтобы вы могли без проблем вспомнить, что в них хранится.</p>
+</div>
+</div>
+<p>После создания слой появится в вашей панели слоев. Обратите внимание, что слева от названия слоя будет показана точка для слоя с точечными объектами, линия - для слоя с линейными объектами и квадрат - для слоя с полигональными объектами.</p>
+<p>При этом изображение на карте у вас не поменялось, так как пока у вас не было добавлено никаких объектов в слой.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Обратите внимание, что при клике на название слоя, оно подсвечивается, таким образом показывается <strong>активный слой</strong>. Все действия, выполняемые в программе происходят с активным слоем.</p>
+</div>
+</div>
+</section>
+<section id="создание-и-редактирование-объектов" class="level2">
+<h2 class="anchored" data-anchor-id="создание-и-редактирование-объектов">Создание и редактирование объектов</h2>
+<p>Для того, чтобы начать создание объектов, слой необходимо сделать редактируемым. Это осуществляется либо путем нажатия на кнопку <em>Начать редактирование</em> <img src="images/clipboard-3707174716.png" class="img-fluid" width="41">, либо из контекстного меню слоя.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3592244129.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+<p>После того, как слой стал перешел в режим редактирования слева от его имени появится знак карандаша, символизирующий этот статус, а основная панель инструментов изменится и на ней активируются инструменты создания и редактирования векторных объектов.</p>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-19 в 16.37.38.mp4" type="video/mp4">
+</video>
+<p>По умолчанию создание объекта здесь выполняется сегментами, то есть отрезками прямых линий между поворотными точками. Каждая поворотная точка указывается кликом левой кнопки мыши, а завершение отрисовки происходит по клику правой кнопки.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Отметить отрисовку объекта можно просто нажав в процессе кнопку <em>Escape</em> на клавиатуре.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Создание точечных объектов происходит по клику, а линейные создаются похоже на полигональные, только по завершении отрисовки не дополняются до замкнутого контура.</p>
+</div>
+</div>
+<p>Другие доступные опции кроме оцифровки сегментами:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2449145075.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li>оцифровать с кривой</li>
+</ul>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-19 в 16.51.54.mp4" type="video/mp4">
+</video>
+<ul>
+<li>оцифровка в потоковом режиме</li>
+</ul>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-19 в 16.53.27.mp4" type="video/mp4">
+</video>
+<ul>
+<li>оцифровать форму</li>
+</ul>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-19 в 16.56.25.mp4" type="video/mp4">
+</video>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>По умолчанию у вас после создания каждого объекта будет всплывать окно заполнения атрибутов. Вы можете заполнять атрибуты сразу для каждого объекта или потом сразу для всех в атрибутивной таблице. Главное, не забывайте в этой форме нажимать OK, иначе объекты не будут созданы.</p>
+<p>Если вы хотите отключить автоматическую форму, это можно сделать в настройках программы: <em>Настройки</em> <span class="math inline">\(\longrightarrow\)</span> <em>Параметры</em>.</p>
+<p><img src="images/clipboard-3860238208.png" class="img-fluid"></p>
+</div>
+</div>
+<p>В том случае, если вы хотите создавать объекты конкретной геометрической формы (квадраты, круги, эллипсы), вы можете включить <em>Панель инструментов оцифровки</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-755946127.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="773"></p>
+</figure>
+</div>
+<p>Эта панель будет добавлена на панель инструментов и позволит вам создавать геометрические объекты определенной формы с различными параметрами:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3891180925.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li><p><em>циклическая строковая последовательность по радиусу</em> (<em>Circular string by radius</em>) - отрисовка кривыми по двум точкам;</p></li>
+<li><p>круг;</p>
+<p><img src="images/clipboard-1997811227.png" class="img-fluid"></p></li>
+<li><p>эллипс;</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-472402114.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li>прямоугольник;</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1971131246.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li>создание правильного (выпуклого) многоугольника.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3187458729.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Для переноса объектов и их редактирования можно воспользоваться панелью дополнительных инструментов оцифровки.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-968594682.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="767"></p>
+</figure>
+</div>
+<p>Она будет добавлена на основную панель инструментов. С ее помощью вы можете переносить объекты, поворачивать, вырезать отверстия в полигонах, разрезать объекты и прочее.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2930058851.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Если вы хотите отрисовывать объекты по их геометрическим параметрам: углам между сотронами или сегментами линий, расстоянию, координатам поворотных точек, то вы можете воспользоваться еще одной панелью дополнительных инструментов оцифровки.</p>
+<p>Ее можно включить или по клику на значок <img src="images/clipboard-2879122134.png" width="33" height="34">, или из строки меню.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2835494369.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="683"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Предупреждение
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Обратите внимание, что она открывается из пункта <em>Панели</em> элемента меню <em>Вид</em>.</p>
+<p>Наличие в меню одновременно пункта <em>Панели</em> и _Панели инструментов связано с особенностями перевода: в оригинале это <em>Panel</em> и <em>Toolbar</em> соответственно.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-252496196.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="558"></p>
+</figure>
+</div>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-21 в 12.56.57.mp4" type="video/mp4">
+</video>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-21 в 13.00.32.mp4" type="video/mp4">
+</video>
+</section>
+<section id="привязка-объектов" class="level2">
+<h2 class="anchored" data-anchor-id="привязка-объектов">Привязка объектов</h2>
+<p>В QGIS существует привязка объектов друг к другу, похожа по своему принципу работы на объектную привязку в CAD системах.</p>
+<p>Вы можете включить привязку объектов друг к другу по умолчанию в настройках программы.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3299530585.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1286"></p>
+</figure>
+</div>
+<p>Но здесь вы можете настроить только прилипание к одному типу элементов. Для более контролируемой привязки объектов лучше воспользоваться <em>Инструментами прилипания</em>, которые можно добавить на панель инструментов из строки меню.</p>
+<p><img src="images/clipboard-2306646983.png" class="img-fluid" width="771"></p>
+<p>Эта панель активируется по клику на символ магнита.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2945452430.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Основные инструменты панели (слева направо):</p>
+<ul>
+<li><p>разрешить прилипание;</p></li>
+<li><p>выбор слоев, для которых будет доступно прилипание: все слои - прилипание будет осуществляться с учетом объектов всех слоев, которые есть в проекте (даже невидимых в данный момент), активный слой - прилипание будет осуществляться только для объектов текущего слоя.</p></li>
+<li><p>тип объектов, к которым осуществляется прилипание (может быть выбрано сразу несколько вариантов):</p>
+<ul>
+<li><p>к вершинам - прилипание только к узловым точкам;</p></li>
+<li><p>к линиям - прилипание к любой точке линии;</p></li>
+<li><p>к поверхности - прилипание к любой точке внутри полигона;</p></li>
+<li><p>к центроиду - прилипание к геометрическому центру полигона;</p></li>
+<li><p>середина отрезка - прилипание только к середине линии;</p></li>
+<li><p>конечные точки линии - прилипание только к начальной или конечной точке линии.</p></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-4188854556.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li><p>порог прилипания - то есть, в какой области вокруг курсора будет искаться объект для прилипания;</p></li>
+<li><p>топологическое редактирование позволяет сохранять общие границы между объектами. Если эта опция включена, то программа будет автоматически перестраивать общую границу для двух объектов (если таковая граница есть);</p></li>
+<li><p>допустимы ли наложения между объектами;</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3799602480.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ul>
+<li><p>разрешать прилипание к пересечениям - прилипание будет осуществляться к пересечениям двух объектов, даже если там нет вершины;</p></li>
+<li><p>трассирование (tracing) - позволяет ускорить привязку к линейным объектам, при включении этой опции вам не нужно будет прощелкивать по всей линии, достаточно будет нескольких точек (если установить значение отступа offset, то можно построить линию, параллельную существующей);</p></li>
+<li><p>самоприлипание - позволяет осуществлять привязку отрисовываемого объекта к самому себе.</p></li>
+</ul>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-21 в 13.20.20.mp4" type="video/mp4">
+</video>
+</section>
+<section id="редактирование-формы-объектов" class="level2">
+<h2 class="anchored" data-anchor-id="редактирование-формы-объектов">Редактирование формы объектов</h2>
+<p>Основной инструмент редактирования формы - <em>Инструмент редактирования вершин</em> <img src="images/clipboard-4065537032.png" width="45" height="33"> предназначен для редактирования линий и полигонов.</p>
+<p>Для того, чтобы его активировать необходимо, чтобы ваш слой был редактируемым и активен инструмент рисования.</p>
+<p>Этот инструмент может работать как только в текущем активном слое, так и для всех слоев одновременно (что может быть удобно, если у вас несколько слоев для редактирования и вы не хотите постоянно переключаться между ними.</p>
+<p>После активации инструмента у вас в правой части окна появится небольшая панель редактированимя вершин, в которой вам предлагается возможность просмотра каталога вершин объектов.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1852560836.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В панели редактора отображаются координаты точек в системе координат слоя.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2659992431.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>При простом наведении на объект вы увидите, что его контур будет подсвечиваться и узлы отображаться более крупно.</p>
+<video width="800" height="600" controls="">
+  <source src="images/Запись экрана 2025-09-21 в 12.25.26.mp4" type="video/mp4">
+</video>
+</section>
+<section id="редактирование-структуры-таблицы-атрибутов" class="level2">
+<h2 class="anchored" data-anchor-id="редактирование-структуры-таблицы-атрибутов">Редактирование структуры таблицы атрибутов</h2>
+</section>
+<section id="автоматическое-заполнение-атрибутов" class="level2">
+<h2 class="anchored" data-anchor-id="автоматическое-заполнение-атрибутов">Автоматическое заполнение атрибутов</h2>
+
+
 </section>
 </section>
 
