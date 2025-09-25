@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -97,6 +97,14 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./start.html">
  <span class="dropdown-text">Установка программы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./basics.html">
+ <span class="dropdown-text">Начало работы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./osm.html">
+ <span class="dropdown-text">Работа с OSM</span></a>
   </li>  
     </ul>
   </li>
@@ -126,10 +134,45 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./osm.html">Работа с OSM</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Установка программы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало работы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./osm.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Работа с OSM</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -172,13 +215,47 @@ ul.task-list li input[type="checkbox"] {
 <section id="загрузка-данных-osm" class="level1">
 <h1>Загрузка данных OSM</h1>
 <p><strong>OpenStreetMap (OSM)</strong> — проект, который создаёт и предоставляет свободные географические данные, дает возможность создавать карты любому пользователю. Каждый желающий может поучаствовать в проекте (загружать свои треки на сервер, дорисовывать общедоступную карту по спутниковым снимкам Bing, MapBox, DigitalGlobe (весь мир), IRS (запад России), SPOT4 (восток России) и SPOT (Белоруссия) от Космоснимки.ру, ASTER (Россия), OrbView-3 и другими) и использовать эти карты совершенно свободно, и бесплатно в отличие от многих других карт, даже бесплатных, свободное использование которых ограничено.</p>
+<p>Построен проект по принципу Wikipedia, то есть любой пользователь может внести и отредактировать данные.</p>
 <p>Карты этого проекта очень широко используются как в некоммерческих целях, например, для исследовательских проектов, так и для коммерческих проектов, например, создания навигационных приложений.</p>
 <p>Вот очень любопытный <a href="http://shtosm.ru/all/vserossiyskaya-perepis-pod-ugrozoy/">прецедент</a> использования OSM в нашей стране.</p>
 <section id="структура-данных-osm" class="level2">
 <h2 class="anchored" data-anchor-id="структура-данных-osm">Структура данных OSM</h2>
+<p>Все объекты в OSM делятся на три типа элементов:</p>
+<ul>
+<li><p><strong><em>точки</em></strong>, которые представляют точечные объекты, у каждого из них есть как минимум идентификатор и пара координат;</p></li>
+<li><p><strong><em>линии</em></strong> - это упорядоченный набор точек (не менее двух и не более 2000), которые формируют ломаную линию;</p></li>
+<li><p><strong><em>отношения</em></strong> - составной элемент, показывающий связь между двумя и более простыми элементами (точками, линиями, отношениями).</p></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Обратите внимание, что здесь нет типа элемента “полигон”. Полигонами здесь будут являться замкнутые ломаные.</p>
+</div>
+</div>
+<p>Все объекты имеют идентификатор (он есть всегда), а также так называемые <strong>теги</strong>, которые описывают географические характеристики объекта.</p>
+<p>Именно с помощью тегов, как правило, и осуществляется поиск объектов в базе.</p>
+<p>Все значения тегов можно посмотреть на странице <a href="https://wiki.openstreetmap.org/wiki/RU:%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B_%D0%BA%D0%B0%D1%80%D1%82%D1%8B">Объекты карты</a>, если вам необходимы дополнительные пояснения, то можно обратиться к странице <a href="https://wiki.openstreetmap.org/wiki/RU:%D0%9A%D0%B0%D0%BA_%D0%BE%D0%B1%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D1%82%D1%8C">Как обозначить</a>.</p>
 <p>На русском перечень ключей и значений с пояснениями можно найти в <a href="https://docs.google.com/spreadsheets/d/1YgTDaw160aZ60DPUxuJrfYGyGykKJQDZE3c0W2O-OSY/edit?usp=sharing">таблице</a>, составленной автором ТГ канала <a href="https://t.me/urbanstudent">UrbanStudent</a>.</p>
-<p>При желании более подробно ознакомиться с логикой построения запросов и языком запросов, вы можете воспользоваться интерактивным учебником <a href="https://osmlab.github.io/learnoverpass//en/" class="uri">https://osmlab.github.io/learnoverpass//en/</a></p>
-<p>Или взять уже готовые запросы из коллекции запросов <a href="https://osm-queries.ldodds.com/" class="uri">https://osm-queries.ldodds.com/</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Если вам нужно найти какие-то специфичные объекты, то рекомендую внимательно посмотреть страницу вики и пройти по ссылке на страницу интересующего вас тега или его значения, там часто бывают пояснения, как обозначаются те или иные особенности и характеристики объектов.</p>
+</div>
+</div>
 </section>
 <section id="сервис-overpass-turbo" class="level2">
 <h2 class="anchored" data-anchor-id="сервис-overpass-turbo">Сервис overpass-turbo</h2>
@@ -238,6 +315,20 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>Данные можно сохранить себе в формате <em>geojson</em>, кроме этого формата данные также можно скачать в GPX, KML, в виде сырых данных, а также в виде данных для редактирования OSM.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>При желании более подробно ознакомиться с логикой построения запросов и языком запросов, вы можете воспользоваться интерактивным учебником <a href="https://osmlab.github.io/learnoverpass//en/" class="uri">https://osmlab.github.io/learnoverpass//en/</a></p>
+<p>Или взять уже готовые запросы из коллекции запросов <a href="https://osm-queries.ldodds.com/" class="uri">https://osm-queries.ldodds.com/</a></p>
+</div>
+</div>
 </section>
 <section id="модуль-quickosm" class="level2">
 <h2 class="anchored" data-anchor-id="модуль-quickosm">Модуль QuickOSM</h2>
@@ -341,6 +432,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Для его использования вам достаточно указать ID границ из OSM. Это номер идентификатора объекта из базы данных.</p>
 <p>Как его найти? Найти его можно на основном сайте OSM <a href="https://www.openstreetmap.org/" class="uri">https://www.openstreetmap.org/</a> с помощью поиска.</p>
 <p>Вы можете ввести в строку поиска название нужного вам города или региона, дождаться загрузки и скопировать идентификатор в сервис.</p>
+<p><img src="images/clipboard-3643171268.png" class="img-fluid"></p>
 </section>
 <section id="osm-gpt" class="level2">
 <h2 class="anchored" data-anchor-id="osm-gpt">OSM-GPT</h2>
