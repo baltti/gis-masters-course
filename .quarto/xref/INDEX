@@ -25,5 +25,11 @@
   },
   "osm.qmd": {
     "osm.html": "fcff3ca2"
+  },
+  "style.qmd": {
+    "style.html": "7aca74ce"
+  },
+  "project.qmd": {
+    "project.html": "49015c9f"
   }
 }

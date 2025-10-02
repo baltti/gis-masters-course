@@ -132,8 +132,16 @@ window.Quarto = {
  <span class="dropdown-text">Начало работы</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Проект в QGIS</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./osm.html">
  <span class="dropdown-text">Работа с OSM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./style.html">
+ <span class="dropdown-text">Общие настройки стиля объектов</span></a>
   </li>  
     </ul>
   </li>
@@ -194,8 +202,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Проект в QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./osm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Работа с OSM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Общие настройки стиля объектов</span></a>
   </div>
 </li>
     </ul>
@@ -208,7 +228,7 @@ window.Quarto = {
     <h2 id="toc-title">Содержание</h2>
    
   <ul>
-  <li><a href="#основные-элементы-интерфейса" id="toc-основные-элементы-интерфейса" class="nav-link active" data-scroll-target="#основные-элементы-интерфейса">Основные элементы интерфейса</a></li>
+  <li><a href="#interface" id="toc-interface" class="nav-link active" data-scroll-target="#interface">Основные элементы интерфейса</a></li>
   <li><a href="#добавление-подложки-на-карту" id="toc-добавление-подложки-на-карту" class="nav-link" data-scroll-target="#добавление-подложки-на-карту">Добавление подложки на карту</a>
   <ul class="collapse">
   <li><a href="#модуль-quickmapservices" id="toc-модуль-quickmapservices" class="nav-link" data-scroll-target="#модуль-quickmapservices">Модуль QuickMapServices</a></li>
@@ -252,7 +272,7 @@ window.Quarto = {
 </header>
 
 
-<section id="основные-элементы-интерфейса" class="level1">
+<section id="interface" class="level1">
 <h1>Основные элементы интерфейса</h1>
 <p>Основным способом работы с ГИС является использование графического пользовательского интерфейса.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -268,13 +288,13 @@ window.Quarto = {
 <p>Если вы только начинаете работать с QGIS, то у вас не будет отображаться панель с перечислением недавних проектов.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<div id="imp-layer" class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Важно
+Важно&nbsp;1
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -899,6 +919,25 @@ window.Quarto = {
 <video width="800" height="600" controls="">
   <source src="images/Запись экрана 2025-09-21 в 13.20.20.mp4" type="video/mp4">
 </video>
+<p>В процессе привязки вы увидите, что форма вашего курсора меняется в зависимости от того, к какому типу объекта вы привязываетесь.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1387631255.png" class="img-fluid figure-img"></p>
+<figcaption>Привязка к сегменту линии</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2469090875.png" class="img-fluid figure-img"></p>
+<figcaption>Привязка к узлу</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3663326646.png" class="img-fluid figure-img"></p>
+<figcaption>Привязка к пересечению линий (там, где нет узла)</figcaption>
+</figure>
+</div>
 </section>
 <section id="редактирование-формы-объектов" class="level2">
 <h2 class="anchored" data-anchor-id="редактирование-формы-объектов">Редактирование формы объектов</h2>
