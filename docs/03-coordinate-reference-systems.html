@@ -323,9 +323,8 @@
 <p>Если ориентироваться на минимизацию искажений, то можно использовать методику, предложенную в <a href="https://kartfak.ru/wp-content/uploads/2023/03/%D0%90%D1%82%D0%BB%D0%B0%D1%81_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%86%D0%B8%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2_%D0%97%D0%B0%D0%B3%D1%80%D0%B5%D0%B1%D0%B8%D0%BD.pdf">Атласе картографический проекций для крупных регионов России</a>.</p>
 </div>
 </section>
-<section class="slide level2">
-
-<div>
+<section id="экваториальная-зона" class="slide level2 smaller">
+<h2>Экваториальная зона</h2>
 <p>Если картографируемый участок находится в <strong>экваториальной зоне</strong>:</p>
 <ul>
 <li><strong>вытянут вдоль параллелей</strong>, то рекомендуется использовать <em>нормальную цилиндрическую или нормальную коническую проекции</em>
@@ -342,15 +341,13 @@
 </ul></li>
 <li><strong>вытянут в произвольном направлении</strong> (под углом к параллелям и меридианам), то рекомендуется использование <em>цилиндрической проекции</em> с таким расположением оси вращения, чтобы линия касания проходила максимально близко к центру участка.</li>
 </ul>
-</div>
 </section>
 <section class="slide level2">
 
 
 <img data-src="images/clipboard-2630308725.png" class="r-stretch"></section>
-<section class="slide level2">
-
-<div>
+<section id="средние-широты" class="slide level2 smaller">
+<h2>Средние широты</h2>
 <p>Если участок исследования расположен в <strong>средних широтах</strong> (применимо как к северному, так и южному полушарию):</p>
 <ul>
 <li><p><strong>вытянут вдоль параллелей</strong>, то рекомендуется использование <em>прямой конической проекции</em> для соответствующего полушария (северного или южного)</p>
@@ -366,14 +363,13 @@
 <li>универсальные поперечные проекции Меркатора - аналог проекции Гаусса-Крюгера (с 34 зоны для Северного полушария EPSG:32634 по 60 зону EPSG:32660, а также 1 и 2 зоны - EPSG:32601 и EPSG:32602 соответственно)</li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section class="slide level2">
 
 
 <img data-src="images/clipboard-4076587857.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<section id="приполярные-области" class="slide level2 smaller">
+<h2>Приполярные области</h2>
 <p>Если участок расположен в <strong>приполярной области</strong> (применимо к обоим полушариям):</p>
 <ul>
 <li><p><strong>вытянут вдоль параллелей или вытянут в произвольном направлении</strong>, то рекомендуется использовать <em>полярную азимутальную проекцию</em></p>
@@ -399,6 +395,29 @@
 <p>Для маленьких территорий (например, территория города) лучше брать системы координат UTM (Universal Transverse Mercator - универсальная поперечная проекция Меркатора) – по сути аналог системы координат Гаусса-Крюгера. Особенно, если вы хотите выполнять какие-либо измерения на вашей карте.</p>
 
 <img data-src="images/clipboard-1751020951.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<section id="универсальная-поперечная-проекция-меркатора-utm" class="title-slide slide level1 center">
+<h1>Универсальная поперечная проекция Меркатора (UTM)</h1>
+<p>Так как эта система координат зональная, то есть определяется только в пределах конкретных диапазонов долгот, то необходимо определять зону, в которой расположена ваша исследуемая территория.</p>
+<p>Определить зону можно по формуле:</p>
+<p><span class="math display">\[
+Номер\space зоны = (Долгота + 180^\circ)/6
+\]</span></p>
+<p>Полученное число нужно округлить в большую сторону.</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>На заметку</strong></p>
+</div>
+<div class="callout-content">
+<p>Существуют специальные онлайн-калькуляторы для определения номера зоны по координатам. Например, <a href="https://www.latlong.net/lat-long-utm.html" class="uri">https://www.latlong.net/lat-long-utm.html</a></p>
+</div>
+</div>
+</div>
+</section>
+
 <section id="сервисы-для-поиска-и-подбора-систем-координат" class="title-slide slide level1 center">
 <h1>Сервисы для поиска и подбора систем координат</h1>
 <ul>
@@ -415,11 +434,106 @@
 <h1>Форматы описания систем координат в ГИС</h1>
 <p>Есть два основных формата описания параметров систем координат:</p>
 <ul>
-<li><p>WKT (well known text)</p></li>
-<li><p>proj</p></li>
+<li>WKT (well known text) - текстовый формат описания параметров систем координат и параметров перехода между ними;</li>
 </ul>
+<p>Компания ESRI использует несколько иную реализацию формата WKT для описания СК, она обычно называется <strong>ESRI WKT</strong> и используется, в частности, в ArcGIS.</p>
+<ul>
+<li>proj4 - строковое описание системы координат, базирующее на проекте <a href="https://github.com/OSGeo/PROJ">proj</a>.</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Дополнительно</strong></p>
+</div>
+<div class="callout-content">
+<p>proj как библиотека широко используется в работе с системами координат в различных языках программирования.</p>
+</div>
+</div>
+</div>
 </section>
 
+<section>
+<section id="формат-описания-wkt" class="title-slide slide level1 center">
+<h1>Формат описания WKT</h1>
+<p>Международный формат описания WKT закреплен <a href="https://www.ogc.org/standards/wkt-crs/">стандартом Open Geospatial Consortium</a>.</p>
+<p>Описание системы координат состоит из <strong>ключевых слов и атрибутов</strong> этих ключевых слов. Ключевые слова указываются перед квадратными скобками, а атрибуты — внутри скобок. Кроме того, атрибуты могут содержать вложенные ключевые слова.</p>
+<p>Пример фрагмента описания системы координат: <code>KEYWORD1[attribute1,KEYWORD2[attribute2,attribute3]]</code></p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/clipboard-3959220997.png" class="r-stretch"></section></section>
+<section>
+<section id="формат-описания-proj" class="title-slide slide level1 scrollable center">
+<h1>Формат описания PROJ</h1>
+
+<img data-src="images/clipboard-1086786894.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/clipboard-3912507845.png" class="r-stretch"></section></section>
+<section id="есть-подвох" class="title-slide slide level1 center">
+<h1>Есть подвох</h1>
+<div class="fragment">
+<p>Подвох в том, что значительное количество документов в кадастре и градостроительстве ведутся в <strong><em>местных системах координат</em></strong>.</p>
+<p>Местные системы координат определяются в границах субъектов РФ.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Внимание</strong></p>
+</div>
+<div class="callout-content">
+<p>Этих систем координат нет ни в каких реестрах, поэтому их параметры необходимо прописывать самостоятельно.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="немного-про-местные-системы-координат" class="title-slide slide level1 center">
+<h1>Немного про местные системы координат</h1>
+<p>Местные системы координат вообще вводились для ведения кадастра недвижимости.</p>
+<p>Все, что вносится в ЕГРН с координатами, должно быть вычислено в местной системе координат, но в силу своей специфики они имеют значительные ошибки и искажения.</p>
+<p>Какие могут быть особенности местных систем координат с точки зрения параметров:</p>
+<ul>
+<li><p>требуется указать параметры сдвига начала отсчета;</p></li>
+<li><p>необходимо использовать нестандартный датум (эллипсоид);</p></li>
+<li><p>необходимы дополнительные преобразования.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Первый вариант самый простой, так как необходимость изменения минимальна.</p>
+<p>Во втором варианте возможны несколько ситуаций:</p>
+<ul>
+<li><p>параметров датума нет в EPSG;</p></li>
+<li><p>в EPSG нет параметров перехода от WGS 84 к нужному датуму;</p></li>
+<li><p>в EPSG есть параметры перехода от WGS 84, но они рассчитаны для другого датума.</p></li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>На заметку</strong></p>
+</div>
+<div class="callout-content">
+<p>В некоторых случаях может использоваться до 7 параметров преобразования, например, в МСК-33<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a>.</p>
+<p><img data-src="images/clipboard-2572913437.png"></p>
+</div>
+</div>
+</div>
+<aside></aside></section></section>
 <section>
 <section id="системы-координат-в-qgis" class="title-slide slide level1 center">
 <h1>Системы координат в QGIS</h1>
@@ -447,7 +561,11 @@
 <li><p><strong>создание пользовательских систем координат</strong> - внесение параметров нестандартных систем координат в каталог программы;</p></li>
 <li><p><strong>перепроецирование на лету</strong> - изменение системы координат проекта, то есть системы координат, в первую очередь используемой для отображения данных на экране, которое не затрагивает системы координат отдельных слоев.</p></li>
 </ul>
-</section></section>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/clipboard-1372825689.png" class="r-stretch"></section></section>
 <section id="литература" class="title-slide slide level1 center">
 <h1>Литература</h1>
 <ol type="1">
@@ -457,6 +575,13 @@
 </ol>
 
 
+</section>
+
+<section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Сноски</h2>
+
+<ol>
+<li id="fn1"><p>Постановление Губернатора Владимирской обл. от 26.10.2009 N 876 «Об утверждении Положения о местной системе координат Владимирской области (МСК-33)» <a href="https://docs.cntd.ru/document/965012231" class="uri">https://docs.cntd.ru/document/965012231</a></p></li>
+</ol>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
