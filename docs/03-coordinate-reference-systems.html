@@ -145,6 +145,45 @@
 <img data-src="images/clipboard-2930557596.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section class="slide level2">
 
+<p>Все системы координат в ГИС можно поделить на две группы:</p>
+<ul>
+<li><p><strong>географические</strong> - общеземные системы координат, которые используют широту и долготу в качестве координат с градусами как единицами измерения, измерения здесь выполняются на сфере/эллипсоиде;</p></li>
+<li><p><strong>прямоугольные</strong> - стандартные плоские прямоугольные декартовы координаты, как правило, с метрическими единицами измерения, измерения ведутся на плоскости.</p></li>
+</ul>
+<p>Прямоугольные системы координат в современной литературе могут еще называться спроецированными (калька с английского слова “projected”)</p>
+</section>
+<section id="географическая-система-координат" class="title-slide slide level1 center">
+<h1>Географическая система координат</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clipboard-3086384725.png"></p>
+<figcaption>Источник: http://rrrcn.ru/arcview-gis-dlya-ekologov3/34</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Широтой</strong> точки называется угол, образованный отвесной линией в данной точке и плоскостью экватора. Этот угол отсчитывается от плоскости экватора на север или на юг, изменяясь от 0 до 90. Широта бывает северная (+) и южная (-).</p>
+<p><strong>Долготой</strong> точки называется двугранный угол, заключенный между плоскостью начального (Гринвичского) меридиана и плоскостью меридиана, проходящего через данную точку. От начального нулевого меридиана долготу отсчитывают на восток и запад, до 180. Соответственно, долгота называется восточной (+) и западной (-).<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></p>
+</div></div>
+<aside></aside></section>
+
+<section>
+<section id="прямоугольная-система-координат" class="title-slide slide level1 center">
+<h1>Прямоугольная система координат</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Cartesian-coordinate-system.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Прямоуго́льная (дека́ртова) систе́ма координа́т</strong>&nbsp;— прямолинейная система координат с взаимно перпендикулярными координатными осями на плоскости или в пространстве. Часто используемая система координат. Просто обобщается для пространств любой размерности<a href="#/footnotes" class="footnote-ref" id="fnref2" role="doc-noteref" data-footnote-href="#/fn2" onclick=""><sup>2</sup></a>.</p>
+</div></div>
+<aside></aside></section>
+<section class="slide level2">
+
 <p>Любая система координат в ГИС состоит из нескольких компонентов:</p>
 <ul>
 <li><p>картографическая проекция, в которую входят:</p>
@@ -159,7 +198,7 @@
 <blockquote>
 <p>Система координат базируется на картографической проекции, которая определяет используемый эллипсоид (в иностранной литературе часто называемый датумом) и способ проецирования поверхности Земли на плоскость (используемую поверхность относимости и расположение центра проецирования). К полученному изображению Земли на плоскости добавляется начало системы координат и ее оси.</p>
 </blockquote>
-</section>
+</section></section>
 <section>
 <section id="понятие-картографической-проекции" class="title-slide slide level1 center">
 <h1>Понятие картографической проекции</h1>
@@ -528,7 +567,7 @@
 <p><strong>На заметку</strong></p>
 </div>
 <div class="callout-content">
-<p>В некоторых случаях может использоваться до 7 параметров преобразования, например, в МСК-33<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a>.</p>
+<p>В некоторых случаях может использоваться до 7 параметров преобразования, например, в МСК-33<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a>.</p>
 <p><img data-src="images/clipboard-2572913437.png"></p>
 </div>
 </div>
@@ -580,7 +619,9 @@
 <section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Сноски</h2>
 
 <ol>
-<li id="fn1"><p>Постановление Губернатора Владимирской обл. от 26.10.2009 N 876 «Об утверждении Положения о местной системе координат Владимирской области (МСК-33)» <a href="https://docs.cntd.ru/document/965012231" class="uri">https://docs.cntd.ru/document/965012231</a></p></li>
+<li id="fn1"><p><a href="https://portal.tpu.ru/SHARED/p/POCELUEV/ucheba/Geodesy/Lab3.pdf" class="uri">https://portal.tpu.ru/SHARED/p/POCELUEV/ucheba/Geodesy/Lab3.pdf</a></p></li>
+<li id="fn2"><p>Прямоугольная система координат <a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82" class="uri">https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82</a></p></li>
+<li id="fn3"><p>Постановление Губернатора Владимирской обл. от 26.10.2009 N 876 «Об утверждении Положения о местной системе координат Владимирской области (МСК-33)» <a href="https://docs.cntd.ru/document/965012231" class="uri">https://docs.cntd.ru/document/965012231</a></p></li>
 </ol>
 </section>
     </div>
