@@ -3,7 +3,7 @@
     "path": "~/Desktop/gis-masters-course/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "0",
+    "hash": "1529756651",
     "contents": "",
     "dirty": false,
     "created": 1757422861712.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "33,19",
+        "cursorPosition": "34,17",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1759396916,
+    "lastKnownWriteTime": 1760445467,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1759396916598,
+    "last_content_update": 1760445467734,
     "read_only": false,
     "read_only_alternatives": []
 }
