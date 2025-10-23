@@ -1,0 +1,50 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "ДПО Интеллектуальные геоинформационные системы"
+  page-footer: |
+        © 2025, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО
+  navbar:
+    left:
+      - sidebar:practice
+      - href: index.qmd
+        text: Теория
+      - href: homework.qmd
+        text: Задание
+      
+      
+    right: 
+      - href: https://t.me/geomess
+        icon: telegram
+      - icon: github
+        href: https://github.com/baltti/gis-dpo  
+      
+  sidebar:
+    - id: practice
+      logo: "images/logo.png"
+      pinned: true
+      align: center
+      title: "Практикум"
+      style: "docked"
+      collapse-level: 1
+      contents:
+        - start.qmd
+        - basics.qmd
+        - osm.qmd
+        - style.qmd
+        - layout.qmd
+        - crs.qmd
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+    
+lang: ru-RU    
+language: custom.yml
+
+editor: visual
+

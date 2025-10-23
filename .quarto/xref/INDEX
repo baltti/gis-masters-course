@@ -34,5 +34,11 @@
   },
   "crs.qmd": {
     "crs.html": "6cafb65d"
+  },
+  "spatial.qmd": {
+    "spatial.html": "d7b55a67"
+  },
+  "layout.qmd": {
+    "layout.html": "103a1971"
   }
 }

@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -147,11 +146,19 @@ window.Quarto = {
     <a class="dropdown-item" href="./crs.html">
  <span class="dropdown-text">Работа с системами координат</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./layout.html">
+ <span class="dropdown-text">Оформление карты и макеты</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Лекции</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./homework.qmd"> 
+<span class="menu-text">Домашнее задание</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./exam.html"> 
@@ -190,6 +197,11 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -226,6 +238,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./crs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Работа с системами координат</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Оформление карты и макеты</span></a>
   </div>
 </li>
     </ul>
