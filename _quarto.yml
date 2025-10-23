@@ -8,13 +8,14 @@ website:
         © 2025, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО
   navbar:
     left:
-      - sidebar:practice
       - href: index.qmd
         text: Лекции
+      - sidebar:practice
       - href: homework.qmd
         text: Домашнее задание
       - href: exam.qmd
         text: Экзамен
+     
       
       
     right: 

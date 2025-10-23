@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Основные операции пространственного анализа – Геоинформатика и геоинформационные системы</title>
+<title>Домашнее задание – Геоинформатика и геоинформационные системы</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./homework.html"> 
+    <a class="nav-link active" href="./homework.html" aria-current="page"> 
 <span class="menu-text">Домашнее задание</span></a>
   </li>  
   <li class="nav-item">
@@ -158,24 +158,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Содержание</h2>
-   
-  <ul>
-  <li><a href="#расчет-площадей-объектов" id="toc-расчет-площадей-объектов" class="nav-link active" data-scroll-target="#расчет-площадей-объектов">Расчет площадей объектов</a></li>
-  <li><a href="#создание-буферных-зон" id="toc-создание-буферных-зон" class="nav-link" data-scroll-target="#создание-буферных-зон">Создание буферных зон</a></li>
-  <li><a href="#пространственное-агрегирование" id="toc-пространственное-агрегирование" class="nav-link" data-scroll-target="#пространственное-агрегирование">Пространственное агрегирование</a></li>
-  <li><a href="#оверлейные-операции" id="toc-оверлейные-операции" class="nav-link" data-scroll-target="#оверлейные-операции">Оверлейные операции</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Основные операции пространственного анализа</h1>
+<h1 class="title">Домашнее задание</h1>
 </div>
 
 
@@ -202,293 +193,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>В этом разделе и далее мы будем использовать преимущественно слой в системе координат UTM в нужной вам зоне.</p>
-</div>
-</div>
-<section id="расчет-площадей-объектов" class="level1">
-<h1>Расчет площадей объектов</h1>
-<p>Для расчета площади зданий воспользуемся калькулятором полей в таблице атрибутов.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Напоминание
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Таблица атрибутов может быть открыта из контекстного меню слоя.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2477555248.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="526"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Важно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Расчет площади мы будем осуществлять в том слое, который вы получили по итогам перепроецирования: слой в системе координат UTM.</p>
-</div>
-</div>
-<p>В открывшейся таблице атрибутов вы увидите собственную панель инструментов, на которой вам нужен калькулятор полей.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-1045039255.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2158"></p>
-</figure>
-</div>
-<p>В открывшемся окне калькулятора полей вам нужно создать новое поле с типом данных “десятичное число”, в которое будет записан ваш результат.</p>
-<p>Для расчета площади необходима будет одна из функций из группы <strong>Геометрия</strong>: <code>area()</code>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-485574753.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1489"></p>
-</figure>
-</div>
-<p>Само выражение:</p>
-<pre><code>area ($geometry)</code></pre>
-<p>Что значит аргумент <code>$geometry</code> в скобках?</p>
-<p>Это говорит о том, что для расчета будет использована не какая-то конкретная геометрия одного объекта, а все геометрии слоя.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Важно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Обратите внимание, что у нас есть две функции для расчета площади:</p>
-<ul>
-<li><p><code>$area</code> - расчет площади осуществляется в <em>системе координат проекта на эллипсоиде</em>;</p></li>
-<li><p><code>area()</code> - расчет площади осуществляется в <em>системе координат слоя на плоскости</em>.</p></li>
-</ul>
-<p>Мы используем здесь второй вариант, так как нам необходим расчет именно в системе координат слоя. Для этого мы его и перепроецировали.</p>
-</div>
-</div>
-<p>В результате вычисления вы получите новое поле, в которое будет записана площадь.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2007705995.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="961"></p>
-</figure>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-На заметку
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>В нашем случае площадь будет рассчитана в квадратных метрах, так как мы использовали систему координат слоя, в которой единицами измерения являются метры.</p>
-<p>Это площадь застройки здания, то есть площадь по контуру первого этажа.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Дополнительно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Вы можете аналогично рассчитать периметр здания, воспользовавшись функцией <code>perimeter</code>.</p>
-<p>Общая площадь здания может быть рассчитана как произведение уже рассчитаной вами площади и количества этажей.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2704296193.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="728"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-На заметку
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Вы можете указать это выражение в свойствах слоя в пункте <em>Формы полей</em>, тогда при создании нового объекта площадь для него будет рассчитаваться автоматически.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2535272035.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1253"></p>
-</figure>
-</div>
-<p>Это будет работать для любого вашего вычисляемого поля.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Дополнительно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Для простоты вычислений вы также можете воспользоваться модулем <strong>Calculate geometry</strong>.</p>
-<p>Он будет доступен в контекстном меню слоя.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2969958452.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="695"></p>
-</figure>
-</div>
-<p>Модуль позволяет вычислять основные геометрические параметры без использования выражений и калькулятора полей.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-3626026141.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1037"></p>
-</figure>
-</div>
-<p>Кроме того, здесь вы можете в явном виде выбирать в какой системе координат и как осуществлять вычисления (на плоскости или на эллипсоиде).</p>
-</div>
-</div>
-</section>
-<section id="создание-буферных-зон" class="level1">
-<h1>Создание буферных зон</h1>
-<p>Буферная зона - это область на карте, каждая точка внутри которой находится в пределах заданного расстояния от исходного объекта.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-1352830376.png" class="img-fluid figure-img" width="1576"></p>
-<figcaption>Источник: Shen, J.; Chen, L.; Wu, Y.; Jing, N. Approach to Accelerating Dissolved Vector Buffer Generation in Distributed In-Memory Cluster Architecture. ISPRS Int. J. Geo-Inf. 2018, 7, 26. https://doi.org/10.3390/ijgi7010026</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Предупреждение
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Буферные зоны - это один из тех инструментов, которые зависимы от системы координат исходного слоя. То есть размер буфера может быть задан только в единицах измерения слоя.</p>
-</div>
-</div>
-<p>Для создания буферных зон есть одноименный инструмент <em>Буферизация</em> в панели инструментов анализа.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2295926105.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="856"></p>
-</figure>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Дополнительно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Как видите, у нас есть несколько очень похожих инструментов, мы с вами будем пользоваться самым простым из них.</p>
-<p>Что же делают остальные?</p>
-<ul>
-<li><p>буфер переменной ширины - размер буферной зоны будет зависеть от величины какого-то показателя;</p></li>
-<li><p>множественный буфер - создание сразу нескольких буферных зон с определенным шагом по расстоянию;</p></li>
-<li><p>конические буферы (на самом деле клиновидные) - буфер для линейного объекта с разными значениями размера в начале и конце линии;</p></li>
-<li><p>односторонний буфер - создание буфера только с одной стороны линейного объекта;</p></li>
-<li><p>создать клиновидные буферы - создание буферов в форме сектора круга от точечных объектов.</p></li>
-</ul>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-3630713758.png" class="img-fluid figure-img" width="574"></p>
-<figcaption>Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-1072641176.png" class="img-fluid figure-img" width="574"></p>
-<figcaption>Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html</figcaption>
-</figure>
-</div>
-</section>
-<section id="пространственное-агрегирование" class="level1">
-<h1>Пространственное агрегирование</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-На заметку
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Возможность пространственного агрегирования может быть реализована как минимум двумя способами: с использованием инструментов панели анализа и с испольованием функции агрегирования в калькуляторе полей.</p>
-<p>В панели инструментов анализа есть две функции: <em>Объединение атрибутов по расположению</em> и <em>Объединение атрибутов по расположению (сводка</em>). Первая из них присваивает значение атрибута одних векторных объектов другим на основе их взаимного расположения относительно друг друга. Например, у нас есть слой со зданиями и слой с магазинами, у которых есть атрибут с названием, мы можем с использованием этой функции присвоить зданию название магазина, который в нем расположен.</p>
-<p>Сводка позволяет получить не просто значение атрибута, а его статистическую сводку (среднее, медиану, максимальное и минимальное значения и прочее).</p>
-</div>
-</div>
-</section>
-<section id="оверлейные-операции" class="level1">
-<h1>Оверлейные операции</h1>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 65%">
-<col style="width: 8%">
-<col style="width: 15%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Название</td>
-<td>Описание</td>
-<td>Логический оператор</td>
-<td>Графическое представление</td>
-</tr>
-<tr class="even">
-<td>Пересечение</td>
-<td><p>Результат включает в себя общие части объектов разных слоев.</p>
-<p>Например, какие области попадают в зону затопления и зону застройки</p></td>
-<td>AND</td>
-<td><img src="images/clipboard-2807919196.png" class="img-fluid"></td>
-</tr>
-<tr class="odd">
-<td>Разница</td>
-<td><p>Результат включет в себя только части объектов одного слоя, не совпадающие с объектами другого слоя.</p>
-<p>Например, какие области попадают в зону затопления, но не попадают в зону застройки?</p></td>
-<td>NOT</td>
-<td><img src="images/clipboard-949720384.png" class="img-fluid"></td>
-</tr>
-<tr class="even">
-<td>Объединение</td>
-<td><p>Результатом будут являться части объектов обоих слоев, как совпавшие, так и нет. Другими словами результирующие объекты будут соответствовать хотя бы одному из условий.</p>
-<p>В этом случае дополнительно происходит рассечение объектов одного слоя объектами другого слоя.</p>
-<p>Например, какие области попадают или в зону затопления или в зону застройки.</p></td>
-<td>OR</td>
-<td><img src="images/clipboard-1721169732.png" class="img-fluid"></td>
-</tr>
-<tr class="odd">
-<td>Симметрическая разность</td>
-<td><p>Результат будет включать в себя несовпадающие части объектов разных слоев.</p>
-<p>Например, какие области не попадут ни в зону затопления, ни в зону застройки?</p></td>
-<td>XOR</td>
-<td><img src="images/clipboard-3112970447.png" class="img-fluid"></td>
-</tr>
-</tbody>
-</table>
+<p>Домашнее задание является вашей контрольной точкой, поэтому его выполнение обязательно!</p>
+</div>
+</div>
+<p>Вам нужно подготовить и оформить карту любой территории на свой выбор.</p>
+<p>Порядок работы:</p>
+<ol type="1">
+<li><p>выбрать территорию (она может быть абсолютно любой на ваш выбор - ваш любимый район или город, район вашего исследования);</p></li>
+<li><p>создать новый проект;</p></li>
+<li><p>скачать и добавить подложку и данные в ваш проект (это могут быть любые скачанные вами данные из открытых источников или созданные вами самостоятельно);</p></li>
+<li><p>задать стили вашим слоям (тут все ограничивается только вашей фантазией и художественными предпочтениями - это может быть просто выбранный вами стиль заливки или стиль, заданный на основе какого-то параметра, художественный стиль);</p></li>
+<li><p>оформить карту на макете - обязательными элементами макета являются карта, масштабная линейка и легенда, все остальные элементы на ваше усмотрение;</p></li>
+<li><p>экспортировать карту из макета в формат pdf или png и отправить ее в форму по ссылке.</p></li>
+</ol>
+<p>Задание можно загрузить по ссылке <a href="https://forms.yandex.ru/u/671a67d05d2a0698658995b2" class="uri">https://forms.yandex.ru/u/671a67d05d2a0698658995b2</a></p>
+<p><strong>Срок сдачи работы: до <em>23 ноября включительно</em></strong></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
