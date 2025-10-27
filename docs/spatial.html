@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Лекции</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -125,6 +125,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./layout.html">
  <span class="dropdown-text">Оформление карты и макеты</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./spatial.html">
+ <span class="dropdown-text">Основные операции пространственного анализа</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -153,10 +157,80 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spatial.html">Основные операции пространственного анализа</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Установка программы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало работы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Проект в QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./osm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с OSM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Общие настройки стиля объектов</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с системами координат</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Оформление карты и макеты</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spatial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Основные операции пространственного анализа</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -165,8 +239,14 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#расчет-площадей-объектов" id="toc-расчет-площадей-объектов" class="nav-link active" data-scroll-target="#расчет-площадей-объектов">Расчет площадей объектов</a></li>
   <li><a href="#создание-буферных-зон" id="toc-создание-буферных-зон" class="nav-link" data-scroll-target="#создание-буферных-зон">Создание буферных зон</a></li>
-  <li><a href="#пространственное-агрегирование" id="toc-пространственное-агрегирование" class="nav-link" data-scroll-target="#пространственное-агрегирование">Пространственное агрегирование</a></li>
-  <li><a href="#оверлейные-операции" id="toc-оверлейные-операции" class="nav-link" data-scroll-target="#оверлейные-операции">Оверлейные операции</a></li>
+  <li><a href="#поиск-объектов-по-расположению" id="toc-поиск-объектов-по-расположению" class="nav-link" data-scroll-target="#поиск-объектов-по-расположению">Поиск объектов по расположению</a>
+  <ul class="collapse">
+  <li><a href="#определение-зданий-попавших-в-границы-буферных-зон" id="toc-определение-зданий-попавших-в-границы-буферных-зон" class="nav-link" data-scroll-target="#определение-зданий-попавших-в-границы-буферных-зон">Определение зданий, попавших в границы буферных зон</a></li>
+  </ul></li>
+  <li><a href="#пространственное-агрегирование" id="toc-пространственное-агрегирование" class="nav-link" data-scroll-target="#пространственное-агрегирование">Пространственное агрегирование</a>
+  <ul class="collapse">
+  <li><a href="#расчет-количества-доступных-школ" id="toc-расчет-количества-доступных-школ" class="nav-link" data-scroll-target="#расчет-количества-доступных-школ">Расчет количества доступных школ</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -420,6 +500,82 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Источник: https://help.axioma-gis.ru/index.html?editing_buffer.html</figcaption>
 </figure>
 </div>
+<p>В качестве размера буферной зоны мы воспользуемся основным градостроительным нормативом доступности для школ - 500 метров до жилых зданий.</p>
+<p>Если вы использовали другие объекты, то вы можете взять другое расстояние.</p>
+<p>Например, для детских садов зона доступности - 300 метров, для поликлиник - 1000 метров.</p>
+<p>Для объектов коммерческой инфраструктуры нормативов нет, но вы можете взять свое произвольное значение.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1525116501.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1520"></p>
+</figure>
+</div>
+<p>Так как в нашем случае буферные зоны строятся для точечных объектов, то основным параметром будет расстояние - размер зоны.</p>
+<p>Также роль будет играть параметр <em>Выполнить слияние результирующих полигонов</em>: при его выборе все полученные полигоны будут объединены в один объект.</p>
+<p>Если вы хотите сразу сохранить свой слой без создания временного файла, то вы можете нажать на кнопку <img src="images/clipboard-4068957659.png" class="img-fluid" width="55"> и выбрать пункт <em>Сохранить в файл</em>, после чего выбрать место для сохранения и указать имя файла.</p>
+<p>В итоге вы увидите новый слой в панели слоев и его отображение на карте.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2114513451.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1088"></p>
+</figure>
+</div>
+</section>
+<section id="поиск-объектов-по-расположению" class="level1">
+<h1>Поиск объектов по расположению</h1>
+<section id="определение-зданий-попавших-в-границы-буферных-зон" class="level2">
+<h2 class="anchored" data-anchor-id="определение-зданий-попавших-в-границы-буферных-зон">Определение зданий, попавших в границы буферных зон</h2>
+<p>Далее мы можем осуществить поиск домов, которые попадают в заданные области обслуживания.</p>
+<p>Для поиска объектов есть группа инструментов <strong>Вектор — Выборка</strong>.</p>
+<p>Часть инструментов в ней начинается со слова <em>Выбрать (Выделить)</em>, а часть - <em>Извлечь</em>. Разница между ними в том, что в первом случае объекты просто выделяются в исходном слое, а во втором - объекты, соответствующие заданным условия, извлекаются в новый слой.</p>
+<p>Краткое описания инструментов:</p>
+<ul>
+<li><p><em>выбрать/извлечь по атрибуту</em> - поиск объектов по значению одного из атрибутов;</p></li>
+<li><p><em>выбрать/извлечь по выражению</em> - поиск объектов по значениям нескольких атрибутов одновременно;</p></li>
+<li><p><em>выбрать/извлечь по пространственному отношению</em> - поиск объектов по их расположению относительно объектов другого слоя;</p></li>
+<li><p><em>выделить/извлечь в пределах расстояния</em> - поиск объектов в пределах заданного расстояния от других объектов;</p></li>
+<li><p><em>случайное выделение/случайное извлечение</em> - случайная выборка объектов из слоя (заданного числа объектов или заданного процента объектов);</p></li>
+<li><p><em>случайное выделение в подмножествах/случайное извлечение в подмножествах</em> - сначала слой разбивается по категориям по одному из атрибутов, потом из каждой категории извлекается заданное число или заданный процент объектов.</p></li>
+</ul>
+<p>Нам нужно определить, какие здания попадают в буферные зоны, поэтому нужно воспользоваться <strong>выбрать\извлечь по пространственному отношению</strong>.</p>
+<p>Для выбора объектов нужно сначала указать в каком слое осуществляется поиск (слой со зданиями), геометрический оператор (как объекты расположены относительно объектов другого слоя) и слой для сравнения (буферные зоны). Геометрические операторы в данном случае лучше выбирать <em>Пересекает</em> и <em>Находится внутри</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-126608668.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1514"></p>
+</figure>
+</div>
+<p>По результатам извлечения вы получите новый слой, который будет содержать только здания, удовлетворяющие заданным условиям.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-4146872066.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1119"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Инструмент <em>Выбрать по расположению</em> работает аналогично, но результатом у вас будет не просто новый слой, а выделенный набор объектов в текущем слое.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Такеж вы можете попробовать найти здания в пределах заданного расстояния от школ при помощи инструментов <em>Выделить в пределах расстояния/Извлечение в пределах расстояния</em>.</p>
+<p>Однако следует помнить, что расстояние будет определяться в системе координат проекта, поэтому будет отличаться от того, что получено при помощи буферных зон.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="пространственное-агрегирование" class="level1">
 <h1>Пространственное агрегирование</h1>
@@ -438,56 +594,26 @@ ul.task-list li input[type="checkbox"] {
 <p>Сводка позволяет получить не просто значение атрибута, а его статистическую сводку (среднее, медиану, максимальное и минимальное значения и прочее).</p>
 </div>
 </div>
+<section id="расчет-количества-доступных-школ" class="level2">
+<h2 class="anchored" data-anchor-id="расчет-количества-доступных-школ">Расчет количества доступных школ</h2>
+<p>Рассчитаем число доступных школ для каждого из наших зданий с использованием выражения агрегирования.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3012975634.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1621"></p>
+</figure>
+</div>
+<pre><code> aggregate( 'school_bufer_f66eb7f4_5fbc_470a_acf4_0fd3649f38e1', aggregate:='count',expression:="osm_id", filter:=within(geometry(@parent),@geometry))</code></pre>
+<p>Как видите, выражение очень похоже на то, что мы уже использовали, меняются только некоторые аргументы.</p>
+<p>Во-первых, используется другой тип агрегирования - <code>count</code>, то есть подсчет количества; во-вторых, используется другое выражение фильтрации - в этом случае мы ищем объекты исходного слоя, <em>попавшие внутрь буферных зон</em>.</p>
+<p>По итогам расчета получен новый атрибут, в котором указано количество школ, находящееся в радиусе доступности.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1515118183.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2209"></p>
+</figure>
+</div>
+
+
 </section>
-<section id="оверлейные-операции" class="level1">
-<h1>Оверлейные операции</h1>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 65%">
-<col style="width: 8%">
-<col style="width: 15%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Название</td>
-<td>Описание</td>
-<td>Логический оператор</td>
-<td>Графическое представление</td>
-</tr>
-<tr class="even">
-<td>Пересечение</td>
-<td><p>Результат включает в себя общие части объектов разных слоев.</p>
-<p>Например, какие области попадают в зону затопления и зону застройки</p></td>
-<td>AND</td>
-<td><img src="images/clipboard-2807919196.png" class="img-fluid"></td>
-</tr>
-<tr class="odd">
-<td>Разница</td>
-<td><p>Результат включет в себя только части объектов одного слоя, не совпадающие с объектами другого слоя.</p>
-<p>Например, какие области попадают в зону затопления, но не попадают в зону застройки?</p></td>
-<td>NOT</td>
-<td><img src="images/clipboard-949720384.png" class="img-fluid"></td>
-</tr>
-<tr class="even">
-<td>Объединение</td>
-<td><p>Результатом будут являться части объектов обоих слоев, как совпавшие, так и нет. Другими словами результирующие объекты будут соответствовать хотя бы одному из условий.</p>
-<p>В этом случае дополнительно происходит рассечение объектов одного слоя объектами другого слоя.</p>
-<p>Например, какие области попадают или в зону затопления или в зону застройки.</p></td>
-<td>OR</td>
-<td><img src="images/clipboard-1721169732.png" class="img-fluid"></td>
-</tr>
-<tr class="odd">
-<td>Симметрическая разность</td>
-<td><p>Результат будет включать в себя несовпадающие части объектов разных слоев.</p>
-<p>Например, какие области не попадут ни в зону затопления, ни в зону застройки?</p></td>
-<td>XOR</td>
-<td><img src="images/clipboard-3112970447.png" class="img-fluid"></td>
-</tr>
-</tbody>
-</table>
-
-
 </section>
 
 </main> <!-- /main -->
