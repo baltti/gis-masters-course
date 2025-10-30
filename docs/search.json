@@ -499,6 +499,34 @@
     "href": "04-visualisation.html#footnotes",
     "title": "Визуализация пространственных данных",
     "section": "Сноски",
-    "text": "Сноски\n\n\nhttps://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/\nИспользование альфа-канала https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm"
+    "text": "Сноски\n\n\nNuñez JR, Anderton CR, Renslow RS (2018) Optimizing colormaps with consideration for color vision deficiency to enable accurate interpretation of scientific data. PLoS ONE 13(7): e0199239. https://doi.org/10.1371/journal.pone.0199239.)\nHow rainbow colour maps can distort data and be misleading https://theconversation.com/how-rainbow-colour-maps-can-distort-data-and-be-misleading-167159\nhttps://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/\nИспользование альфа-канала https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm"
+  },
+  {
+    "objectID": "04-visualisation.html#последовательные-палитры",
+    "href": "04-visualisation.html#последовательные-палитры",
+    "title": "Визуализация пространственных данных",
+    "section": "Последовательные палитры",
+    "text": "Последовательные палитры\n\n\n\n\n\n\nВажно\n\n\nНаиболее хорошо и очевидно мы воспринимаем изменения в яркости (причем это общее и для компьютеров, и для человеческого глаза).\nПоэтому изменение от светлого к темному и наоборот будут наиболее просты и однозначны в восприятии, даже если концы палитры будут слабо насыщенными, а центральная часть - наиболее чистой по цвету.\nТо есть, если яркость меняется последовательно, цвет отчасти отходит на второй план.\n\n\n\nС учетом этого факта в 2015 году Натаниелем Смитом и Стефаном ван дер Вольтом (Nathaniel J. Smith, Stefan van der Walt) были разработаны цветовые палитры magma, inferno, plasma, viridis в составе библиотеки matplotlib colormaps.\nПозднее этот набор был дополнен еще одной палитрой cividis1."
+  },
+  {
+    "objectID": "04-visualisation.html#расходящиеся-палитры",
+    "href": "04-visualisation.html#расходящиеся-палитры",
+    "title": "Визуализация пространственных данных",
+    "section": "Расходящиеся палитры",
+    "text": "Расходящиеся палитры\nОсновной принцип их построения состоит в том, что центр имеет максимальную яркость, а вправо и влево однородно оно уменьшается, переходя в цвета с противоположных концов спектра: к синему и красному или оранжевому и фиолетовому.\nТо есть они объединяют два градиента разных цветов по яркости.\nЧаще всего вы видите такие палитры при отображении температуры: белый центр, от которого расходятся в противоположные стороны красный и синий градиенты. Также такие цветовые схемы могут быть использованы для отображения доходов и убытков, изменений во времени, отклонений от нормы или среднего значения."
+  },
+  {
+    "objectID": "04-visualisation.html#радужная-палитра",
+    "href": "04-visualisation.html#радужная-палитра",
+    "title": "Визуализация пространственных данных",
+    "section": "Радужная палитра",
+    "text": "Радужная палитра\nВ настоящее время рекомендуется избегать так называемой радужной палитры, потому что сама по себе она искажает изображение объектов.\nЭто связано с тем, что в ней содержатся различные по яркости и цвету фрагменты, которые не позволяют однозначно последовательно выстроить цвета2."
+  },
+  {
+    "objectID": "04-visualisation.html#сервисы-для-создания-палитр",
+    "href": "04-visualisation.html#сервисы-для-создания-палитр",
+    "title": "Визуализация пространственных данных",
+    "section": "Сервисы для создания палитр",
+    "text": "Сервисы для создания палитр\nПримеры сервисов:\n\nColorBrewer\nchroma.js by Gregor Aisch and its helper tool\nColorpicker based on chroma.js\nAdobe Color CC\ncolor-hex popular palettes\nCOLOURlovers\ncarto\nColor Buddy\nViz Palette\nColor Tool\nDatafam Colors by Ken Flerlage\nColor Contrast & Accessibility Tester\nHex Code Previewer + XML Generator"
   }
 ]

@@ -151,6 +151,133 @@
 
 <img data-src="images/Try_to_impeach_this-ezgif.com-speed.gif" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section>
+<section id="визуальные-характеристики" class="title-slide slide level1 center">
+<h1>Визуальные характеристики</h1>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Визуальные характеристики включают в себя:</p>
+<ul>
+<li><p>расположение;</p></li>
+<li><p>размер;</p></li>
+<li><p>форму;</p></li>
+<li><p>яркость цвета;</p></li>
+<li><p>цвет;</p></li>
+<li><p>ориентацию символа;</p></li>
+<li><p>текстуру (штриховку).</p></li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clipboard-4232914447.png" width="1517"></p>
+<figcaption>Источник: https://www.axismaps.com/guide/visual-variables</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/clipboard-1438726917.png" class="r-stretch quarto-figure-center"><p class="caption">Источник: https://cartosquad.com/guide/visvar.html</p></section></section>
+
+
+<section>
+<section id="типы-переменных-атрибутов" class="title-slide slide level1 center">
+<h1>Типы переменных (атрибутов)</h1>
+<p>Основные типы переменных, которые могут отображаться на карте:</p>
+<ul>
+<li><p>качественные</p>
+<ul>
+<li><p>номинальные (категориальные) - группы, которым нельзя присвоить числовой эквивалент и нельзя ранжировать по возрастанию/убыванию;</p></li>
+<li><p>ранговые - группы, которые можно упорядочить, но нельзя присвоить числовой эквивалент и количественно сравнить группы между собой;</p></li>
+</ul></li>
+<li><p>количественные</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/Pasted image 20250109115834.png" class="quarto-figure quarto-figure-center r-stretch" width="1296"></section>
+<section id="последовательные-палитры" class="slide level2">
+<h2>Последовательные палитры</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Важно</strong></p>
+</div>
+<div class="callout-content">
+<p>Наиболее хорошо и очевидно мы воспринимаем изменения в яркости (причем это общее и для компьютеров, и для человеческого глаза).</p>
+<p>Поэтому изменение от светлого к темному и наоборот будут наиболее просты и однозначны в восприятии, даже если концы палитры будут слабо насыщенными, а центральная часть - наиболее чистой по цвету.</p>
+<p>То есть, если яркость меняется последовательно, цвет отчасти отходит на второй план.</p>
+</div>
+</div>
+</div>
+<p>С учетом этого факта в 2015 году Натаниелем Смитом и Стефаном ван дер Вольтом (Nathaniel J. Smith, Stefan van der Walt) были разработаны цветовые палитры <em>magma, inferno, plasma, viridis</em> в составе библиотеки <a href="https://bids.github.io/colormap/">matplotlib colormaps</a>.</p>
+<p>Позднее этот набор был дополнен еще одной палитрой <em>cividis</em><a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a>.</p>
+<aside></aside></section>
+<section class="slide level2">
+
+
+<img data-src="images/Pasted image 20241212113034.png" class="quarto-figure quarto-figure-center r-stretch" width="800"></section>
+<section id="расходящиеся-палитры" class="slide level2">
+<h2>Расходящиеся палитры</h2>
+<p>Основной принцип их построения состоит в том, что центр имеет максимальную яркость, а вправо и влево однородно оно уменьшается, переходя в цвета с противоположных концов спектра: к синему и красному или оранжевому и фиолетовому.</p>
+<p>То есть они объединяют два градиента разных цветов по яркости.</p>
+<p>Чаще всего вы видите такие палитры при отображении температуры: белый центр, от которого расходятся в противоположные стороны красный и синий градиенты. Также такие цветовые схемы могут быть использованы для отображения доходов и убытков, изменений во времени, отклонений от нормы или среднего значения.</p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/Pasted image 20241212135927.png" class="quarto-figure quarto-figure-center r-stretch" width="1515"><div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Внимание</strong></p>
+</div>
+<div class="callout-content">
+<p>Использование таких палитр обосновано тогда, когда данные подразумевают, что середина и значение ей соответствующее имеет определенный смысл.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="радужная-палитра" class="slide level2">
+<h2>Радужная палитра</h2>
+<p>В настоящее время рекомендуется избегать так называемой радужной палитры, потому что сама по себе она искажает изображение объектов.</p>
+<p>Это связано с тем, что в ней содержатся различные по яркости и цвету фрагменты, которые не позволяют однозначно последовательно выстроить цвета<a href="#/footnotes" class="footnote-ref" id="fnref2" role="doc-noteref" data-footnote-href="#/fn2" onclick=""><sup>2</sup></a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Pasted image 20241212142631.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<aside></aside></section>
+<section class="slide level2">
+
+
+<img data-src="images/Pasted image 20241212142226.png" class="r-stretch"></section>
+<section id="сервисы-для-создания-палитр" class="slide level2 smaller">
+<h2>Сервисы для создания палитр</h2>
+<p>Примеры сервисов:</p>
+<ul>
+<li><p><a href="http://www.colorbrewer.org/">ColorBrewer</a></p></li>
+<li><p><a href="https://github.com/gka/chroma.js">chroma.js</a> by Gregor Aisch and its <a href="https://gka.github.io/palettes/">helper tool</a></p></li>
+<li><p><a href="http://tristen.ca/hcl-picker/">Colorpicker</a> based on chroma.js</p></li>
+<li><p><a href="https://color.adobe.com/">Adobe Color CC</a></p></li>
+<li><p><a href="http://www.color-hex.com/color-palettes/popular.php">color-hex popular palettes</a></p></li>
+<li><p><a href="http://www.colourlovers.com/palettes">COLOURlovers</a></p></li>
+<li><p><a href="https://carto.com/carto-colors/"><strong>carto</strong></a></p></li>
+<li><p><a href="https://color-buddy.netlify.app/"><strong>Color Buddy</strong></a></p></li>
+<li><p><a href="https://projects.susielu.com/viz-palette"><strong>Viz Palette</strong></a></p></li>
+<li><p><a href="https://colortools.interworks.com/"><strong>Color Tool</strong></a></p></li>
+<li><p><a href="https://public.tableau.com/app/profile/ken.flerlage/viz/DatafamColors/StartPage"><strong>Datafam Colors by&nbsp;Ken Flerlage</strong></a></p></li>
+<li><p><a href="https://public.tableau.com/app/profile/sam.epley/viz/ColorContrastAccessibilityTester/ColorContrastAccessibilityTester"><strong>Color Contrast &amp; Accessibility Tester</strong></a></p></li>
+<li><p><a href="https://public.tableau.com/app/profile/brrosenau/viz/HexCodePreviewerXMLGenerator/HexCodePreviewerXMLGenerator"><strong>Hex Code Previewer + XML Generator</strong></a></p></li>
+</ul>
+</section></section>
+<section>
 <section id="способы-визуализации-пространственных-данных" class="title-slide slide level1 center">
 <h1>Способы визуализации пространственных данных</h1>
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -274,7 +401,7 @@
 <img data-src="images/Pasted image 20241030110341.png" class="r-stretch quarto-figure-center"><p class="caption">Арманд Жозеф Фрер де Монтизон (Armand Joseph Frère de Montizon) - Carte Philosophique figurant la Population de la France</p></section>
 <section class="slide level2">
 
-<p>Самым знаменитым примером карты плотности точек является карта Джона Сноу, которая положила начало пространственному анализу, тематическому картографированию, ГИС, кластеризации и современной эпидемиологии, но на самом деле история не совсем такая, как ее обычно рассказывают<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a>.</p>
+<p>Самым знаменитым примером карты плотности точек является карта Джона Сноу, которая положила начало пространственному анализу, тематическому картографированию, ГИС, кластеризации и современной эпидемиологии, но на самом деле история не совсем такая, как ее обычно рассказывают<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/Pasted image 20241019161907.png" class="quarto-figure quarto-figure-center" width="738"></p>
@@ -597,7 +724,7 @@
 </div>
 <div class="callout-content">
 <p>Понятие “альфа-канал” заимствовано из компьютерной графики.</p>
-<p>Альфа-канал действует как маска прозрачности, обеспечивая значение прозрачности каждому пикселу. Альфа-канал может быть включен или выключен для многоканальных наборов растровых данных, отображаемых с использованием метода Модель RGB (RGB Composite)<a href="#/footnotes" class="footnote-ref" id="fnref2" role="doc-noteref" data-footnote-href="#/fn2" onclick=""><sup>2</sup></a>.</p>
+<p>Альфа-канал действует как маска прозрачности, обеспечивая значение прозрачности каждому пикселу. Альфа-канал может быть включен или выключен для многоканальных наборов растровых данных, отображаемых с использованием метода Модель RGB (RGB Composite)<a href="#/footnotes" class="footnote-ref" id="fnref4" role="doc-noteref" data-footnote-href="#/fn4" onclick=""><sup>4</sup></a>.</p>
 </div>
 </div>
 </div>
@@ -727,8 +854,10 @@
 <section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Сноски</h2>
 
 <ol>
-<li id="fn1"><p><a href="https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/" class="uri">https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/</a></p></li>
-<li id="fn2"><p>Использование альфа-канала <a href="https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm" class="uri">https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm</a></p></li>
+<li id="fn1"><p>Nuñez JR, Anderton CR, Renslow RS (2018) Optimizing colormaps with consideration for color vision deficiency to enable accurate interpretation of scientific data. PLoS ONE 13(7): e0199239. <a href="https://doi.org/10.1371/journal.pone.0199239" class="uri">https://doi.org/10.1371/journal.pone.0199239</a>.)</p></li>
+<li id="fn2"><p>How rainbow colour maps can distort data and be misleading <a href="https://theconversation.com/how-rainbow-colour-maps-can-distort-data-and-be-misleading-167159" class="uri">https://theconversation.com/how-rainbow-colour-maps-can-distort-data-and-be-misleading-167159</a></p></li>
+<li id="fn3"><p><a href="https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/" class="uri">https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/</a></p></li>
+<li id="fn4"><p>Использование альфа-канала <a href="https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm" class="uri">https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm</a></p></li>
 </ol>
 </section>
     </div>

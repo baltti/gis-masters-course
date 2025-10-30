@@ -27,6 +27,136 @@ format:
 
 ![](images/Try_to_impeach_this-ezgif.com-speed.gif){fig-align="center"}
 
+# Визуальные характеристики
+
+::::: columns
+::: {.column width="40%"}
+Визуальные характеристики включают в себя:
+
+-   расположение;
+
+-   размер;
+
+-   форму;
+
+-   яркость цвета;
+
+-   цвет;
+
+-   ориентацию символа;
+
+-   текстуру (штриховку).
+:::
+
+::: {.column width="60%"}
+![Источник: https://www.axismaps.com/guide/visual-variables](images/clipboard-4232914447.png){alt="Источник: https://www.axismaps.com/guide/visual-variables" fig-align="center" width="1517"}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+![Источник: https://cartosquad.com/guide/visvar.html](images/clipboard-1438726917.png){alt="Источник: https://cartosquad.com/guide/visvar.html"}
+
+# Визуальные переменные для пространственных данных {visibility="hidden"}
+
+![Источник: https://gistbok-topics.ucgis.org/CV-03-008](images/clipboard-1699599833.png){alt="Источник: https://gistbok-topics.ucgis.org/CV-03-008" fig-align="center"}
+
+# Типы переменных (атрибутов)
+
+Основные типы переменных, которые могут отображаться на карте:
+
+-   качественные
+
+    -   номинальные (категориальные) - группы, которым нельзя присвоить числовой эквивалент и нельзя ранжировать по возрастанию/убыванию;
+
+    -   ранговые - группы, которые можно упорядочить, но нельзя присвоить числовой эквивалент и количественно сравнить группы между собой;
+
+-   количественные
+
+------------------------------------------------------------------------
+
+![](images/Pasted%20image%2020250109115834.png){fig-align="center" width="1296"}
+
+## Последовательные палитры
+
+::: callout-important
+Наиболее хорошо и очевидно мы воспринимаем изменения в яркости (причем это общее и для компьютеров, и для человеческого глаза).
+
+Поэтому изменение от светлого к темному и наоборот будут наиболее просты и однозначны в восприятии, даже если концы палитры будут слабо насыщенными, а центральная часть - наиболее чистой по цвету.
+
+То есть, если яркость меняется последовательно, цвет отчасти отходит на второй план.
+:::
+
+С учетом этого факта в 2015 году Натаниелем Смитом и Стефаном ван дер Вольтом (Nathaniel J. Smith, Stefan van der Walt) были разработаны цветовые палитры *magma, inferno, plasma, viridis* в составе библиотеки [matplotlib colormaps](https://bids.github.io/colormap/).
+
+Позднее этот набор был дополнен еще одной палитрой *cividis*[^1].
+
+[^1]: Nuñez JR, Anderton CR, Renslow RS (2018) Optimizing colormaps with consideration for color vision deficiency to enable accurate interpretation of scientific data. PLoS ONE 13(7): e0199239. <https://doi.org/10.1371/journal.pone.0199239>.)
+
+------------------------------------------------------------------------
+
+![](images/Pasted%20image%2020241212113034.png){fig-align="center" width="800"}
+
+## Расходящиеся палитры
+
+Основной принцип их построения состоит в том, что центр имеет максимальную яркость, а вправо и влево однородно оно уменьшается, переходя в цвета с противоположных концов спектра: к синему и красному или оранжевому и фиолетовому.
+
+То есть они объединяют два градиента разных цветов по яркости.
+
+Чаще всего вы видите такие палитры при отображении температуры: белый центр, от которого расходятся в противоположные стороны красный и синий градиенты. Также такие цветовые схемы могут быть использованы для отображения доходов и убытков, изменений во времени, отклонений от нормы или среднего значения.
+
+------------------------------------------------------------------------
+
+![](images/Pasted%20image%2020241212135927.png){fig-align="center" width="1515"}
+
+::: callout-warning
+Использование таких палитр обосновано тогда, когда данные подразумевают, что середина и значение ей соответствующее имеет определенный смысл.
+:::
+
+## Радужная палитра
+
+В настоящее время рекомендуется избегать так называемой радужной палитры, потому что сама по себе она искажает изображение объектов.
+
+Это связано с тем, что в ней содержатся различные по яркости и цвету фрагменты, которые не позволяют однозначно последовательно выстроить цвета[^2].
+
+[^2]: How rainbow colour maps can distort data and be misleading <https://theconversation.com/how-rainbow-colour-maps-can-distort-data-and-be-misleading-167159>
+
+![](images/Pasted%20image%2020241212142631.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](images/Pasted%20image%2020241212142226.png)
+
+## Сервисы для создания палитр {.smaller}
+
+Примеры сервисов:
+
+-   [ColorBrewer](http://www.colorbrewer.org/)
+
+-   [chroma.js](https://github.com/gka/chroma.js) by Gregor Aisch and its [helper tool](https://gka.github.io/palettes/)
+
+-   [Colorpicker](http://tristen.ca/hcl-picker/) based on chroma.js
+
+-   [Adobe Color CC](https://color.adobe.com/)
+
+-   [color-hex popular palettes](http://www.color-hex.com/color-palettes/popular.php)
+
+-   [COLOURlovers](http://www.colourlovers.com/palettes)
+
+-   [**carto**](https://carto.com/carto-colors/)
+
+-   [**Color Buddy**](https://color-buddy.netlify.app/)
+
+-   [**Viz Palette**](https://projects.susielu.com/viz-palette)
+
+-   [**Color Tool**](https://colortools.interworks.com/)
+
+-   [**Datafam Colors by Ken Flerlage**](https://public.tableau.com/app/profile/ken.flerlage/viz/DatafamColors/StartPage)
+
+-   [**Color Contrast & Accessibility Tester**](https://public.tableau.com/app/profile/sam.epley/viz/ColorContrastAccessibilityTester/ColorContrastAccessibilityTester)
+
+-   [**Hex Code Previewer + XML Generator**](https://public.tableau.com/app/profile/brrosenau/viz/HexCodePreviewerXMLGenerator/HexCodePreviewerXMLGenerator)
+
 # Способы визуализации пространственных данных
 
 ::: callout-warning
@@ -123,9 +253,9 @@ format:
 
 ------------------------------------------------------------------------
 
-Самым знаменитым примером карты плотности точек является карта Джона Сноу, которая положила начало пространственному анализу, тематическому картографированию, ГИС, кластеризации и современной эпидемиологии, но на самом деле история не совсем такая, как ее обычно рассказывают[^1].
+Самым знаменитым примером карты плотности точек является карта Джона Сноу, которая положила начало пространственному анализу, тематическому картографированию, ГИС, кластеризации и современной эпидемиологии, но на самом деле история не совсем такая, как ее обычно рассказывают[^3].
 
-[^1]: <https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/>
+[^3]: <https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/something-in-the-water-the-mythology-of-snows-map-of-cholera/>
 
 ![](images/Pasted%20image%2020241019161907.png){fig-align="center" width="738"}
 
@@ -386,10 +516,10 @@ format:
 ::: callout-note
 Понятие "альфа-канал" заимствовано из компьютерной графики.
 
-Альфа-канал действует как маска прозрачности, обеспечивая значение прозрачности каждому пикселу. Альфа-канал может быть включен или выключен для многоканальных наборов растровых данных, отображаемых с использованием метода Модель RGB (RGB Composite)[^2].
+Альфа-канал действует как маска прозрачности, обеспечивая значение прозрачности каждому пикселу. Альфа-канал может быть включен или выключен для многоканальных наборов растровых данных, отображаемых с использованием метода Модель RGB (RGB Composite)[^4].
 :::
 
-[^2]: Использование альфа-канала <https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm>
+[^4]: Использование альфа-канала <https://desktop.arcgis.com/ru/arcmap/latest/manage-data/raster-and-images/using-the-alpha-channel.htm>
 
 ------------------------------------------------------------------------
 
