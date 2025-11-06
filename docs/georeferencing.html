@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -129,6 +158,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./spatial.html">
  <span class="dropdown-text">Основные операции пространственного анализа</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./geoportal.html">
+ <span class="dropdown-text">Работа с геопорталом</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -162,8 +195,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#привязка-растров" id="toc-привязка-растров" class="nav-link active" data-scroll-target="#привязка-растров">Привязка растров</a></li>
+  <li><a href="#автоматическая-векторизация" id="toc-автоматическая-векторизация" class="nav-link" data-scroll-target="#автоматическая-векторизация">Автоматическая векторизация</a>
+  <ul class="collapse">
+  <li><a href="#встроенные-стредства-qgis" id="toc-встроенные-стредства-qgis" class="nav-link" data-scroll-target="#встроенные-стредства-qgis">Встроенные стредства QGIS</a></li>
+  <li><a href="#модуль-bunting-labs-ai" id="toc-модуль-bunting-labs-ai" class="nav-link" data-scroll-target="#модуль-bunting-labs-ai">Модуль Bunting labs AI</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -187,10 +231,199 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="привязка-растров" class="level1">
+<h1>Привязка растров</h1>
+<p>В качестве исходной информации при векторизации, как правило, выступают растровые изображения. Это могут быть отсканированные оригиналы бумажных карт, выдержки из официальной документации, информация с градостроительных порталов, из градостроительной документации, спутниковые снимки или снимки, полученные с беспилотных летательных аппаратов, даже просто скриншоты экрана, а также тайловые подложки (типа той, что мы подгружаем из OpenStreetMap).</p>
+<p><strong>Геопривязка растра</strong> - это присвоение растровому изображению нужной географической системы координат.</p>
+<p>В процессе привязки на растровом изображении для каждого пикселя, у которого есть условные координаты на растре, находится соотвествующая координата в целевой системе координат.</p>
+<p>Создадим новый проект (рекомендую либо сразу его создавать в системе координат <code>EPSG:3857</code>, либо сразу после создания перепроецировать на лету в эту систему координат).</p>
+<p>Для геопривязки растровых изображений в QGIS существует встроенный инструмент <a href="https://docs.qgis.org/3.28/en/docs/user_manual/working_with_raster/georeferencer.html">Привязка растров</a> (может называться Геопривязка).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3288554198.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="433"></p>
+</figure>
+</div>
+<p>Далее откроется окно геопривязки растра.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-334314507.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1291"></p>
+</figure>
+</div>
+<p>В первую очередь нужно задать или проверить параметры трансформации растра (в строке меню <em>Параметры</em> <span class="math inline">\(\longrightarrow\)</span> <em>Параметры трансформации</em>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1436948491.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="422"></p>
+</figure>
+</div>
+<p>Основные параметры здесь:</p>
+<ul>
+<li><p>тип трансформации - алгоритм преобразования растрового изображения, подробнее <a href="https://docs.qgis.org/3.28/en/docs/user_manual/working_with_raster/georeferencer.html#available-transformation-algorithms">здесь</a>;</p></li>
+<li><p>метод интерполяции;</p></li>
+<li><p>целевая система координат - система координат, которую вы хотите присвоить растру;</p></li>
+<li><p>целевой растр - нужно указать путь и название файла, полученного в результате привязки.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+На заметку
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Тип трансформации будет определять манипуляции, выполняемые с растром: это может быть просто линейный пересчет координат или вместе с масштабированием и растяжением.</p>
+<p>Примерно различные варианты типов трансформации показаны ниже.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-845527585.png" class="img-fluid figure-img" width="1231"></p>
+<figcaption>Источник: <a href="https://gis.stackexchange.com/questions/367659/differences-between-different-georeferencing-transformation-algorithms-in-qgis" class="uri">https://gis.stackexchange.com/questions/367659/differences-between-different-georeferencing-transformation-algorithms-in-qgis</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Для выполнения привязки нужно открыть растр <img src="images/clipboard-2675184116.png" class="img-fluid">, указать контрольные точки и их координаты в целевой системе координат.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2908216296.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1300"></p>
+</figure>
+</div>
+<p>Контрольные точки - это точки, по которым будет осуществляться привязка растрового изображения. У этих точек известны координаты на растровом изображении (как правило, в пикселях) и в целевой системе координат, то есть фактически по этим точкам растр “усаживается” в нужное место на карту.</p>
+<p>Чтобы поставить контрольную точку, нужно щелкнуть на нее в окне привзяки на растре, а далее указать ее координаты в диалоговом окне.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2434605553.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="627"></p>
+</figure>
+</div>
+<p>Координаты можно ввести с клавиатуры (если они у вас есть), либо выбрать вариант <strong>С карты</strong> и просто щеклнуть на ту же самую точку на карте, после чего эти координаты пропишутся в диалоговом окне автоматически.</p>
+<p>В качестве контрольных точек лучше всего использовать какие-то жесткие контура, на которых вы однозначно можете указать конкретную точку: угол дома, перекресток, угол парка и что-нибудь подобное.</p>
+<p>Для различных вариантов трансформации рекомендуется разное минимальное число контрольных точек, но, как правило, общая рекомендация использовать не менее 3 точек. Желательно, чтобы эти точки не были расположены на одной линии.</p>
+<p>После того, как вы укажете все контрольные точки и их координаты на карте, они будут отображены в таблице под растровым изображением в окне привязки.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3204566243.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1301"></p>
+</figure>
+</div>
+<p>Контрольные точки привязки можно сохранить и потом использовать в дальнейшем в других проектах (но только для того же самого растра).</p>
+<p>Для завершения процесса привязки нужно нажать <strong>Начать привязку растра</strong> <img src="images/clipboard-1568831937.png" class="img-fluid"> после чего растр будет модифицирован и отобразиться в нужном месте на карте.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-7104038.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="967"></p>
+</figure>
+</div>
+<p>Этот модифицированный растр уже будет иметь в себе сведения о системе координат и его местоположении, поэтому его потом можно будет использовать в дальнейших проектах уже без процесса привязки.</p>
+</section>
+<section id="автоматическая-векторизация" class="level1">
+<h1>Автоматическая векторизация</h1>
+<section id="встроенные-стредства-qgis" class="level2">
+<h2 class="anchored" data-anchor-id="встроенные-стредства-qgis">Встроенные стредства QGIS</h2>
+<p>По умолчанию в QGIS есть инструмент преобразования растра в вектор, то есть автоматической векторизации.</p>
+<p>Этот инструмент может быть запущен из строки меню <em>Растр</em> <span class="math inline">\(\longrightarrow\)</span> <em>Преобразование</em> <span class="math inline">\(\longrightarrow\)</span> <em>Создание полигонов (растр в вектор)</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1927014226.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1043"></p>
+</figure>
+</div>
+<p>С документацией можно ознакомиться по <a href="https://docs.qgis.org/3.40/en/docs/training_manual/complete_analysis/raster_to_vector.html">ссылке</a>.</p>
+<p>Пример работы автоматического векторизатора показан ниже.</p>
+<iframe width="800" height="400" src="https://www.youtube.com/embed/mQmw3N1dLFo?si=G95HGqiv-xtGZNmg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Так как автоматическая векторизация здесь осуществляется фактически только по цвету пикселей вашего растра, то идеальным случаем для векторизации будут большие полигоны с равномерной заливкой и без контура, в других случаях вы можете получить слишком много маленьких полигонов, которые будут требовать дополнительной проработки и объединения.</p>
+<p>Также следует отметить, что полученные полигоны не будут иметь гладкие и ровные стороны, а будут своеобразными “лесенками”, в силу того, что пиксели напрямую преобразовываются в объекты.</p>
+</div>
+</div>
+</section>
+<section id="модуль-bunting-labs-ai" class="level2">
+<h2 class="anchored" data-anchor-id="модуль-bunting-labs-ai">Модуль Bunting labs AI</h2>
+<p>Страница модуля: <a href="https://plugins.qgis.org/plugins/buntinglabs-qgis-plugin/" class="uri">https://plugins.qgis.org/plugins/buntinglabs-qgis-plugin/</a></p>
+<p>Сайт модуля: <a href="https://buntinglabs.com/solutions/ai-vectorizer-qgis-plugin" class="uri">https://buntinglabs.com/solutions/ai-vectorizer-qgis-plugin</a></p>
+<p>Репозиторий с кодом: <a href="https://github.com/BuntingLabs/buntinglabs-qgis-plugin" class="uri">https://github.com/BuntingLabs/buntinglabs-qgis-plugin</a></p>
+<p>В январе 2024 года компания Bunting Labs выпустила плагин для QGIS Bunting Labs AI Vectorizer, который помогает оцифровывать растры, продолжая линии, начатые пользователем. Разработчики называют это “автозаполнением”, потому что плагин не делает всю работу сразу, а дорисовывает части линий на основе контекста, оставляя пользователю возможность в любой момент перехватить контроль.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Плагин <strong>AI Vectorizer</strong> работает так: когда пользователь начинает отрисовывать векторный объект, модель “смотрит” на его действия и продолжает эту линию, независимо от ее значения.</p>
+<p>Пользователь начинает оцифровывать линию или полигон по растру, и как только есть первые две вершины, маленький кусочек карты отправляется на сервер. Модель “смотрит” на нарисованный на карте отрезок и выбирает пиксели, по которым должны проходить следующие вершины, после чего плагин дорисовывает 50 следующих точек линии. Этот процесс подходит для любых линий, даже для пунктирных и тех, которые пересекают другие похожие объекты. А если плагин собьется с пути, можно просто отменить последний шаг и не терять при этом много времени.</p>
+<p>Перед работой необходимо зарегистрировать аккаунт по <a href="https://buntinglabs.com/account/register">ссылке</a>. После этого вам на указанную в форме электронную почту придет письмо для активации аккаунта.</p>
+<p>Далее следует установить модуль <strong>Bunting Labs AI Vectorizer.</strong></p>
+<iframe width="800" height="400" src="https://www.youtube.com/embed/PKEuQS4sMJE?si=5KlOz7JT4-WM5aPq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Судя по всему модуль теперь работает бесплатно только в течение 30 дней с момента активации работы с ним.</p>
+</div>
+</div>
+<iframe width="800" height="400" src="images/miscgif.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+<iframe width="800" height="400" src="images/miscgif3.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Также в модуль входит сервис привязки с использованием искусственного интеллекта <a href="https://buntinglabs.com/solutions/ai-georeferencer." class="uri">https://buntinglabs.com/solutions/ai-georeferencer.</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qgis-button.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В качестве бесплатной альтернативы можно воспользоваться модулем <a href="https://github.com/mkondratyev85/raster_tracer">Raster tracer</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/screen.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Краткую инструкцию по работе с модулем можно прочитать по <a href="https://vk.com/wall62864383_1594">ссылке</a> или посмотреть видео.</p>
+<iframe width="600" height="400" src="https://www.youtube.com/embed/vHH1dYonmfo?si=l4qfOF3z0PiPMXWh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+<p>Этот модуль работает только для линейных объектов, но при необходимости контура можно впоследствии преобразовать в полигоны.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Снимок экрана 2025-03-12 в 12.28.16.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="560"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Сноски</h2>
+
+<ol>
+<li id="fn1"><p><strong>Плагин для AI-оцифровки растров в QGIS -</strong> <a href="https://cartetika.ru/tpost/4dta8sa621-plagin-dlya-ai-otsifrovki-rastrov-v-qgis" class="uri">https://cartetika.ru/tpost/4dta8sa621-plagin-dlya-ai-otsifrovki-rastrov-v-qgis</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

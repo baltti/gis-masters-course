@@ -41,6 +41,7 @@ website:
         - crs.qmd
         - layout.qmd
         - spatial.qmd
+        - geoportal.qmd
 
 format:
   html:

@@ -49,17 +49,17 @@ format:
 :::
 
 ::: {.column width="60%"}
-![Источник: https://www.axismaps.com/guide/visual-variables](images/clipboard-4232914447.png){alt="Источник: https://www.axismaps.com/guide/visual-variables" fig-align="center" width="1517"}
+![Источник: https://www.axismaps.com/guide/visual-variables](images/clipboard-4232914447.png){fig-align="center" width="1517"}
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-![Источник: https://cartosquad.com/guide/visvar.html](images/clipboard-1438726917.png){alt="Источник: https://cartosquad.com/guide/visvar.html"}
+![Источник: https://cartosquad.com/guide/visvar.html](images/clipboard-1438726917.png)
 
 # Визуальные переменные для пространственных данных {visibility="hidden"}
 
-![Источник: https://gistbok-topics.ucgis.org/CV-03-008](images/clipboard-1699599833.png){alt="Источник: https://gistbok-topics.ucgis.org/CV-03-008" fig-align="center"}
+![Источник: https://gistbok-topics.ucgis.org/CV-03-008](images/clipboard-1699599833.png){fig-align="center"}
 
 # Типы переменных (атрибутов)
 
@@ -219,7 +219,7 @@ format:
 Карты пропорциональных символов позволяют комбинировать несколько визуальных переменных. Например, вы можете отобразить один показатель размером, а другой цветом или формой.
 :::
 
----
+------------------------------------------------------------------------
 
 ![](images/clipboard-1118569879.png)
 

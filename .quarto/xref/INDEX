@@ -46,5 +46,11 @@
   },
   "04-visualisation.qmd": {
     "04-visualisation.html": "8a1d5737"
+  },
+  "geoportal.qmd": {
+    "geoportal.html": "52ef3195"
+  },
+  "thematic mapping.qmd": {
+    "thematic mapping.html": "864986d6"
   }
 }
