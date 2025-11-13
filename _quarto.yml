@@ -42,6 +42,7 @@ website:
         - layout.qmd
         - spatial.qmd
         - geoportal.qmd
+        - thematic mapping.qmd
 
 format:
   html:

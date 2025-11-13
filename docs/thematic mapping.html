@@ -100,7 +100,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -118,7 +118,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Лекции</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -162,6 +162,10 @@ window.Quarto = {
     <a class="dropdown-item" href="./geoportal.html">
  <span class="dropdown-text">Работа с геопорталом</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./thematic mapping.html">
+ <span class="dropdown-text">Визуализация пространственных данных</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -190,10 +194,92 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./thematic mapping.html">Визуализация пространственных данных</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Установка программы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало работы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Проект в QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./osm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с OSM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Общие настройки стиля объектов</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с системами координат</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Оформление карты и макеты</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Основные операции пространственного анализа</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./geoportal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Работа с геопорталом</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./thematic mapping.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Визуализация пространственных данных</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -206,15 +292,24 @@ window.Quarto = {
   <li><a href="#линейные-объекты" id="toc-линейные-объекты" class="nav-link" data-scroll-target="#линейные-объекты">Линейные объекты</a></li>
   <li><a href="#полигональныеплощадные-объекты" id="toc-полигональныеплощадные-объекты" class="nav-link" data-scroll-target="#полигональныеплощадные-объекты">Полигональные/площадные объекты</a></li>
   </ul></li>
-  <li><a href="#классификация-числовых-переменных" id="toc-классификация-числовых-переменных" class="nav-link" data-scroll-target="#классификация-числовых-переменных">Классификация числовых переменных</a></li>
   <li><a href="#исходные-данные" id="toc-исходные-данные" class="nav-link" data-scroll-target="#исходные-данные">Исходные данные</a></li>
-  <li><a href="#карта-пропорциональных-символов" id="toc-карта-пропорциональных-символов" class="nav-link" data-scroll-target="#карта-пропорциональных-символов">Карта пропорциональных символов</a></li>
-  <li><a href="#карта-плотности-точек" id="toc-карта-плотности-точек" class="nav-link" data-scroll-target="#карта-плотности-точек">Карта плотности точек</a></li>
-  <li><a href="#фоновая-картограмма" id="toc-фоновая-картограмма" class="nav-link" data-scroll-target="#фоновая-картограмма">Фоновая картограмма</a></li>
+  <li><a href="#карта-пропорциональных-символов" id="toc-карта-пропорциональных-символов" class="nav-link" data-scroll-target="#карта-пропорциональных-символов">Карта пропорциональных символов</a>
+  <ul class="collapse">
+  <li><a href="#использование-слоя-символа" id="toc-использование-слоя-символа" class="nav-link" data-scroll-target="#использование-слоя-символа">Использование слоя символа</a></li>
+  <li><a href="#использование-генератора-геометрии" id="toc-использование-генератора-геометрии" class="nav-link" data-scroll-target="#использование-генератора-геометрии">Использование генератора геометрии</a></li>
+  </ul></li>
+  <li><a href="#в-карте-плотности-точек-количество-точек-будет-отображать-величину-показателя." id="toc-в-карте-плотности-точек-количество-точек-будет-отображать-величину-показателя." class="nav-link" data-scroll-target="#в-карте-плотности-точек-количество-точек-будет-отображать-величину-показателя.">В карте плотности точек количество точек будет отображать величину показателя.</a></li>
+  <li><a href="#фоновая-картограмма" id="toc-фоновая-картограмма" class="nav-link" data-scroll-target="#фоновая-картограмма">Фоновая картограмма</a>
+  <ul class="collapse">
+  <li><a href="#классификация-числовых-переменных" id="toc-классификация-числовых-переменных" class="nav-link" data-scroll-target="#классификация-числовых-переменных">Классификация числовых переменных</a></li>
+  </ul></li>
   <li><a href="#анаморфная-карта" id="toc-анаморфная-карта" class="nav-link" data-scroll-target="#анаморфная-карта">Анаморфная карта</a></li>
-  <li><a href="#несмежная-картограмма" id="toc-несмежная-картограмма" class="nav-link" data-scroll-target="#несмежная-картограмма">Несмежная картограмма</a></li>
-  <li><a href="#создание-атласа" id="toc-создание-атласа" class="nav-link" data-scroll-target="#создание-атласа">Создание атласа</a></li>
+  <li><a href="#несмежная-картограмма" id="toc-несмежная-картограмма" class="nav-link" data-scroll-target="#несмежная-картограмма">Несмежная картограмма</a>
+  <ul class="collapse">
   <li><a href="#генератор-геометрии" id="toc-генератор-геометрии" class="nav-link" data-scroll-target="#генератор-геометрии">Генератор геометрии</a></li>
+  <li><a href="#модуль-shape-tools" id="toc-модуль-shape-tools" class="nav-link" data-scroll-target="#модуль-shape-tools">Модуль Shape tools</a></li>
+  </ul></li>
+  <li><a href="#создание-атласа" id="toc-создание-атласа" class="nav-link" data-scroll-target="#создание-атласа">Создание атласа</a></li>
   </ul>
 </nav>
     </div>
@@ -364,8 +459,173 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="классификация-числовых-переменных" class="level1">
-<h1>Классификация числовых переменных</h1>
+<section id="исходные-данные" class="level1">
+<h1>Исходные данные</h1>
+<p>В качестве исходных данных для этого раздела будут использованы сведения о количестве населения по муниципальным образованиям Москвы.</p>
+<p>Данные о количестве населения приведены на 1 января 2025 года по данным Росстата <a href="https://77.rosstat.gov.ru/folder/64634" class="uri">https://77.rosstat.gov.ru/folder/64634</a></p>
+<p>Полный датасет можно скачать по ссылке <a href="https://disk.yandex.ru/d/zCKHvmBDnZFwkg" class="uri">https://disk.yandex.ru/d/zCKHvmBDnZFwkg</a></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В папке два файла:</p>
+<ul>
+<li><p><em>ao.geojson</em> - административные округа</p></li>
+<li><p><em>municipal_districts.geojson</em> - муниципальные округа.</p></li>
+</ul>
+<p>Скачать можно их оба сразу, но пока понадобится только второй.</p>
+</div>
+</div>
+</section>
+<section id="карта-пропорциональных-символов" class="level1">
+<h1>Карта пропорциональных символов</h1>
+<p>В этом типе тематических карт отображение происходит с помощью размера символов, который пропорционален величине показателя.</p>
+<section id="использование-слоя-символа" class="level2">
+<h2 class="anchored" data-anchor-id="использование-слоя-символа">Использование слоя символа</h2>
+<p>Для создания карты пропорциональных символов так, чтобы вам было доступно создание легенды для карты, в первую очередь следует получить точечный слой на основе полигональных объектов.</p>
+<p>Для этого воспользуемся инструментом <em>Точка на поверхности</em> из <em>Панели инструментов анализа</em>.</p>
+<p>Этот инструмент дублирует инструмент <em>Центроид</em> с одной небольшой разницей: в случае невыпуклого многоугольника при использовании <em>Центроида</em> точка будет лежать за пределами полигона, тогда как при использовании <em>Точки на поверхности</em> точка будет смещена внутрь.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1125303675.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В результате вы получите новый слой с точечными объектами, которые будут иметь те же атрибуты, что и исходные полигоны.</p>
+<p>В первую очередь следует определить размер знаков.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3621253768.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1170"></p>
+</figure>
+</div>
+<p>В открывшемся окне следует указать поле, по которому размер будет задан и его значения.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1545387451.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="783"></p>
+</figure>
+</div>
+<p>Для того, чтобы размер символов был отображен в легенде, следует выбрать настройку <em>Размер условных определяется данными…</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2320175714.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1445"></p>
+</figure>
+</div>
+<p>После этого вы можете настроить свою легенда и выбрать ее тип.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2588932872.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="704"></p>
+</figure>
+</div>
+<p>В результате вы получите свою карту с готовой легендой, которую можно использовать для оформления.</p>
+</section>
+<section id="использование-генератора-геометрии" class="level2">
+<h2 class="anchored" data-anchor-id="использование-генератора-геометрии">Использование генератора геометрии</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Размер символов как визуальная переменная хорошо сочетается с цветом, который вы можете использовать для отображения того же показателя или другого.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="в-карте-плотности-точек-количество-точек-будет-отображать-величину-показателя." class="level1">
+<h1>В карте плотности точек количество точек будет отображать величину показателя.</h1>
+<p>Для ее создания снова воспользуемся возможностью создания многослойных символов.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-4237004584.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1209"></p>
+</figure>
+</div>
+<p>В этом случае каждый из полигонов будет заполнен заданным количеством маркеров, которые будут размещены случайным образом.</p>
+<p>Так как нам необходимо, чтобы количество маркеров было пропорционально количеству населения, то воспользуемся опцией переопределения показателя из данных.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1171644810.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1210"></p>
+</figure>
+</div>
+<p>В открывшемся окне воспользуемся редактором выражений.</p>
+<p>В данном случае поделим общее количество населения на 5 000, таким образом 1 точка на карте будет соответствовать 5 000 человек, проживающих в определенном муниципальном образовании.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2725382870.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1093"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Рекомендуется выбирать это число таким образом, чтобы в каждом из исходных объектов было хотя бы несколько точек.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2349470479.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1279"></p>
+</figure>
+</div>
+<p>Здесь еще желательно настроить размер точек таким образом, чтобы они были хорошо различимы на карте.</p>
+<p>В данном случае я убрала обводку точек и сделала их меньше.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3372504525.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1255"></p>
+</figure>
+</div>
+<p>Обратите внимание, что вы можете настраивать стиль слоев символа независимо друг от друга.</p>
+</section>
+<section id="фоновая-картограмма" class="level1">
+<h1>Фоновая картограмма</h1>
+<p>Фоновая картограмма - один из самых наиболее известных типов тематических карт, в которых показатель отображается цветом или штриховкой.</p>
+<p>Для ее создания достаточно просто воспользоваться уже знакомым вам символом по диапазонам значений.</p>
+<p>Однако следует помнить, что при использовании фоновых картограмм рекомендуется брать относительные значения показатей, например, вместо количества населения - плотность населения на единицу площади.</p>
+<p>В наших исходных данных в таблице атрибутов приведено именно количество населения, поэтому необходимо перейти от него к плотности. Сделать это можно двумя способами: рассчитав плотность как отдельный атрибут с использованием калькулятора полей или воспользоваться выражением вместо конкретного атрибута при задании стиля символа.</p>
+<p>Для того, чтобы рассчитать плотность нам необходима площадь наших объектов. Рассчитаем ее с использованием модуля <strong>Calculate geometry</strong>. После его установки, он должен быть в контекстном меню слоя, открывающемся при клике правой кнопкой мыши.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3064880095.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="759"></p>
+</figure>
+</div>
+<p>В открывшемся окне модуля выберем расчет площади <em>area</em> в квадратных километрах и системе координат <code>EPSG: 32637 - UTM zone 37N</code>.</p>
+<p>Расчет здесь производится в этой системе координат для того, чтобы площадь считалась корректно.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1571663248.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1518"></p>
+</figure>
+</div>
+<p>В результате к таблице атрибутов будет добавлено новое поле со значением площади объектов в километрах квадратных.</p>
+<p>Для задания символики по диапазонам значений воспользуемся выражением.</p>
+<pre><code>"population" /"area"</code></pre>
+<p>В этом выражении количество населения поделено на рассчитанную площадь муниципального образования.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1957621877.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1068"></p>
+</figure>
+</div>
+<p>Для того, чтобы открылся редактор выражений следует нажать на кнопку <img src="images/clipboard-3639152108.png" class="img-fluid"> справа от параметра <em>Значение</em>.</p>
+<p>Вы также можете выбрать градиент, который вам больше нравится, но рекомендуется использовать градиенты от светлого к темному (при светлом фоне) или от темного к светлому (при темном фоне).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3695402985.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1208"></p>
+</figure>
+</div>
+<section id="классификация-числовых-переменных" class="level3">
+<h3 class="anchored" data-anchor-id="классификация-числовых-переменных">Классификация числовых переменных</h3>
 <p>Самые широко применяемые методы классификации в геоинформационных системах:</p>
 <ul>
 <li><em>Равное количество (квантиль)</em>: в каждом классе будет одинаковое количество элементов;</li>
@@ -442,132 +702,6 @@ window.Quarto = {
 <p><span class="math inline">\(n = 1+|log_2 N|\)</span> или <span class="math inline">\(n = 1+|3.322 \lg N|\)</span></p>
 </div>
 </div>
-</section>
-<section id="исходные-данные" class="level1">
-<h1>Исходные данные</h1>
-<p>В качестве исходных данных для этого раздела будут использованы сведения о количестве населения по муниципальным образованиям Москвы.</p>
-<p>Данные о количестве населения приведены на 1 января 2025 года по данным Росстата <a href="https://77.rosstat.gov.ru/folder/64634" class="uri">https://77.rosstat.gov.ru/folder/64634</a></p>
-<p>Исходный слой приведен в системе координат UTM 36 зона для Северного полушария (<code>EPSG:32636</code>).</p>
-<p>Полный датасет можно скачать по ссылке <a href="https://disk.yandex.ru/d/zCKHvmBDnZFwkg" class="uri">https://disk.yandex.ru/d/zCKHvmBDnZFwkg</a></p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Внимание
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>В папке два файла:</p>
-<ul>
-<li><p><em>ao.geojson</em> - административные округа</p></li>
-<li><p><em>municipal_districts.geojson</em> - муниципальные округа.</p></li>
-</ul>
-<p>Скачать можно их оба сразу, но пока понадобится только второй.</p>
-</div>
-</div>
-</section>
-<section id="карта-пропорциональных-символов" class="level1">
-<h1>Карта пропорциональных символов</h1>
-<p>В этом типе тематических карт отображение происходит с помощью размера символов, который пропорционален величине показателя.</p>
-<p>Для создания карты пропорциональных символов так, чтобы вам было доступно создание легенды для карты, в первую очередь следует получить точечный слой на основе полигональных объектов.</p>
-<p>Для этого воспользуемся инструментом <em>Точка на поверхности</em> из <em>Панели инструментов анализа</em>.</p>
-<p>Этот инструмент дублирует инструмент <em>Центроид</em> с одной небольшой разницей: в случае невыпуклого многоугольника при использовании <em>Центроида</em> точка будет лежать за пределами полигона, тогда как при использовании <em>Точки на поверхности</em> точка будет смещена внутрь.</p>
-<p><img src="images/clipboard-1067695315.png" class="img-fluid"></p>
-<p>В результате вы получите новый слой с точечными объектами, которые будут иметь те же атрибуты, что и исходные полигоны.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-4058950745.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1292"></p>
-</figure>
-</div>
-<p>В первую очередь следует определить размер знаков.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-3621253768.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1170"></p>
-</figure>
-</div>
-<p>В открывшемся окне следует указать поле, по которому размер будет задан и его значения.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-1545387451.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="783"></p>
-</figure>
-</div>
-<p>Для того, чтобы размер символов был отображен в легенде, следует выбрать настройку <em>Размер условных определяется данными…</em></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2320175714.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1445"></p>
-</figure>
-</div>
-<p>После этого вы можете настроить свою легенда и выбрать ее тип.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2588932872.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="704"></p>
-</figure>
-</div>
-<p>В результате вы получите свою карту с готовой легендой, которую можно использовать для оформления.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-3969644739.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1280"></p>
-</figure>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Дополнительно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Размер символов как визуальная переменная хорошо сочетается с цветом, который вы можете использовать для отображения того же показателя или другого.</p>
-</div>
-</div>
-</section>
-<section id="карта-плотности-точек" class="level1">
-<h1>Карта плотности точек</h1>
-<p>В карте плотности точек количество точек будет отображать величину показателя.</p>
-<p>Для ее создания воспользуемся возможностью создания многослойных символов.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-1040508788.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1557"></p>
-</figure>
-</div>
-<p>В этом случае каждый из полигонов будет заполнен заданным количеством маркеров, которые будут размещены случайным образом.</p>
-<p>Так как нам необходимо, чтобы количество маркеров было пропорционально количеству населения, то воспользуемся опцией переопределения показателя из данных.</p>
-<p><img src="images/clipboard-3203631890.png" class="img-fluid"></p>
-<p>В открывшемся окне воспользуемся редактором выражений.</p>
-<p>В данном случае поделим общее количество населения на 1 000, таким образом 1 точка на карте будет соответствовать 1 000 человек, проживающих в определенном муниципальном образовании.</p>
-<p><img src="images/clipboard-540567482.png" class="img-fluid"></p>
-<p>Рекомендуется выбирать это число таким образом, чтобы в каждом из исходных объектов было хотя бы несколько точек.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2718220076.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="816"></p>
-</figure>
-</div>
-<p>Обратите внимание, что вы можете настраивать стиль слоев символа независимо друг от друга.</p>
-</section>
-<section id="фоновая-картограмма" class="level1">
-<h1>Фоновая картограмма</h1>
-<p>Фоновая картограмма - один из самых наиболее известных типов тематических карт, в которых показатель отображается цветом или штриховкой.</p>
-<p>Для ее создания достаточно просто воспользоваться уже знакомым вам символом по диапазонам значений.</p>
-<p>Однако следует помнить, что при использовании фоновых картограмм рекомендуется брать относительные значения показатей, например, вместо количества населения - плотность населения на единицу площади.</p>
-<p>В наших исходных данных в таблице атрибутов приведено именно количество населения, поэтому необходимо перейти от него к плотности. Сделать это можно двумя способами: рассчитав плотность как отдельный атрибут с использованием калькулятора полей или воспользоваться выражением вместо конкретного атрибута при задании стиля символа.</p>
-<p>Воспользуемся вторым способом и выражением:</p>
-<pre><code>"population" /( area( \$geometry)/10000)</code></pre>
-<p>В этом выражении количество населения поделено на рассчитанную площадь муниципального образования, которая переведена в километры квадратные.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-159582046.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1386"></p>
-</figure>
-</div>
-<p>Вы также можете выбрать градиент, который вам больше нравится, но рекомендуется использовать градиенты от светлого к темному (при светлом фоне) или от темного к светлому (при темном фоне).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2077631987.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1305"></p>
-</figure>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -581,16 +715,12 @@ window.Quarto = {
 <p>Если вы хотите, чтобы под вашими полигонами читалась подложка, то вы можете воспользоваться режимом смешивания.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-1368617368.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="734"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2310841741.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="597"></p>
+<p><img src="images/clipboard-745426187.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1292"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="анаморфная-карта" class="level1">
 <h1>Анаморфная карта</h1>
@@ -608,7 +738,7 @@ window.Quarto = {
 <p>Следует помнить, что в анаморфной карте искажаются форма и размер объектов.</p>
 </div>
 </div>
-<p>В QGIS отсутствует инструмент по умолчанию для создания анаморфной карты, поэтому следует воспользоваться модулем <em>Cartogram3</em>. Этот модуль появится у вас на панели инструментов в виде значка <img src="images/clipboard-3011523126.png" class="img-fluid" width="51">.</p>
+<p>В QGIS отсутствует инструмент по умолчанию для создания анаморфной карты, поэтому следует воспользоваться модулем <em>Cartogram3</em>. Этот модуль появится у вас на панели инструментов в виде значка <img src="images/clipboard-3354138890.png" class="img-fluid" width="46">.</p>
 <p>В открывшемся окне модуля необходимо выбрать слой, для которого анаморфная карта рассчитывается, показатель и указать критерии остановки (максимальное число итераций или максимальная средняя ошибка).</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -625,73 +755,164 @@ window.Quarto = {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-2327725931.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1033"></p>
+<p><img src="images/clipboard-177692038.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="719"></p>
 </figure>
 </div>
 <p>На полученной карте муниципальные образования с большим количеством населения будут “раздуты”, а с маленьким наоборот - уменьшены.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-1920263839.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="822"></p>
+<p><img src="images/clipboard-661011928.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="920"></p>
 </figure>
+</div>
+<p>Обратите внимание, что настройки стиля были унаследованы из исходного слоя, для которого вы строили анаморфную карту.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Анаморфная карта здесь создается как временный слой, поэтому не забудьте сохранить ее отдельно.</p>
+</div>
 </div>
 </section>
 <section id="несмежная-картограмма" class="level1">
 <h1>Несмежная картограмма</h1>
-<p>Несмежная картограмма отчасти следует принципу создания анаморфной карты, то есть искажает размер объектов так, чтобы он был пропорционален величине показателя, но здесь нарушается топология объектов, то есть они перестают иметь общие границы при обзем сохранении формы объектов.</p>
-<p>Несмежную картограмму мы создадим с использованием <em>Генератора геометрии</em>, которы позволяет создавать объекты с измененной геометрией на карте, не меняя геометрии в слоев.</p>
-<p><img src="images/clipboard-3634800827.png" class="img-fluid"></p>
+<p>Несмежная картограмма отчасти следует принципу создания анаморфной карты, то есть искажает размер объектов так, чтобы он был пропорционален величине показателя, но здесь нарушается топология объектов, то есть они перестают иметь общие границы при общем сохранении формы объектов.</p>
+<section id="генератор-геометрии" class="level2">
+<h2 class="anchored" data-anchor-id="генератор-геометрии">Генератор геометрии</h2>
+<p>Несмежную картограмму мы создадим с использованием <em>Генератора геометрии</em>, которы позволяет создавать объекты с измененной геометрией на карте, не меняя геометрии в слое.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3676440304.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1008"></p>
+</figure>
+</div>
 <p>Для генератора воспользуемся следующим выражением:</p>
 <pre><code>scale( $geometry, "population"/maximum("population"), "population"/maximum("population"))</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3586996824.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1533"></p>
+</figure>
+</div>
 <p>Это выражение масштабирует объекты, в качестве первого аргумента здесь указывается, что масштабировать, а второй и третий - это величина масштабирования по оси X и Y соответственно.</p>
 <p>В результате вы получите слой с отмасштабированными пропорционально количеству населения муниципальными образованиями.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-1736216075.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="866"></p>
+<p><img src="images/clipboard-2808664703.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1343"></p>
 </figure>
 </div>
+<p>Если вы хотите, чтобы у вас отображались еще и истинные границы полигонов, вы можете добавить под генератор геометрии слой простой заливки.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2919522853.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1358"></p>
+</figure>
+</div>
+<p>Большим преимуществом генератора геометрии здесь является то, что нет необходимости создавать новый отдельный слой с измененными геометриями объектов.</p>
+</section>
+<section id="модуль-shape-tools" class="level2">
+<h2 class="anchored" data-anchor-id="модуль-shape-tools">Модуль Shape tools</h2>
+<p>Альтернативой использованию генератора геометрий является создание нового слоя с измененной геометрией.</p>
+<p>Сделать это можно с помощью модуля <em>Shape tools</em>. После установки он появится у вас на панели инструментов.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-811190038.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="981"></p>
+</figure>
+</div>
+<p>Для изменения формы объектов воспользуемся инструментом <em>Geodetic transformations</em> из модуля.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1895223914.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1303"></p>
+</figure>
+</div>
+<p>После запуска инструменты вы увидите несколько параметров, которые он позволяет изменить:</p>
+<ul>
+<li><p>rotation angle - угол поворота объектов;</p></li>
+<li><p>scale factor - масштабирование;</p></li>
+<li><p>translation distance - расстояние перемещения объектов;</p></li>
+<li><p>translation azimuth - направление перемещения объектов;</p></li>
+<li><p>translation distance units - единицы измерения расстояния переноса.</p></li>
+</ul>
+<p>Нам необходимо масштабировать объекты, поэтому единственный параметр, нужный нам - <em>scale factor</em>. Величина масштабирования у нас должна задаваться на основе выражения, поэтому воспользуемся переопределением из данных и опцией <em>Изменить</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-807778726.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1331"></p>
+</figure>
+</div>
+<p>В открывшемся окне редактора выражений следует ввести:</p>
+<pre><code>"population" /maximum("population")</code></pre>
+<p>То есть величина масштабирования у нас будет такая же, как мы использовали в генераторе геометрий.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3106870212.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1357"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>По умолчанию у вас здесь будет создаваться временный слой. Если вы его хотите сохранить, вы можете сразу воспользоваться опцией <em>Сохранить в файл</em>.</p>
+</div>
+</div>
+<p>В результате вы получите <strong>новый слой</strong> с измененными геометриями.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2260585908.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="757"></p>
+</figure>
+</div>
+</section>
 </section>
 <section id="создание-атласа" class="level1">
 <h1>Создание атласа</h1>
 <p>Атлас в QGIS позволяет автоматически создать несколько листов карты на основе какого-то условия группировки.</p>
 <p>Например, мы можем сделать атлас для нашей карты с количеством населения в муниципальных образованиях, где на одном листе будет показан один район.</p>
 <p>Для того, чтобы сделать из макета карты атлас, то есть серию карт нам необходимо условие группировки объектов, в качестве которого будет выступать административный район.</p>
-<p>Чтобы получить слой с районами, воспользуемся инструментом <em>Агрегировать</em>.</p>
+<p>Для того, чтобы создать карту населения по административным округам Москвы добавим в проект слой с ними (файл <em>ao.geojson</em>). Объекты этого слоя будут нужны нам в первую очередь для того, чтобы создать страницы атласа и настроить некоторые элементы отображения.</p>
+<p>Как создать макет и добавить на него карту было описано в разделе <a href="https://baltti.github.io/bachelor-gis-course/layout.html">Оформление карт и макеты</a>.</p>
+<p>Создадим новый макет, в котором с помощью кнопки <em>Настройки атласа</em> <img src="images/clipboard-2062073457.png" class="img-fluid" width="64"> создадим атлас.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-132240609.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1234"></p>
-</figure>
-</div>
-<p>Полученный слой с районами будет добавлен на карту.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-3411287838.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
-</figure>
-</div>
-<p>Создадим новый макет, в котором с помощью кнопки <em>Настройки атласа</em> <img src="images/clipboard-3559860220.png" class="img-fluid" width="53"> создадим атлас.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-2311260017.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="628"></p>
+<p><img src="images/clipboard-3442931193.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="535"></p>
 </figure>
 </div>
 <p>Страницы атласа в данном случае будут создаваться по районам.</p>
 <p>Для создания страниц атласа не обязательно, чтобы слой, по которому они создаются был видимым в проекте.</p>
-<p>Просмотр страниц атласа включается по кнопке <em>Предпросмотр атласа</em> <img src="images/clipboard-3849118511.png" class="img-fluid" width="52">.</p>
-<p>Для того, чтобы масштаб карты подстраивался под содержимое настроим масштаб под объекты, определяющие страницы нашего атласа. Для этого откроем свойства карты и найдем настройку масштаба атласа. Нужно установить настройку масштаба атласа по размерам объектов с полем. Так карта будет автоматически масштабироваться на каждом листе так, чтобы на ней размещался только один из районов.</p>
+<p>Просмотр страниц атласа доступен по кнопке <em>Предпросмотр атласа</em> <img src="images/clipboard-4106886521.png" class="img-fluid" width="61">.</p>
+<p>Для того, чтобы масштаб карты подстраивался под содержимое настроим масштаб под объекты, определяющие страницы нашего атласа.</p>
+<p>Для этого откроем свойства карты и найдем настройку масштаба атласа. Нужно установить настройку масштаба атласа по размерам объектов с полем. Так карта будет автоматически масштабироваться на каждом листе так, чтобы на ней размещался только один из районов.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-2990666627.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="509"></p>
+<p><img src="images/clipboard-1173716928.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="552"></p>
 </figure>
 </div>
 <p>В итоге каждый лист будет центрироваться на одном из районов, а масштаб будет подбираться так, чтобы район целиком помещался на карту.</p>
-<p>Для того, чтобы район был очевиднее на листе, настроим стиль объектов так, чтобы район листа был обведен более толстым контуром.</p>
-<p>Вернемся в основное окно программы, и настроим стиль обводки на основе выражения:</p>
-<pre><code>if ( @atlas_pagename =  "NAME"  ,1, 0.3)</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-3451026842.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1487"></p>
+<p><img src="images/clipboard-959520250.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1713"></p>
 </figure>
 </div>
-<p><img src="images/clipboard-3449353156.png" class="img-fluid"></p>
+<p>После открытия предпросмотра в панели инструментов макета вы увидите стрелки переключения между страницами и раскрывающийся список страниц/округов.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-862587843.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="977"></p>
+</figure>
+</div>
+<p>Для того, чтобы район был очевиднее на листе, настроим стиль объектов так, чтобы район листа был обведен более толстым контуром.</p>
+<p>Вернемся в основное окно программы, и настроим толщину обводки на основе выражения:</p>
+<pre><code>if ( @atlas_pagename =  "NAME"  ,2, 0.3)</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3664883044.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1225"></p>
+</figure>
+</div>
 <p>Это выражение с условием “если”, в котором в качестве аргументов передаются:</p>
 <ul>
 <li><p>условие;</p></li>
@@ -701,17 +922,21 @@ window.Quarto = {
 <p>Что же значит переменная <code>@atlas_pagename</code>? Эта переменная указывает на то, что для задания стиля здесь нужно использовать тот район, на странице которого сейчас открыт наш атлас.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-1306378304.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1600"></p>
+<p><img src="images/clipboard-3586937319.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1349"></p>
+</figure>
+</div>
+<p>После этого вы увидите на карте в основном окне программы, что один из административных округов обведен более толстой линией, а также он обведен на странице атласа.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2830535995.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="730"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-1256646298.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="918"></p>
+<p><img src="images/clipboard-3344463249.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="964"></p>
 </figure>
 </div>
-</section>
-<section id="генератор-геометрии" class="level1">
-<h1>Генератор геометрии</h1>
+<p>Когда вы будете переходить со страницы на страницу атласа, у вас будет становиться более толстой обводка того округа, на страницу которого вы перешли.</p>
 
 
 </section>
