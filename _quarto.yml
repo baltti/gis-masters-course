@@ -43,6 +43,7 @@ website:
         - spatial.qmd
         - geoportal.qmd
         - thematic mapping.qmd
+        - georeferencing.qmd
 
 format:
   html:
