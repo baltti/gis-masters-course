@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Проект в QGIS – Геоинформатика и геоинформационные системы</title>
+<title>Построение изохрон – Геоинформатика и геоинформационные системы</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -207,7 +178,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project.html">Проект в QGIS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./isochrone.html">Построение изохрон</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -238,7 +209,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project.html" class="sidebar-item-text sidebar-link active">
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Проект в QGIS</span></a>
   </div>
 </li>
@@ -292,7 +263,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./isochrone.html" class="sidebar-item-text sidebar-link">
+  <a href="./isochrone.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Построение изохрон</span></a>
   </div>
 </li>
@@ -301,15 +272,26 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#использование-стандартных-инструментов" id="toc-использование-стандартных-инструментов" class="nav-link active" data-scroll-target="#использование-стандартных-инструментов">Использование стандартных инструментов</a>
+  <ul class="collapse">
+  <li><a href="#область-обслуживания" id="toc-область-обслуживания" class="nav-link" data-scroll-target="#область-обслуживания">13.1.1 Область обслуживания</a></li>
+  </ul></li>
+  <li><a href="#использование-модуля-qneat3" id="toc-использование-модуля-qneat3" class="nav-link" data-scroll-target="#использование-модуля-qneat3">Использование модуля QNEAT3</a></li>
+  <li><a href="#использование-сервиса-openrouteservice" id="toc-использование-сервиса-openrouteservice" class="nav-link" data-scroll-target="#использование-сервиса-openrouteservice">Использование сервиса OpenRouteService</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Проект в QGIS</h1>
+<h1 class="title">Построение изохрон</h1>
 </div>
 
 
@@ -326,54 +308,89 @@ window.Quarto = {
 </header>
 
 
-<p>Как упоминалось ранее, <strong>проект</strong> - это ваш сеанс работы, в котором хранится информация о всех открытых в данных момент слоях, их стилях, макетах и геомоделях.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Важно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>По умолчанию проект сохраняет <strong>относительные пути к файлам</strong>. Поэтому, если вы будете перемещать файлы между папками, то у вас могут потеряться пути к файлам.</p>
-<p>Тип пути для сохранения для всех будущих проектов можно изменить в настройках проекта, но это требует перезапуска программы и пересохранения проекта.</p>
+<p><strong>Изохроны</strong>, как следует из их названия, - это линии равного времени, то есть они показывают области, которых можно достигнуть в течение заданного временного промежутка.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-2013975947.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1397"></p>
+<p><img src="images/clipboard-929436214.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Дополнительно
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Если у вас не открывается какой-то слой, из-за потерянного пути к файлу, то вы можете указать новый путь к нему. Это можно сделать функцией <em>Изменить источник данных</em> из контекстного меню слоя.</p>
+<p>Изохроны, как правило, применяются для оценки доступности объектов.</p>
+<p>Построение изохрон относится к задачам сетевого анализа и построено на теории графов.</p>
+<section id="использование-стандартных-инструментов" class="level1">
+<h1>Использование стандартных инструментов</h1>
+<p>Для сетевого анализа в <strong>Панели инструментов анализа</strong> есть отдельный пункт.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-2562778749.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="744"></p>
+<p><img src="images/186.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-</div>
-</div>
-<p>Что ваш проект будет хранить в себе:</p>
+<p>Основные инструменты здесь - это <strong>Область обслуживания</strong> и <strong>Поиск кратчайшего пути</strong>.</p>
+<section id="область-обслуживания" class="level3">
+<h3 class="anchored" data-anchor-id="область-обслуживания">13.1.1 Область обслуживания</h3>
+<p>Доступно два варианта построения области обслуживания: от слоя (то есть от объектов точечного слоя) и от точки (то есть от одной заданной пользователем точки).</p>
+<p>При построении области обслуживания от слоя самыми важными характеристиками являются:</p>
 <ul>
-<li><p>перечень открытых слоев из файлов;</p></li>
-<li><p>перечень открытых удаленных источников;</p></li>
-<li><p>настройки стилей слоев;</p></li>
-<li><p>макеты - оформленные карты, подготовленные к публикации;</p></li>
-<li><p>геомодели - алгоритм действий для вашего рабочего процесса.</p></li>
+<li><p><em>слой, отображающий улично-дорожную сеть;</em></p></li>
+<li><p><em>слой, содержащий точечные объекты</em>, для которых строится область обслуживания (могут использоваться не все объекты слоя, а только выделенные);</p></li>
+<li><p><em>travel cost</em> - расстояние или время для определения области обслуживания. Расстояние задается, если выбран кратчайший путь, время (в часах), если выбран наиболее быстрый путь.</p></li>
 </ul>
-<p>У проекта есть своя система координат, которая может отличаться от системы координат слоя/слоев. Эта система координат указана в правом нижнем углу интерфейса программы.</p>
-<p>При нажатии на эту кнопку вы увидите, что открылись не просто настройки системы координат проекта, но и общие настройки открытого в данный момент проекта.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/187.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В качестве дополнительных параметров могут быть заданы:</p>
+<ul>
+<li><p><em>поле направления</em> - поле, в котором указано, в каком направлении можно передвигаться по определенному сегменту (в случае, если есть информация о том, какие улицы являются одно- или двухсторонними и в каком направлении по ним можно передвигаться);</p></li>
+<li><p><em>значение для прямого направления, для обратного направления и для обоих направлений</em> - какие значения в этом поле соответствуют каким направлениям;</p></li>
+<li><p><em>направление по умолчанию</em> - если граф является направленным и по нему можно передвигаться только в одном из направлений (по умолчанию по графу можно передвигаться в обоих направлениях);</p></li>
+<li><p><em>поле скорости</em> - поле, в котором указана скорость передвижения по конкретным сегментам сети;</p></li>
+<li><p><em>скорость по умолчанию</em> - скорость, с которой можно передвигаться по сети, если не задано поле скорости со значениями для каждого сегмента.</p></li>
+</ul>
+<p>В результате выполнения могут быть получены два варианта результата: слой с линиями, в который входят сегменты сети, попадающие в область обслуживания, и слой с узлами, в который включаются все узлы сети, попадающие в область обслуживания и узлы, показывающие крайние точки области обслуживания (по умолчанию этот слой пропускается).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/188.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/189.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Область обслуживания для точки рассчитывается аналогично за исключением того, что вместо слоя нужно указать положение исходной точки. Это можно сделать введя ее координаты или просто указав на карте.</p>
+</section>
+</section>
+<section id="использование-модуля-qneat3" class="level1">
+<h1>Использование модуля QNEAT3</h1>
+<p>Один из плагинов, который использует для сетевого анализа задаваемый пользователем граф улично-дорожной сети - это плагин <strong>QNEAT3 - QGIS network analysis toolbox</strong>. После установки плагина он должен появиться в панели инструментов анализа.</p>
+<p>Основные функции этого плагина:</p>
+<ul>
+<li><p>построение матриц времени - origin-destination matrix;</p></li>
+<li><p>построение изохрон в нескольких вариациях;</p></li>
+<li><p>поиск кратчайшего пути между точками.</p></li>
+</ul>
+<p>Построение изохрон в плагине QNEAT3 возможно в нескольких вариациях от одной точки или от объектов точечного слоя:</p>
+<ul>
+<li><p>линии равного расстояния (равного времени);</p></li>
+<li><p>поверхность интерполяции времени или расстояния;</p></li>
+<li><p>облако точек с характеристиками времения или расстояния;</p></li>
+<li><p>полигональные объекты.</p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>К сожалению, на данный момент в последних версиях программы функция построения изохрон не работает.</p>
+<p>Если у вас более ранняя версия, то возможно модуль у вас будет работать корректно.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -384,33 +401,166 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Если вы хотите изменить какие-то свойства текущего проекта, то вы можете воспользоваться одним из способов: кнопка в правом нижнем углу интерфейса и строка меню <em>Проект</em> <span class="math inline">\(\longrightarrow\)</span> <em>Свойства проекта.</em></p>
-<p>Если вы хотите изменить какие-то настройки проектов по умолчанию для всех будущих проектов, то вам нужно открыть свойства программы из строки меню: <em>Настройки</em> <span class="math inline">\(\longrightarrow\)</span> <em>Параметры.</em></p>
+<p>Для корректной работы алгоритмов расчета изохрон в этом плагине рекомендуется применять только плоские прямоугольные системы координат (системы координат с единицами измерений в метрах), поэтому исходные слои нужно перепроецировать в такую систему координат.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>Дальнейшие расчеты изохрон следует уже делать с использованием перепроецированного слоя улично-дорожной сети.</p>
+<p>Построение изохрон от одной точки и от объектов точечного слоя отличается только параметрами на входе и получаемым в результате количеством изохрон, поэтому далее будет рассмотрено построение изохрон от одной точки. Исходная точка может задаваться либо просто кликом на карте, либо ее можно задать по координатам.</p>
+<p>При построении изохрон в виде линий равного расстояния или времени нужно задать:</p>
+<ul>
+<li><p>слой улично-дорожной сети;</p></li>
+<li><p>стартовую точку;</p></li>
+<li><p>размер области, в пределах которой осуществляется расчет (расстояние или время в зависимости от критерия оптимизации);</p></li>
+<li><p>интервал между линиями;</p></li>
+<li><p>размер ячейки растра, получаемого в результате интерполяции;</p></li>
+<li><p>критерий оптимизации</p>
+<ul>
+<li><p>кратчайшее расстояние - оптимизация по расстоянию, в этом случае размер области и интервала задается в единицах измерения системы координат слоя;</p></li>
+<li><p>наиболее быстрый путь - оптимизация по времени, в этом случае размер области и интервал задается в секундах.</p></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/250.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Остальные параметры являются дополнительными и аналогичны рассмотренным выше.</p>
+<p>Результатом расчета в этом случае будет являться два новых слоя: растр с результатами интерполяции и слой с контурами равного расстояния или времени (в зависимости от выбранного критерия оптимизации).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/251.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В центре полученного растра и контуров находится исходная точка.</p>
+<p>Результирующий растр показывает более сглаженные промежуточные значения, которые получаются на основе интерполяции значений между контурами.</p>
+<p>Такой же растр получается при расчета изохрон только в виде растровой поверхности (Iso-area as interpolation).</p>
+<p>Построение изохрон как облака точек по параметрам аналогично рассмотреному выше построению в виде линий равного времени или расстояния с небольшими исключениями: здесь указывается только общий размер области, а также можно выбрать метод расчета расстояния (по эллипсоиду или на плоскости).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/252.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В результате получается слой, содержащий в себе все узлы улично-дорожной сети, каждому из которых присвоен атрибут расстояния (или времени в зависимости от параметра оптимизации).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/253.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Построение изохрон в виде полигональных объектов аналогично построению изохрон в виде линий равного времени/расстояния, только в результате вами будут получены не линейные объекты, а площадные со значениями времени или расстояния (в зависимости от выбранного критерия оптимизации).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/254.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В результате как и при построении изохрон в виде линий равного времени/расстояния получается два слоя: растровый слой с результатами интерполяции и векторный слой с полигональными объектами.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/255.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="использование-сервиса-openrouteservice" class="level1">
+<h1>Использование сервиса OpenRouteService</h1>
+<p>Страница сервиса с документацией: <a href="https://openrouteservice.org/" class="uri">https://openrouteservice.org/</a></p>
+<p>OpenRouteService - это бесплатный сервис на основе OSM, который позволяет решать некоторые задачи сетевого анализа, в том числе строить изохроны.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Дополнительно
+На заметку
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Если вы сомневаетесь в том, где сохранены все ваши файлы, сопутствующие проекту, или вы знаете, что они разбросаны по разным местам, можно воспользоваться модулем <em>Project packager</em><img src="images/clipboard-2674454348.png" class="img-fluid" width="37">.</p>
-<p>С его помощью вы можете выбрать каталог для сохранения своего проекта, куда будут скопированы все необходимые файлы, или вы можете упаковать весь свой проект в файл <em>GeoPackage</em>.</p>
+<p>Работает этот сервис через API (Application Programming Interface) — это контракт, который предоставляет программа. «Ко мне можно обращаться так и так, я обязуюсь делать то и это»<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-3074991191.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800"></p>
+<p><img src="images/snjw46wwnvuatj0wkghyuueofao.png" class="img-fluid figure-img"></p>
+<figcaption>Источник: https://habr.com/ru/articles/464261/</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>Для работы с ним вам нужно установить модуль <em>ORS tools</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-450228919.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1171"></p>
+</figure>
+</div>
+<p>Этот модуль должен будет появиться у вас в панели инструментов в виде значка <img src="images/clipboard-668418436.png" class="img-fluid" width="61">.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Перед тем, как начать работу с сервисом, вам в настройках модуля необходимо прописать ваш личный API ключ, по которому программа будет опознавать вас как пользователся и осуществлять необходимые операции.</p>
+<p>Для получения ключа вам нужно зарегистрироваться на сайте <a href="https://openrouteservice.org/" class="uri">https://openrouteservice.org/</a> и в своем личном кабинете найти этот ключ. Его необходимо скопировать.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1346537259.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="727"></p>
+</figure>
+</div>
+<p>Далее нужно открыть модуль и настройки провайдера по кнопке <img src="images/clipboard-120089947.png" class="img-fluid" width="56">.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-885581933.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="587"></p>
+</figure>
+</div>
+<p>В настройках нужно вставить ваш ключ в строку <em>API key</em> и сохранить их.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-290019607.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="514"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>После настройки доступа к сервису вы можете перейти во вкладку <em>Processing tools</em>, из которой можно запустить процесс создания изохрон.</p>
+<p>Изохроны здесь могут быть созданы в двух вариантах: из одной точки или из точечного слоя.</p>
+<p>В качестве параметров построения вы можете указать:</p>
+<ul>
+<li><p><em>travel mode</em> - способ передвижения;</p></li>
+<li><p><em>input point/layer</em> - исходная точка или исходный точечный слой;</p></li>
+<li><p><em>dimension</em> - рассчитываемый параметр (время или расстояние);</p></li>
+<li><p><em>comma-separated ranges</em> - интервалы для построения изохрон: время в минутах или расстояние в метрах (зависит от рассчитываемого параметра);</p></li>
+<li><p><em>location type</em> - тип точки: исходная или конечная.</p></li>
+</ul>
+<p><img src="images/clipboard-3721723199.png" class="img-fluid"></p>
+<p>В качестве результата вы получите полигоны изохрон.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-854099994.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="932"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Недостатком использования подобных сервисов является то, что вы не знаете точно, какой именно граф улично-дорожной сети применяется в качестве исходного для расчета.</p>
+</div>
+</div>
 
 
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Сноски</h2>
+
+<ol>
+<li id="fn1"><p><strong>Что такое API</strong> <a href="https://habr.com/ru/articles/464261/" class="uri">https://habr.com/ru/articles/464261/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
