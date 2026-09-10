@@ -1,23 +1,27 @@
 project:
   type: website
   output-dir: docs
+  
+filters:
+  - timeline
 
 website:
+  favicon: "images/icon_small.png"
   title: "Геоинформатика и геоинформационные системы"
   page-footer: |
-        © 2025, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО
+        © 2026, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО
   navbar:
     left:
       - href: index.qmd
+        text: О курсе
+      - href: lectures.qmd
         text: Лекции
       - sidebar:practice
-      - href: homework.qmd
-        text: Домашнее задание
-      - href: exam.qmd
-        text: Экзамен
+  #    - href: homework.qmd
+  #      text: Домашнее задание
+  #    - href: exam.qmd
+  #      text: Экзамен
      
-      
-      
     right: 
       - href: https://t.me/geomess
         icon: telegram
@@ -26,7 +30,7 @@ website:
       
   sidebar:
     - id: practice
-      logo: "images/logo.png"
+      logo: "images/logo_urbanistika_ITMO_itog_RUS_plashka_ikonka_white.png"
       pinned: true
       align: center
       title: "Практикум"
@@ -34,18 +38,20 @@ website:
       collapse-level: 1
       contents:
         - start.qmd
-        - basics.qmd
-        - project.qmd
-        - osm.qmd
-        - style.qmd
-        - crs.qmd
-        - layout.qmd
-        - spatial.qmd
-        - geoportal.qmd
-        - thematic mapping.qmd
-        - georeferencing.qmd
-        - isochrone.qmd
+  #      - basics.qmd
+  #      - project.qmd
+  #      - osm.qmd
+  #      - style.qmd
+  #      - crs.qmd
+  #      - layout.qmd
+  #      - spatial.qmd
+  #      - geoportal.qmd
+  #      - thematic mapping.qmd
+  #      - georeferencing.qmd
+  #      - isochrone.qmd
+  
 
+  
 format:
   html:
     theme: flatly
