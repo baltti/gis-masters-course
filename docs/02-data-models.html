@@ -192,12 +192,12 @@
 <p><strong><em>Непрерывные данные представляют собой поверхность (или поле), в каждой точке которой известно значение параметра и не имеющая четких границ.</em></strong></p>
 <p>Например, рельеф, значение гравитационного поля</p>
 </div></div>
-<p>Это и определяет два основных типа пространственных данных - векторные и растровые.</p>
+<p>Это и определяет две основных модели представления пространственных данных - векторная и растровая.</p>
 </section>
 <section class="slide level2">
 
 
-<img data-src="images/clipboard-659462666.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/clipboard-637385365.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section class="slide level2">
 
 
@@ -210,6 +210,15 @@
 </section>
 <section class="slide level2">
 
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clipboard-1731014734.png" class="quarto-figure quarto-figure-center" width="800"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Растр</strong> - это некоторая матрица значений. Несмотря на то, что чаще всего речь идет о регулярной матрице, существуют и другие варианты организации данных.</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -219,7 +228,24 @@
 <p><strong>На заметку</strong></p>
 </div>
 <div class="callout-content">
-<p>Первыt ГИС использовали только растровые данные, так как на тот момент это был единственный способ отображения чего-либо на экране. Векторные специализированные форматы появились только в 80-х годах.</p>
+<p>Как правило, в случае с растровыми данными мы имеем дело именно с регулярными матрицами значений, но при определенных преобразованиях эта регулярность может нарушаться.</p>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>На заметку</strong></p>
+</div>
+<div class="callout-content">
+<p>Первые ГИС использовали только растровые данные, так как на тот момент это был единственный способ отображения чего-либо на экране. Векторные специализированные форматы появились только в 80-х годах.</p>
 </div>
 </div>
 </div>
@@ -329,6 +355,25 @@
 </ul>
 <p>Вот здесь еще можно посмотреть презентацию про shape файлы и их альтернативы <a href="https://www.slideshare.net/jachym/switch-from-shapefile" class="uri">https://www.slideshare.net/jachym/switch-from-shapefile</a></p>
 <aside></aside></section></section>
+<section id="mapinfo-tab" class="title-slide slide level1 smaller center">
+<h1>MapInfo TAB</h1>
+<p>Формат <a href="https://docs.precisely.com/docs/sftw/spectrum/22.1/en/webhelp/Spatial/Spatial/source/Resources/resources/datasources/tab_datasource.html"><strong>MapInfo TAB</strong></a> — это формат векторных геопространственных данных для программного обеспечения географических информационных систем . Он разработан и регулируется компанией <a href="https://en.wikipedia.org/wiki/Precisely_(company)" title="Precisely (company)">Precisely</a> как проприетарный формат.</p>
+<p>Минимальный набор файлов, необходимых для базовой среды браузера MapInfo Professional:</p>
+<ul>
+<li><p>.TAB (ASCII-файл, являющийся связующим звеном между всеми остальными файлами и содержащий информацию о типе файла набора данных)</p></li>
+<li><p>.DAT (Файл, в котором хранятся данные атрибутов. Это файл DBF)</p></li>
+</ul>
+<!-- -->
+<ul>
+<li>.IND (Необязательный индексный файл для табличных данных. Он присутствует, если какие-либо столбцы проиндексированы).</li>
+</ul>
+<p>Минимальный набор файлов, необходимых для просмотра карты:</p>
+<ul>
+<li><p>.MAP (Хранит графическую и географическую информацию, необходимую для отображения каждого векторного объекта на карте)</p></li>
+<li><p>.ID (Хранит информацию, связывающую графические данные с информацией в базе данных. Содержит 4-байтовый целочисленный индекс в файле MAP для каждого объекта).</p></li>
+</ul>
+</section>
+
 <section>
 <section id="geopackage" class="title-slide slide level1 center">
 <h1>GeoPackage</h1>
@@ -414,6 +459,31 @@
 
 
 <img data-src="images/clipboard-368845347.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<section id="sxf" class="title-slide slide level1 smaller center">
+<h1>SXF</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="https://help13.gisserver.ru/ru/panorama/index.html?sxf.html">SXF</a> - Открытый формат цифровой информации о местности предназначен для применения в геоинформационных системах для хранения цифровой информации о местности, обмена данными между различными системами, создания цифровых и электронных карт и решения &nbsp;прикладных задач.</p>
+<p>Формат разработан в 1992 году специалистами Топографической Службы ВС РФ и в 1993 году утвержден в качестве основного обменного формата цифровой информации о местности в Вооруженных Силах и ряде федеральных служб Российской Федерации.</p>
+<p>Цифровая информация о местности в формате SXF может быть представлена в виде двоичного или текстового файла.</p>
+<p><em>В формате SXF осуществляется создание и хранение цифровой картографической продукции подразделениями Росреестра, в том числе цифровых навигационных карт по ФЦП «ГЛОНАСС».</em></p>
+</div><div class="column" style="width:50%;">
+<p>Формат SXF может иметь текстовое представление в виде файла следующей структуры:</p>
+<p>.SXF &nbsp;редакция_формата</p>
+<p>Р001 &nbsp;номенклатура</p>
+<p>Р207 &nbsp;знаменатель_масштаба</p>
+<p>.DAT &nbsp;число_объектов_карты</p>
+<p>.OBJ &nbsp;код_объекта характер_локализации</p>
+<p>.KEY &nbsp;собственный_номер_объекта</p>
+<p>.GEN &nbsp;нижняя_граница_видимости верхняя_граница</p>
+<p>.GRP &nbsp;номер_<a href="https://help13.gisserver.ru/ru/panorama/group.html">группы</a>_объектов</p>
+<p>.МЕТ &nbsp;число_подобъектов</p>
+<p>.SEM &nbsp;число характеристик</p>
+<p>.OBJ &nbsp;код_объекта &nbsp; &nbsp;характер_локализации</p>
+<p>.END</p>
+</div></div>
+</section>
+
 <section>
 <section id="прочие-векторные-форматы" class="title-slide slide level1 center">
 <h1>Прочие векторные форматы</h1>
@@ -431,9 +501,30 @@
 <section class="slide level2">
 
 
+<img data-src="images/clipboard-2787109949.png" class="r-stretch quarto-figure-center"><p class="caption">Источник: https://www.esri.com/arcgis-blog/products/developers/developers/arcgis-hosted-services-explained-feature-vector-map-tiles-services</p></section>
+<section id="сравнение-векторных-и-растровых-тайлов14" class="slide level2 smaller">
+<h2>Сравнение векторных и растровых тайлов<a href="#/footnotes" class="footnote-ref" id="fnref14" role="doc-noteref" data-footnote-href="#/fn14" onclick=""><sup>14</sup></a></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/clipboard-4188729266.png" class="quarto-figure quarto-figure-center" width="900"></p>
+</figure>
+</div>
+<aside></aside></section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<video width="1000" height="700" controls="">
+  <source src="images/Example of a raster based map.mp4" type="video/mp4">
+</video>
+</div><div class="column" style="width:50%;">
+<video width="800" height="600" controls="">
+  <source src="images/Example of a Vector based map.mp4" type="video/mp4">
+</video>
+</div></div>
 
 
-<img data-src="images/clipboard-2787109949.png" class="r-stretch quarto-figure-center"><p class="caption">Источник: https://www.esri.com/arcgis-blog/products/developers/developers/arcgis-hosted-services-explained-feature-vector-map-tiles-services</p></section></section>
+</section></section>
 <section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Сноски</h2>
 
 <ol>
@@ -450,6 +541,7 @@
 <li id="fn11"><p>GPX: the GPS Exchange Format <a href="https://www.topografix.com/gpx.asp" class="uri">https://www.topografix.com/gpx.asp</a>, <a href="https://ru.wikipedia.org/wiki/GPX" class="uri">https://ru.wikipedia.org/wiki/GPX</a></p></li>
 <li id="fn12"><p>О формате KML <a href="https://cartetika.ru/tpost/jl4hk9a1r1-o-formate-kml" class="uri">https://cartetika.ru/tpost/jl4hk9a1r1-o-formate-kml</a>, Руководство по KML <a href="https://developers.google.com/kml/documentation/kml_tut?hl=ru" class="uri">https://developers.google.com/kml/documentation/kml_tut?hl=ru</a></p></li>
 <li id="fn13"><p><strong>Разница между векторными и растровыми тайлами в веб-картах</strong> <a href="https://cartetika.ru/tpost/2tecy4r8f1-raznitsa-mezhdu-vektornimi-i-rastrovimi" class="uri">https://cartetika.ru/tpost/2tecy4r8f1-raznitsa-mezhdu-vektornimi-i-rastrovimi</a></p></li>
+<li id="fn14"><p>What are vector tiles and why you should care <a href="https://www.maptiler.com/news/2019/02/what-are-vector-tiles-and-why-you-should-care/" class="uri">https://www.maptiler.com/news/2019/02/what-are-vector-tiles-and-why-you-should-care/</a></p></li>
 </ol>
 </section>
     </div>
