@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -111,6 +111,22 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./start.html">
  <span class="dropdown-text">Установка программы</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./basics.html">
+ <span class="dropdown-text">Начало работы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Проект в QGIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./osm.html">
+ <span class="dropdown-text">Работа с OSM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./style.html">
+ <span class="dropdown-text">Общие настройки стиля объектов</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -131,10 +147,63 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./osm.html">Работа с OSM</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo_urbanistika_ITMO_itog_RUS_plashka_ikonka_white.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/logo_urbanistika_ITMO_itog_RUS_plashka_ikonka_white.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Установка программы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Начало работы</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Проект в QGIS</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./osm.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Работа с OSM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Общие настройки стиля объектов</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -147,7 +216,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#сервис-overpass-turbo" id="toc-сервис-overpass-turbo" class="nav-link" data-scroll-target="#сервис-overpass-turbo">Сервис overpass-turbo</a></li>
   <li><a href="#модуль-quickosm" id="toc-модуль-quickosm" class="nav-link" data-scroll-target="#модуль-quickosm">Модуль QuickOSM</a></li>
   <li><a href="#загрузка-всех-объектов-в-заданных-границах" id="toc-загрузка-всех-объектов-в-заданных-границах" class="nav-link" data-scroll-target="#загрузка-всех-объектов-в-заданных-границах">Загрузка всех объектов в заданных границах</a></li>
-  <li><a href="#osm-gpt" id="toc-osm-gpt" class="nav-link" data-scroll-target="#osm-gpt">OSM-GPT</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -369,6 +437,49 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/clipboard-2944901746.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Важно</span>Что делать, если данные не скачиваются
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>попробуйте использовать тот же запрос, но для другой территории. Возможно запрос не является успешным, так как в нужной вам территории просто нет объектов, соответствующих ему.</p></li>
+<li><p>попробуйте увеличить время на запрос.</p></li>
+<li><p>попробуйте поменять сервер Overpass API в настройках модуля. Проблема может быть вызвана тем, что ваш компьютер не может сделать к выбранному серверу запрос. Наиболее стабильную работу обычно показывает сервер mail.ru</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Дополнительно</span>Другие варианты скачивания данных
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В качестве альтернативного варианта скачивания данных, можете попробовать модуль <strong>02Agent OSM Downloader</strong> <a href="https://geophilo.com/zero2agent_osm_downloader/" class="uri">https://geophilo.com/zero2agent_osm_downloader/</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3437473016.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Другие модули:</p>
+<ul>
+<li><p><strong>ohsomeTools</strong> - https://github.com/GIScience/ohsome-qgis-plugin</p></li>
+<li><p><strong>OSMDownloader</strong> - https://github.com/lcoandrade/OSMDownloader</p></li>
+<li><p><strong>HCMGIS</strong> - https://github.com/opengeoshub/HCMGIS (выгрузка данных от geofabrik напрямую в программе)</p></li>
+<li><p>для особо продвинутых, которые смогут раздобыть API ключ от OpenAI есть <strong>OSM AI Agent</strong> - https://github.com/ShogoHirasawa/OSM-AI</p>
+<p>Еще одна альтернатива (чуть более сложная) скачивать выгрузки для нужной вам территории, а потом уже из них доставать нужное именно вам https://download.geofabrik.de/</p></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="загрузка-всех-объектов-в-заданных-границах" class="level2">
 <h2 class="anchored" data-anchor-id="загрузка-всех-объектов-в-заданных-границах">Загрузка всех объектов в заданных границах</h2>
@@ -395,14 +506,6 @@ ul.task-list li input[type="checkbox"] {
 <p>Как его найти? Найти его можно на основном сайте OSM <a href="https://www.openstreetmap.org/" class="uri">https://www.openstreetmap.org/</a> с помощью поиска.</p>
 <p>Вы можете ввести в строку поиска название нужного вам города или региона, дождаться загрузки и скопировать идентификатор в сервис.</p>
 <p><img src="images/clipboard-3643171268.png" class="img-fluid"></p>
-</section>
-<section id="osm-gpt" class="level2">
-<h2 class="anchored" data-anchor-id="osm-gpt">OSM-GPT</h2>
-<p>Кроме непосредственного использования Overpass можно воспользоваться <strong>OSM-GPT</strong> - сервисом на основе ChatGPT, который позволяет делать запросы с использованием естественного языка.</p>
-<p><a href="https://osm-gpt.rohitgautam.com.np/" class="uri">https://osm-gpt.rohitgautam.com.np/</a></p>
-<video width="540" height="360" controls="">
-  <source src="images/255709707-f43a7a5e-3780-4421-a007-96afe55c683c.mp4" type="video/mp4">
-</video>
 
 
 </section>

@@ -111,6 +111,22 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./start.html">
  <span class="dropdown-text">Установка программы</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./basics.html">
+ <span class="dropdown-text">Начало работы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Проект в QGIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./osm.html">
+ <span class="dropdown-text">Работа с OSM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./style.html">
+ <span class="dropdown-text">Общие настройки стиля объектов</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -136,8 +152,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#сбор-данных" id="toc-сбор-данных" class="nav-link active" data-scroll-target="#сбор-данных"><span class="header-section-number">1</span> Сбор данных</a></li>
+  <li><a href="#оформление-карты" id="toc-оформление-карты" class="nav-link" data-scroll-target="#оформление-карты"><span class="header-section-number">2</span> Оформление карты</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -174,20 +197,131 @@ ul.task-list li input[type="checkbox"] {
 <p>Домашнее задание является вашей контрольной точкой, поэтому его выполнение обязательно!</p>
 </div>
 </div>
-<p>Вам нужно подготовить и оформить карту любой территории на свой выбор.</p>
+<section id="сбор-данных" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Сбор данных</h1>
+<p>Первая часть вашей домашней работы состоит в сборе данных для “Комплексных исследований городской среды”.</p>
+<p>Каждому из вас нужно будет собрать данные о застройке и сервисах по одному или двум муниципальным образованиям (территории МО распределялись так, чтобы объём данных для сбора был примерно одинаковым).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Распределение муниципальных образований приведено в таблице по ссылке <a href="https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing</a></p>
+</div>
+</div>
+<p>Что необходимо собрать:</p>
+<ol type="1">
+<li><u>слой 1: данные о застройке</u> - все здания в муниципальном образовании в виде <strong>полигонов</strong>.</li>
+<li><u>слой 2: данные о городских сервисах</u> в виде <strong>точечных объектов с некоторыми исключениями</strong>. Необходимый перечень сервисов приведен в таблице по ссылке на странице <em>Утвержденный список сервисов</em> <a href="https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing</a></li>
+</ol>
+<table class="caption-top table">
+<caption>Спецификация данных</caption>
+<colgroup>
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Тип объекта</th>
+<th>Система координат</th>
+<th>Тип геометрии</th>
+<th>Формат файла</th>
+<th>Необходимые атрибуты</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Здания (жилые и не жилые)</td>
+<td>WGS 84 EPSG: 4326</td>
+<td>Полигоны, мультиполигоны</td>
+<td>geojson</td>
+<td><p>Необходимо создать два атрибута: <strong>«is_living», «building:levels»</strong> — и определить тип здания (жилое оно или нежилое) и этажность.</p>
+<p>При создании атрибута «<strong>is_living</strong>» указывайте тип «<em>Логический</em>», для «<strong>building:levels</strong>» — «<em>Целое число (integer 32 бита)</em>».</p>
+<p>Порядок заполнения атрибута «<strong>is_living</strong>»: Жилое - 1 / истина, нежилое - 0 / ложь.</p></td>
+</tr>
+<tr class="even">
+<td>Сервисы</td>
+<td>WGS 84 EPSG: 4326</td>
+<td>Точки</td>
+<td>geojson</td>
+<td><p>Необходимо указать название сервиса в атрибуте “<strong>service_type</strong>”.</p>
+<p>Названия сервисов должны быть указаны также, как в таблице.</p></td>
+</tr>
+<tr class="odd">
+<td>Сервисы (парки и парковки)</td>
+<td>WGS 84 EPSG: 4326</td>
+<td>Полигоны, мультиполигоны</td>
+<td>geojson</td>
+<td><p>Необходимо указать название сервиса в атрибуте “<strong>service_type</strong>”.</p>
+<p>Названия сервисов должны быть указаны также, как в таблице.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Предупреждение
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Если объект сервиса должен быть сохранен в виде точечного объекта, но в OSM обозначен только полигоном, то вам необходимо заменить полигон на его центроид.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Все собранные данные должны быть упакованы в архив в формате .zip.</p>
+<p>Собранные данные необходимо загрузить по ссылке</p>
+<p><strong>Срок сдачи работы: до <em>1 ноября включительно</em></strong></p>
+</div>
+</div>
+</section>
+<section id="оформление-карты" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Оформление карты</h1>
+<p>Вам нужно подготовить и оформить карту территории исследования вашего КИГС.</p>
 <p>Порядок работы:</p>
 <ol type="1">
-<li><p>выбрать территорию (она может быть абсолютно любой на ваш выбор - ваш любимый район или город, район вашего исследования);</p></li>
 <li><p>создать новый проект;</p></li>
-<li><p>скачать и добавить подложку и данные в ваш проект (это могут быть любые скачанные вами данные из открытых источников или созданные вами самостоятельно);</p></li>
+<li><p>добавить подложку и собранные вами и/или вашими коллегами данные в проект (допускается использование дополнительных наборов данных при желании);</p></li>
 <li><p>задать стили вашим слоям (тут все ограничивается только вашей фантазией и художественными предпочтениями - это может быть просто выбранный вами стиль заливки или стиль, заданный на основе какого-то параметра, художественный стиль);</p></li>
-<li><p>оформить карту на макете - обязательными элементами макета являются карта, масштабная линейка и легенда, все остальные элементы на ваше усмотрение;</p></li>
+<li><p>оформить карту на макете - <strong>обязательными элементами макета являются карта, масштабная линейка и легенда</strong>, все остальные элементы на ваше усмотрение;</p></li>
 <li><p>экспортировать карту из макета в формат pdf или png и отправить ее в форму по ссылке.</p></li>
 </ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Задание можно загрузить по ссылке <a href="https://forms.yandex.ru/u/671a67d05d2a0698658995b2" class="uri">https://forms.yandex.ru/u/671a67d05d2a0698658995b2</a></p>
-<p><strong>Срок сдачи работы: до <em>23 ноября включительно</em></strong></p>
+<p><strong>Срок сдачи работы: до <em>30 ноября включительно</em></strong></p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

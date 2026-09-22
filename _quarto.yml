@@ -17,8 +17,8 @@ website:
       - href: lectures.qmd
         text: Лекции
       - sidebar:practice
-  #    - href: homework.qmd
-  #      text: Домашнее задание
+    #  - href: homework.qmd
+    #    text: Домашнее задание
   #    - href: exam.qmd
   #      text: Экзамен
      
@@ -38,10 +38,10 @@ website:
       collapse-level: 1
       contents:
         - start.qmd
-  #      - basics.qmd
-  #      - project.qmd
-  #      - osm.qmd
-  #      - style.qmd
+        - basics.qmd
+        - project.qmd
+        - osm.qmd
+        - style.qmd
   #      - crs.qmd
   #      - layout.qmd
   #      - spatial.qmd
