@@ -129,6 +129,10 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="./homework.html" aria-current="page"> 
+<span class="menu-text">Домашнее задание</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -216,17 +220,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Что необходимо собрать:</p>
 <ol type="1">
-<li><u>слой 1: данные о застройке</u> - все здания в муниципальном образовании в виде <strong>полигонов</strong>.</li>
-<li><u>слой 2: данные о городских сервисах</u> в виде <strong>точечных объектов с некоторыми исключениями</strong>. Необходимый перечень сервисов приведен в таблице по ссылке на странице <em>Утвержденный список сервисов</em> <a href="https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing</a></li>
+<li><u>слой 1: граница муниципального образования</u> в виде <strong>полигона</strong>.</li>
+<li><u>слой 2: данные о застройке</u> - все здания в муниципальном образовании в виде <strong>полигонов</strong>.</li>
+<li><u>слой 3 и 4: данные о городских сервисах</u> в виде <strong>точечных объектов с некоторыми исключениями (отдельные сервисы необходимы в виде полигонов)</strong>. Необходимый перечень сервисов приведен в таблице по ссылке на странице <em>Утвержденный список сервисов</em> <a href="https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/10aov5LvNBlUA_eG_1u5iwf4v6CWMWVsElb4zh3rHRLw/edit?usp=sharing</a></li>
 </ol>
 <table class="caption-top table">
 <caption>Спецификация данных</caption>
 <colgroup>
-<col style="width: 12%">
-<col style="width: 8%">
-<col style="width: 11%">
-<col style="width: 6%">
-<col style="width: 58%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 5%">
+<col style="width: 63%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -239,6 +244,13 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
+<td>Граница муниципального образования</td>
+<td>WGS 84 EPSG: 4326</td>
+<td>Полигоны, мультиполигоны</td>
+<td>geojson</td>
+<td></td>
+</tr>
+<tr class="even">
 <td>Здания (жилые и не жилые)</td>
 <td>WGS 84 EPSG: 4326</td>
 <td>Полигоны, мультиполигоны</td>
@@ -247,21 +259,25 @@ ul.task-list li input[type="checkbox"] {
 <p>При создании атрибута «<strong>is_living</strong>» указывайте тип «<em>Логический</em>», для «<strong>building:levels</strong>» — «<em>Целое число (integer 32 бита)</em>».</p>
 <p>Порядок заполнения атрибута «<strong>is_living</strong>»: Жилое - 1 / истина, нежилое - 0 / ложь.</p></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Сервисы</td>
 <td>WGS 84 EPSG: 4326</td>
 <td>Точки</td>
 <td>geojson</td>
-<td><p>Необходимо указать название сервиса в атрибуте “<strong>service_type</strong>”.</p>
-<p>Названия сервисов должны быть указаны также, как в таблице.</p></td>
+<td><p>Необходимо указать тип сервиса в атрибуте “<strong>service_type</strong>”, название конкретного объекта в атрибуте “<strong>name</strong>” (например, название школы) и его вместимость <strong>“capacity”</strong>.</p>
+<p>Типы данных для атрибутов: “<strong>service_type</strong>” и “<strong>name</strong>” - «<em>Текстовый</em>», <strong>“capacity” -</strong> «<em>Целое число (integer 32 бита)</em>».</p>
+<p>Типы сервисов должны быть указаны также, как в таблице.</p>
+<p>Вместимость заполняется только для тех сервисов, у которых это указано в таблице.</p></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Сервисы (парки и парковки)</td>
 <td>WGS 84 EPSG: 4326</td>
 <td>Полигоны, мультиполигоны</td>
 <td>geojson</td>
-<td><p>Необходимо указать название сервиса в атрибуте “<strong>service_type</strong>”.</p>
-<p>Названия сервисов должны быть указаны также, как в таблице.</p></td>
+<td><p>Необходимо указать тип сервиса в атрибуте “<strong>service_type</strong>”, название конкретного объекта в атрибуте “<strong>name</strong>” (например, название школы) и его вместимость <strong>“capacity”</strong>.</p>
+<p>Типы данных для атрибутов: “<strong>service_type</strong>” и “<strong>name</strong>” - «<em>Текстовый</em>», <strong>“capacity” -</strong> «<em>Целое число (integer 32 бита)</em>».</p>
+<p>Типы сервисов должны быть указаны также, как в таблице.</p>
+<p>Вместимость заполняется только для тех сервисов, у которых это указано в таблице.</p></td>
 </tr>
 </tbody>
 </table>
@@ -278,6 +294,22 @@ ul.task-list li input[type="checkbox"] {
 <p>Если объект сервиса должен быть сохранен в виде точечного объекта, но в OSM обозначен только полигоном, то вам необходимо заменить полигон на его центроид.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>В качестве дополнительных источников данных для заполения некоторых атрибутов можете использовать:</p>
+<p>— <a href="https://gosweb.gosuslugi.ru/">ГОСВЕБ</a> — с 2026 г все бюджетные организации должны создать здесь страницы, так что это может облегчить поиск организации для уточнения вместимости;<br>
+<br>
+— <a href="https://vk.ru/app7710919#kindergartens">Я здесь живу</a> — приложение ВК, там есть сводка занятых/свободных мест по детским садам в Петербурге.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -288,8 +320,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Все собранные данные должны быть упакованы в архив в формате .zip.</p>
-<p>Собранные данные необходимо загрузить по ссылке</p>
+<p>Собранные данные необходимо загрузить по ссылке <a href="https://drive.google.com/drive/folders/18tM2Cj1kA3m1oLIZuw0KsW2GAPAuS2Vz?usp=sharing" class="uri">https://drive.google.com/drive/folders/18tM2Cj1kA3m1oLIZuw0KsW2GAPAuS2Vz?usp=sharing</a></p>
+<p>Вам нужно будет создать по ссылке папку со своей фамилией и загрузить в нее собранные данные.</p>
 <p><strong>Срок сдачи работы: до <em>1 ноября включительно</em></strong></p>
 </div>
 </div>

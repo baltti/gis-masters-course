@@ -17,8 +17,8 @@ website:
       - href: lectures.qmd
         text: Лекции
       - sidebar:practice
-    #  - href: homework.qmd
-    #    text: Домашнее задание
+      - href: homework.qmd
+        text: Домашнее задание
   #    - href: exam.qmd
   #      text: Экзамен
      
