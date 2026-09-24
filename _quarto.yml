@@ -6,7 +6,7 @@ filters:
   - timeline
 
 website:
-  favicon: "images/icon_small.png"
+  favicon: "images/logo_urbanistika_ITMO_itog_RUS_ikonka_black.png"
   title: "Геоинформатика и геоинформационные системы"
   page-footer: |
         © 2026, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО
