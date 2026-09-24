@@ -6,6 +6,7 @@ number-sections: false
 author:
   - affiliation: Институт дизайна и урбанистики, Университет ИТМО 
     name: Балтыжакова Татьяна
+brand: _brand.yml
 ---
 
 ## Преподаватели курса {.unnumbered}

@@ -39,10 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a25fe14d71fb15effab06e6c3a28be36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/timeline-0.1.0/timeline.js"></script>
 <link href="site_libs/quarto-contrib/timeline-0.1.0/timeline.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -113,6 +117,10 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/icon_small.png" alt="" class="navbar-logo light-content">
+    <img src="./images/icon_small.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Геоинформатика и геоинформационные системы</span>
     </a>
@@ -463,9 +471,8 @@ window.Quarto = {
 </div>
 <p>Так как эта система координат зональная, то есть определяется только в пределах конкретных диапазонов долгот, то необходимо определять зону, в которой расположена ваша исследуемая территория.</p>
 <p>Определить зону можно по формуле:</p>
-<p><span class="math display">\[
-Номер\space зоны = (Долгота + 180^\circ)/6
-\]</span></p>
+<p><span class="math display">\[Номер\space зоны\ (UTM) = (Долгота + 180^\circ)/6\]</span></p>
+<p><span class="math display">\[Номер\space зоны\ (Гаусса-Крюгера) = \dfrac{Долгота}{6}\]</span></p>
 <p>Полученное число нужно округлить в большую сторону.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -478,6 +485,20 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>Существуют специальные онлайн-калькуляторы для определения номера зоны по координатам. Например, <a href="https://www.latlong.net/lat-long-utm.html" class="uri">https://www.latlong.net/lat-long-utm.html</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Так как возникли проблемы при работе с системами координат UTM, предпочтительнее пользоваться системами координат Гаусса-Крюгера.</p>
+<p>Существует несколько вариаций этих систем координат, основанных на эллипсоидах с разными параметрами. Вам необходимо брать те, которые базируются на Государственной системе координат 2011 года (ГСК-2011). Например, для Санкт-Петербурга нужная вам система координат будет называться <strong><em>EPSG: 20906 GSK-2011 / Gauss-Kruger zone 6.</em></strong></p>
 </div>
 </div>
 <p>Открыть полный каталог систем координат для выбора нужной вам, вы можете по нажатию на кнопку <img src="images/clipboard-503443256.png" width="45" height="41">. В этом каталоге нужно найти систему координат с тем номером зоны, который вы определили. Проще всего это сделать с помощью поиска.</p>

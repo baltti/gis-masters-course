@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Анализ доступности и обеспеченности – Геоинформатика и геоинформационные системы</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/icon_small.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/timeline-0.1.0/timeline.js"></script>
+<link href="site_libs/quarto-contrib/timeline-0.1.0/timeline.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/icon_small.png" alt="" class="navbar-logo light-content">
+    <img src="./images/icon_small.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Геоинформатика и геоинформационные системы</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Поиск"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Переключить навигацию" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">О курсе</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./lectures.html"> 
+<span class="menu-text">Лекции</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Практикум</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./start.html">
+ <span class="dropdown-text">Установка программы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./basics.html">
+ <span class="dropdown-text">Начало работы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Проект в QGIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./osm.html">
+ <span class="dropdown-text">Работа с OSM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./style.html">
+ <span class="dropdown-text">Общие настройки стиля объектов</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./homework.html"> 
+<span class="menu-text">Домашнее задание</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://t.me/geomess"> <i class="bi bi-telegram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/baltti/gis-masters-course"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#исходные-данные" id="toc-исходные-данные" class="nav-link active" data-scroll-target="#исходные-данные">Исходные данные</a></li>
+  <li><a href="#формулы-для-расчета" id="toc-формулы-для-расчета" class="nav-link" data-scroll-target="#формулы-для-расчета">Формулы для расчета</a></li>
+  <li><a href="#расчет-доступности" id="toc-расчет-доступности" class="nav-link" data-scroll-target="#расчет-доступности">Расчет доступности</a>
+  <ul class="collapse">
+  <li><a href="#входные-данные" id="toc-входные-данные" class="nav-link" data-scroll-target="#входные-данные">Входные данные</a></li>
+  <li><a href="#построение-модели-расчета-доступности" id="toc-построение-модели-расчета-доступности" class="nav-link" data-scroll-target="#построение-модели-расчета-доступности">Построение модели расчета доступности</a></li>
+  </ul></li>
+  <li><a href="#расчет-обеспеченности" id="toc-расчет-обеспеченности" class="nav-link" data-scroll-target="#расчет-обеспеченности">Расчет обеспеченности</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Анализ доступности и обеспеченности</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong><em>Обеспеченность населения объектами</em></strong> - <em>количественная характеристика</em> сети объектов социальной, транспортной коммунальной инфраструктур, объектов благоустройства. Обеспеченность населения объектами рекомендуется рассчитывать, <em>как удельную мощность (вместимость, емкость, пропускная способность и т.д.) какого-либо вида инфраструктуры, приходящуюся на одного жителя или представителя определенной возрастной, социальной, профессиональной группы либо на определенное число (сто, тысячу и т.д.) жителей или представителей указанных групп</em>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><strong><em>Территориальная доступность</em></strong> - <em>пространственная характеристика</em> сети объектов социальной, транспортной коммунальной инфраструктур. Территориальную доступность <em>рекомендуется рассчитывать либо исходя из затрат на достижение выбранного объекта (как правило, затрат времени), либо исходя из расстояния до выбранного объекта, измеренного по прямой, по имеющимся путям передвижения, или иным образом</em>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Доступность - это метрика расстояния</em>, то есть насколько близко/далеко находится услуга или сервис. Например, есть ли в пределах 15-минутной доступности от дома школа или детский сад.</p>
+<p><em>Обеспеченность - это то, какой процент населения или конкретной демографической группы может воспользоваться сервисом/услугой</em> с учетом его емкости или сколько мест в школе приходится на 1000 человек населения.</p>
+</div>
+</div>
+<section id="исходные-данные" class="level1">
+<h1>Исходные данные</h1>
+<ul>
+<li><p>жилые дома (можно воспользоваться уже имеющимися у вас данными или скачать новые) - для оценки количества жителей;</p></li>
+<li><p>объекты сервиса (детские сады или школы; также можете взять уже имеющиеся у вас данные или создать новые) - для расчета обеспеченности.</p></li>
+</ul>
+<p>Для объектов сервиса обязательно нужно будет создать атрибут <code>capacity</code> (вместимость или мощность объекта) - количество людей, которое сервис может обслужить.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2506351534.png" class="img-fluid figure-img"></p>
+<figcaption>Пример исходных данных</figcaption>
+</figure>
+</div>
+<p>В этой работе будет сразу собрана геомодель для расчета доступности и обеспеченности населения сервисами.</p>
+<p>Заполним атрибут <code>capacity</code>, исходя из усредненного норматива вместимости:</p>
+<ul>
+<li><p>для детских садов - 200 мест<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>;</p></li>
+<li><p>для школ - 1000 мест<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>По действующим в настоящее время нормативам вместимость как детских садов, так и школ определяется заданием на проектирование.</p>
+<p>Мы с вами пользуемся очень условными значениями только в качестве примера, так как реальные данные о вместимости нам недоступны.</p>
+</div>
+</div>
+<p>Для того, чтобы прописать значение атрибута сразу для всех объектов слоя, в таблице атрибутов слева сверху (сразу под панелью инструментов) вы можете выбрать нужный вам атрибут, прописать его значение и нажать кнопку <em>Обновить все</em>. После этого значения атрибута заполнится для всех строк в таблице.</p>
+<p><img src="images/clipboard-2398941912.png" class="img-fluid"></p>
+<p>Количество населения в каждом доме рассчитаем по формуле:</p>
+<p><span class="math display">\[Численность\ населения = \dfrac{Общая\ площадь}{36}=\dfrac{Площадь\ полигона*Этажность}{36}\]</span></p>
+<p>В данном случае 36 метров квадратных - это средняя общая площадь квартиры, приходящаяся на одного человека.</p>
+<p>Как рассчитать площадь здания описано по <a href="https://baltti.github.io/gis-masters-course/spatial.html.html">ссылке</a>.</p>
+<p>Для тех зданий, где неизвестна этажность, ее можно заполнить как среднее значение этажности для слоя, воспользовавшись выражением:</p>
+<pre><code>case when "Этажность" is NULL 
+  then mean("Этажность")
+  else "Этажность"
+end</code></pre>
+</section>
+<section id="формулы-для-расчета" class="level1">
+<h1>Формулы для расчета</h1>
+<p>В базовом виде обеспеченность можно рассчитать по простой формуле:</p>
+<p><span class="math display">\[Обеспеченность = \dfrac{Вместимость\  объекта}{Численность\  населения}\]</span></p>
+<p>Численность населения может быть взята как общее число населения, так и количество населения в конкретной возрастной группе (например, количество детей).</p>
+<p>Численность населения также может учитываться только в пределах заданной доступности сервиса.</p>
+<p>В том случае, если обеспеченность необходимо рассчитать на 1000 человек, формула немного поменяется:</p>
+<p><span class="math display">\[Обеспеченность = \dfrac{Вместимость\  объекта}{Численность\  населения}* 1000\]</span></p>
+<p>Здесь в качестве множителя будет выступать то число, на которое необходимо пересчитать обеспеченность (100, 1000 и т.д.).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Дополнительно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Доступность также может быть рассчитана в виде относительного показателя:</p>
+<p><span class="math display">\[Доступность = \dfrac{Численность\ населения\ в\ пределах\ заданного\ расстояния}{Численность\  населения}*100\%\]</span></p>
+</div>
+</div>
+</section>
+<section id="расчет-доступности" class="level1">
+<h1>Расчет доступности</h1>
+<p>Для построения моделей будем использовать редактор моделей.</p>
+<p>Открыть редактор моделей можно из строки меню <em>Анализ данных</em> <span class="math inline">\(\longrightarrow\)</span> <em>Конструктор моделей</em> или по клику на кнопку <em>Модели</em> в Панели инструментов анализа.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Снимок экрана 2025-02-24 в 13.07.26.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В открывшемся новом окне основная часть предназначена для отображения модели в графическом виде, слева панель данных и алгоритмов (переключаются по вкладкам внизу панели), свойства и переменные модели, а также история команд.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Снимок экрана 2025-02-24 в 13.08.29.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>В качестве доступных вам алгоритмов вы можете использовать все инструменты, которые есть в вашей панели инструментов анализа в основном окне программы.</p>
+<section id="входные-данные" class="level2">
+<h2 class="anchored" data-anchor-id="входные-данные">Входные данные</h2>
+<p>В первую очередь зададим для нашей модели входные данные. В нашем случае все входные данные будут представлены в виде векторных слоев:</p>
+<ul>
+<li><p>здания - обязательный параметр, полигоны;</p></li>
+<li><p>сервисы - обазятельный параметр, полигоны.</p></li>
+</ul>
+<p>Обязательный параметр - это тот, без включения которого в исходные данные запуск модели осуществляться не будет.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Внимание
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Желательно называть входные данные буквами английского алфавита, так как иногда они могут не добавляться в модель или работать некорректно при использовании кириллицы.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3485795247.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2042"></p>
+</figure>
+</div>
+<p>После добавления входных данных вы увидите их в рабочем пространстве модели.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-274330332.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1462"></p>
+</figure>
+</div>
+<p>При необходимости вы можете передвигать элементы модели так, чтобы их было лучше видно, и масштабировать изображение элементов в рабочем пространстве.</p>
+</section>
+<section id="построение-модели-расчета-доступности" class="level2">
+<h2 class="anchored" data-anchor-id="построение-модели-расчета-доступности">Построение модели расчета доступности</h2>
+<p>Для расчета доступности сервиса в первую очередь необходимо построить зоны обслуживания. Здесь мы воспользуемся буферными зонами для их построения.</p>
+<p>Размер буферных зон будет определяться градостроительными нормативами:</p>
+<ul>
+<li><p>300 метров для детских садов;</p></li>
+<li><p>500 метров для школ.</p></li>
+</ul>
+<p>Однако, чтобы строить буферные зоны в метрических единицах измерения, сначала необходимо перепроецировать слой в плоскую прямоугольную систему координат.</p>
+<p>Проще всего воспользоваться системой координат из семейства UTM или одной из систем из группы систем координат Гаусса-Крюгера (они аналогичны, отличаются только нумерацией зон).</p>
+<p>Чтобы рассчитать номер зоны для UTM системы координат вы можете воспользоваться калькулятором по <a href="https://www.latlong.net/lat-long-utm.html">ссылке</a>.</p>
+<p>На вкладке <em>Алгоритмы</em> найдем нужный нам инструмент - <em>Перепроецировать слой</em> и укажем его параметры в открывшемся окне.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1310435067.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="898"></p>
+</figure>
+</div>
+<p>Аналогично добавим перепроецирование для зданий.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3388561227.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1777"></p>
+</figure>
+</div>
+<p>Следующим этапом построим буферные зоны для объектов сервиса. Для этого найдем инструмент <em>Буферизация</em>. Так как мы здесь будем использовать не исходные данные, а результат выполнения перепроецирования, то по нажатию на кнопку <img src="images/clipboard-1454870356.png" class="img-fluid" width="58"> следует выбрать пункт <em>Вывод алгоритма</em>, после чего выбрать результат перепроецирования для объектов сервиса.</p>
+<p><img src="images/clipboard-2107994983.png" class="img-fluid"></p>
+<p>Далее необходимо указать расстояние - радиус обслуживания сервиса.</p>
+<p><img src="images/clipboard-2075241895.png" class="img-fluid"></p>
+<p>На следующем этапе нужно рассчитать количество населения, попавшее в радиус доступности.</p>
+<p>В данном случае пример будет показан на основе инструмента <em>Объединение атрибутов по расположению (сводка)</em>, но вы также можете воспользоваться калькулятором полей и выражением аналогично тому, как мы это делали в прошлом семестре.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3757442539.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1280"></p>
+</figure>
+</div>
+<p>На последнем этапе составим выражение для расчета процента населения, которое находится в пределах радиуса доступности от сервиса, с использованием калькулятора полей.</p>
+<p><img src="images/clipboard-3764636610.png" class="img-fluid"></p>
+<p>Итоговая модель будет выглядеть, как показано на рисунке ниже.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2376702965.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1219"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="расчет-обеспеченности" class="level1">
+<h1>Расчет обеспеченности</h1>
+<p>Полученную модель можно дополнить расчетом обеспеченности.</p>
+<p><img src="images/clipboard-980433365.png" class="img-fluid"></p>
+<p>Ваша геомодель может иметь столько результатов, сколько вы посчитаете нужным.</p>
+<p>При необходимости каждый этап расчета может быть выведен как самостоятельный результат.</p>
+<p><img src="images/clipboard-2107511711.png" class="img-fluid"></p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Сноски</h2>
+
+<ol>
+<li id="fn1"><p>Приказ Минэкономразвития России от 15.02.2021 N 71 “Об утверждении Методических рекомендаций по подготовке нормативов градостроительного проектирования” <a href="https://www.consultant.ru/document/cons_doc_LAW_379662/" class="uri">https://www.consultant.ru/document/cons_doc_LAW_379662/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Детские ясли-сады следует проектировать на 1, 2, 4, 6, 8, 10, 12 и 14 групп или, соответственно, не более чем на 25, 50, 95, 145, 195, 240, 290 и 340 мест. - <strong>СНиП Н-64-80. Детские дошкольные учреждения/Госстрой СССР. — М.: Стройиздат, 1981.— 15 с</strong><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Количество ученических мест в типовых проектах зданий школ и школ-интернатов следует принимать не более: в школах - 1400 - <strong>СНиП II-Л.4-62 Общеобразовательные школы и школы-интернаты. Нормы проектирования</strong><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

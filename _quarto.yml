@@ -43,9 +43,9 @@ website:
         - osm.qmd
         - style.qmd
   #      - crs.qmd
-  #      - layout.qmd
   #      - spatial.qmd
   #      - isochrone.qmd
+  #      - layout.qmd
   #      - service-provision.qmd
   #      - geoportal.qmd
   #      - thematic mapping.qmd

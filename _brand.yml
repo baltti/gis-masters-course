@@ -1,0 +1,10 @@
+logo: 
+  small: "images/icon_small.png"
+  large: "images/logo_urbanistika_ITMO_itog_RUS_plashka_ikonka_white.png"
+  
+defaults:
+  bootstrap:
+    defaults:
+      navbar-bg: "#0B68FE"
+      navbar-fg: white
+      navbar-hl: black

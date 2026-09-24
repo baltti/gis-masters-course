@@ -3,6 +3,7 @@ title: "Лекции"
 date: last-modified
 date-format: "D MMMM YYYY"
 number-sections: false
+brand: _brand.yml
 ---
 
 ::: callout-tip
