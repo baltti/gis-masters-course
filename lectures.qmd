@@ -4,6 +4,7 @@ date: last-modified
 date-format: "D MMMM YYYY"
 number-sections: false
 brand: _brand.yml
+logo: large
 ---
 
 ::: callout-tip
