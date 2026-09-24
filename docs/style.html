@@ -445,17 +445,27 @@ ul.task-list li input[type="checkbox"] {
 <p>Подумайте, как преобразовать этажность с помощью выражения в тех случаях, когда она указана через дефис, например, “3-5”.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Важно</span>Усложненное задание
+Дополнительно
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Попробуйте с помощью выражения заполнить пропущенные значения средним значением этажности.</p>
+<p>Заполнить пропущенные значения с использованием среднего можно при помощи калькулятора полей и условного выражения.</p>
+<p>Выражение может быть составлено двумя способами: с помощью функции <code>if</code> и с использованием конструкции <code>CASE WHEN</code> .</p>
+<p>Пример выражения с функцией <code>if</code> (если):</p>
+<pre><code>if ("этажность" is null, mean"этажность","этажность")</code></pre>
+<p>В этом выражении на первом месте идет условие (значение атрибута “этажность” пусто), потом то, что должно происходить в случае выполнения этого условия (заполнение пустой ячейки средним значением этажности), а на последнем месте - то, что должно произойти, если условие не выполнено (имеющиеся значения этажности будут просто записаны как есть).</p>
+<p>Пример выражения с функцией <code>CASE WHEN</code>:</p>
+<pre><code>CASE WHEN
+  "этажность" is null THEN mean"этажность"
+  ELSE "этажность"
+END</code></pre>
+<p>Такое выражение позволяет указывать сколько угодно условий, не ограничиваясь только одним.</p>
 </div>
 </div>
 </section>
