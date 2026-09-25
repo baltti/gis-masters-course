@@ -32,6 +32,14 @@ title: "Работа с OSM"
 
 Все значения тегов можно посмотреть на странице [Объекты карты](https://wiki.openstreetmap.org/wiki/RU:%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B_%D0%BA%D0%B0%D1%80%D1%82%D1%8B), если вам необходимы дополнительные пояснения, то можно обратиться к странице [Как обозначить](https://wiki.openstreetmap.org/wiki/RU:%D0%9A%D0%B0%D0%BA_%D0%BE%D0%B1%D0%BE%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D1%82%D1%8C).
 
+::: callout-important
+## Соотнесение тегов OSM и объектов сервиса
+
+В лаборатории Института дизайна и урбанистики составлен подробный перечень сервисов и тегов им соответствующих, который доступен по ссылке: <https://docs.google.com/spreadsheets/d/1vtcXTycaGeOyBMLws7MTt4yAsS6-remctgA792Ub5pU/edit?gid=955965015#gid=955965015>
+
+Также в таблице приведена дополнительная информация о качестве данных по тегам.
+:::
+
 На русском перечень ключей и значений с пояснениями можно найти в [таблице](https://docs.google.com/spreadsheets/d/1YgTDaw160aZ60DPUxuJrfYGyGykKJQDZE3c0W2O-OSY/edit?usp=sharing), составленной автором ТГ канала [UrbanStudent](https://t.me/urbanstudent).
 
 ::: callout-note
