@@ -42,7 +42,7 @@ website:
         - project.qmd
         - osm.qmd
         - style.qmd
-  #      - crs.qmd
+        - crs.qmd
   #      - spatial.qmd
   #      - isochrone.qmd
   #      - layout.qmd
