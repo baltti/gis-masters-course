@@ -35,7 +35,7 @@ website:
       align: center
       title: "Практикум"
       style: "docked"
-      collapse-level: 1
+      collapse-level: 2
       contents:
         - start.qmd
         - basics.qmd
@@ -43,7 +43,7 @@ website:
         - osm.qmd
         - style.qmd
         - crs.qmd
-  #      - spatial.qmd
+        - spatial.qmd
   #      - isochrone.qmd
   #      - layout.qmd
   #      - service-provision.qmd
