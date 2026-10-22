@@ -243,15 +243,17 @@ ul.task-list li input[type="checkbox"] {
 <table class="caption-top table">
 <caption>Спецификация данных</caption>
 <colgroup>
-<col style="width: 13%">
-<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 5%">
+<col style="width: 6%">
 <col style="width: 9%">
 <col style="width: 5%">
-<col style="width: 63%">
+<col style="width: 59%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Тип объекта</th>
+<th>Название файла</th>
 <th>Система координат</th>
 <th>Тип геометрии</th>
 <th>Формат файла</th>
@@ -261,6 +263,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Граница муниципального образования</td>
+<td>boundary</td>
 <td>WGS 84 EPSG: 4326</td>
 <td>Полигоны, мультиполигоны</td>
 <td>geojson</td>
@@ -268,6 +271,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Здания (жилые и не жилые)</td>
+<td>building</td>
 <td>WGS 84 EPSG: 4326</td>
 <td>Полигоны, мультиполигоны</td>
 <td>geojson</td>
@@ -277,6 +281,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td>Сервисы</td>
+<td></td>
 <td>WGS 84 EPSG: 4326</td>
 <td>Точки</td>
 <td>geojson</td>
@@ -287,6 +292,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Сервисы (парки и парковки)</td>
+<td></td>
 <td>WGS 84 EPSG: 4326</td>
 <td>Полигоны, мультиполигоны</td>
 <td>geojson</td>
@@ -297,6 +303,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Важно
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Названия файлов сервисов лучше давать в соответствии с таблицей (колонка <em>Названия файла.geojson</em>) <a href="https://docs.google.com/spreadsheets/d/1vtcXTycaGeOyBMLws7MTt4yAsS6-remctgA792Ub5pU/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1vtcXTycaGeOyBMLws7MTt4yAsS6-remctgA792Ub5pU/edit?usp=sharing</a></p>
+</div>
+</div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
