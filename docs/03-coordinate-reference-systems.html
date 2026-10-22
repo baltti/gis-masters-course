@@ -1,199 +1,317 @@
 <!DOCTYPE html>
-<html lang="ru-RU"><head>
-<link href="./images/logo_urbanistika_ITMO_itog_RUS_ikonka_black.png" rel="icon" type="image/png">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Балтыжакова Татьяна Игоревна">
+
+<title>Все, что вы (не) хотели знать о системах координат – Геоинформатика и геоинформационные системы</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/logo_urbanistika_ITMO_itog_RUS_ikonka_black.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-00742c4ab73906a5781a8f2bfbb2d2ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/timeline-0.1.0/timeline.js"></script>
-<link href="site_libs/quarto-contrib/timeline-0.1.0/timeline.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="site_libs/quarto-contrib/timeline-0.1.0/timeline.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
 
-  <meta name="author" content="Балтыжакова Татьяна Игоревна">
-  <title>Геоинформатика и геоинформационные системы – Все, что вы (не) хотели знать о системах координат</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
     }
-  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-20c356fa26d7f2c8f5a8668e6fdbc418.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Все, что вы (не) хотели знать о системах координат</h1>
-  <p class="subtitle">Геоинформатика и геоинформационные системы. Лекция 3</p>
+<body class="nav-fixed quarto-light">
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Балтыжакова Татьяна Игоревна 
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/logo_urbanistika_ITMO_itog_RUS_ikonka_black.png" alt="" class="navbar-logo light-content">
+    <img src="./images/logo_urbanistika_ITMO_itog_RUS_ikonka_black.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Геоинформатика и геоинформационные системы</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Поиск"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Переключить навигацию" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">О курсе</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./lectures.html"> 
+<span class="menu-text">Лекции</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Практикум</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./start.html">
+ <span class="dropdown-text">Установка программы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./basics.html">
+ <span class="dropdown-text">Начало работы</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Проект в QGIS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./osm.html">
+ <span class="dropdown-text">Работа с OSM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./style.html">
+ <span class="dropdown-text">Общие настройки стиля объектов</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./crs.html">
+ <span class="dropdown-text">Работа с системами координат</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./spatial.html">
+ <span class="dropdown-text">Основные операции пространственного анализа</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./homework.html"> 
+<span class="menu-text">Домашнее задание</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://t.me/geomess"> <i class="bi bi-telegram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/baltti/gis-masters-course"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#географическая-система-координат" id="toc-географическая-система-координат" class="nav-link active" data-scroll-target="#географическая-система-координат">Географическая система координат</a></li>
+  <li><a href="#прямоугольная-система-координат" id="toc-прямоугольная-система-координат" class="nav-link" data-scroll-target="#прямоугольная-система-координат">Прямоугольная система координат</a></li>
+  <li><a href="#понятие-картографической-проекции" id="toc-понятие-картографической-проекции" class="nav-link" data-scroll-target="#понятие-картографической-проекции">Понятие картографической проекции</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#реестр-систем-координат" id="toc-реестр-систем-координат" class="nav-link" data-scroll-target="#реестр-систем-координат">Реестр систем координат</a></li>
+  <li><a href="#как-подобрать-систему-координатпроекцию" id="toc-как-подобрать-систему-координатпроекцию" class="nav-link" data-scroll-target="#как-подобрать-систему-координатпроекцию">Как подобрать систему координат/проекцию?</a>
+  <ul class="collapse">
+  <li><a href="#экваториальная-зона" id="toc-экваториальная-зона" class="nav-link" data-scroll-target="#экваториальная-зона">Экваториальная зона</a></li>
+  <li><a href="#средние-широты" id="toc-средние-широты" class="nav-link" data-scroll-target="#средние-широты">Средние широты</a></li>
+  <li><a href="#приполярные-области" id="toc-приполярные-области" class="nav-link" data-scroll-target="#приполярные-области">Приполярные области</a></li>
+  </ul></li>
+  <li><a href="#универсальная-поперечная-проекция-меркатора-utm" id="toc-универсальная-поперечная-проекция-меркатора-utm" class="nav-link" data-scroll-target="#универсальная-поперечная-проекция-меркатора-utm">Универсальная поперечная проекция Меркатора (UTM)</a></li>
+  <li><a href="#сервисы-для-поиска-и-подбора-систем-координат" id="toc-сервисы-для-поиска-и-подбора-систем-координат" class="nav-link" data-scroll-target="#сервисы-для-поиска-и-подбора-систем-координат">Сервисы для поиска и подбора систем координат</a></li>
+  <li><a href="#форматы-описания-систем-координат-в-гис" id="toc-форматы-описания-систем-координат-в-гис" class="nav-link" data-scroll-target="#форматы-описания-систем-координат-в-гис">Форматы описания систем координат в ГИС</a></li>
+  <li><a href="#формат-описания-wkt" id="toc-формат-описания-wkt" class="nav-link" data-scroll-target="#формат-описания-wkt">Формат описания WKT</a></li>
+  <li><a href="#формат-описания-proj" id="toc-формат-описания-proj" class="nav-link" data-scroll-target="#формат-описания-proj">Формат описания PROJ</a></li>
+  <li><a href="#есть-подвох" id="toc-есть-подвох" class="nav-link" data-scroll-target="#есть-подвох">Есть подвох</a></li>
+  <li><a href="#немного-про-местные-системы-координат" id="toc-немного-про-местные-системы-координат" class="nav-link" data-scroll-target="#немного-про-местные-системы-координат">Немного про местные системы координат</a>
+  <ul class="collapse">
+  <li><a href="#мск-47-зона-2" id="toc-мск-47-зона-2" class="nav-link" data-scroll-target="#мск-47-зона-2">МСК-47, зона 2</a></li>
+  <li><a href="#мск-москвы-на-эллипсоиде-бесселя5" id="toc-мск-москвы-на-эллипсоиде-бесселя5" class="nav-link" data-scroll-target="#мск-москвы-на-эллипсоиде-бесселя5">МСК Москвы на эллипсоиде Бесселя</a></li>
+  </ul></li>
+  <li><a href="#системы-координат-в-qgis" id="toc-системы-координат-в-qgis" class="nav-link" data-scroll-target="#системы-координат-в-qgis">Системы координат в QGIS</a></li>
+  <li><a href="#литература" id="toc-литература" class="nav-link" data-scroll-target="#литература">Литература</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Другие форматы</h2><ul><li><a href="03-coordinate-reference-systems.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Все, что вы (не) хотели знать о системах координат</h1>
+<p class="subtitle lead">Геоинформатика и геоинформационные системы. Лекция 3</p>
 </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">АВТОР</div>
+    <div class="quarto-title-meta-contents">
+             <p>Балтыжакова Татьяна Игоревна </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2930557596.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
 </div>
-
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-2930557596.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-3648489906.png" class="r-stretch quarto-figure-center"><p class="caption">Источник: https://starwalk.space/ru/news/7-ways-to-prove-the-earth-is-round</p></section>
-<section class="slide level2">
-
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3648489906.png" class="img-fluid figure-img"></p>
+<figcaption>Источник: https://starwalk.space/ru/news/7-ways-to-prove-the-earth-is-round</figcaption>
+</figure>
+</div>
+<hr>
 <p>Все системы координат в ГИС можно поделить на две группы:</p>
 <ul>
 <li><p><strong>географические</strong> - общеземные системы координат, которые используют широту и долготу в качестве координат с градусами как единицами измерения, измерения здесь выполняются на сфере/эллипсоиде;</p></li>
 <li><p><strong>прямоугольные</strong> - стандартные плоские прямоугольные декартовы координаты, как правило, с метрическими единицами измерения, измерения ведутся на плоскости.</p></li>
 </ul>
 <p>Прямоугольные системы координат в современной литературе могут еще называться спроецированными (калька с английского слова “projected”)</p>
-</section>
-<section id="географическая-система-координат" class="title-slide slide level1 center">
+<section id="географическая-система-координат" class="level1">
 <h1>Географическая система координат</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-3086384725.png"></p>
+<figure class="figure">
+<p><img src="images/clipboard-3086384725.png" class="img-fluid figure-img"></p>
 <figcaption>Источник: http://rrrcn.ru/arcview-gis-dlya-ekologov3/34</figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Широтой</strong> точки называется угол, образованный отвесной линией в данной точке и плоскостью экватора. Этот угол отсчитывается от плоскости экватора на север или на юг, изменяясь от 0 до 90. Широта бывает северная (+) и южная (-).</p>
-<p><strong>Долготой</strong> точки называется двугранный угол, заключенный между плоскостью начального (Гринвичского) меридиана и плоскостью меридиана, проходящего через данную точку. От начального нулевого меридиана долготу отсчитывают на восток и запад, до 180. Соответственно, долгота называется восточной (+) и западной (-).<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></p>
-</div></div>
-<aside></aside></section>
-
-<section>
-<section id="прямоугольная-система-координат" class="title-slide slide level1 center">
+<p><strong>Долготой</strong> точки называется двугранный угол, заключенный между плоскостью начального (Гринвичского) меридиана и плоскостью меридиана, проходящего через данную точку. От начального нулевого меридиана долготу отсчитывают на восток и запад, до 180. Соответственно, долгота называется восточной (+) и западной (-).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</div>
+</div>
+</section>
+<section id="прямоугольная-система-координат" class="level1">
 <h1>Прямоугольная система координат</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/Cartesian-coordinate-system.svg" class="quarto-figure quarto-figure-center"></p>
+<figure class="figure">
+<p><img src="images/Cartesian-coordinate-system.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
-<p><strong>Прямоуго́льная (дека́ртова) систе́ма координа́т</strong>&nbsp;— прямолинейная система координат с взаимно перпендикулярными координатными осями на плоскости или в пространстве. Часто используемая система координат. Просто обобщается для пространств любой размерности<a href="#/footnotes" class="footnote-ref" id="fnref2" role="doc-noteref" data-footnote-href="#/fn2" onclick=""><sup>2</sup></a>.</p>
-</div></div>
-<aside></aside></section>
-<section class="slide level2">
-
+<p><strong>Прямоуго́льная (дека́ртова) систе́ма координа́т</strong>&nbsp;— прямолинейная система координат с взаимно перпендикулярными координатными осями на плоскости или в пространстве. Часто используемая система координат. Просто обобщается для пространств любой размерности<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+</div>
+</div>
+<hr>
 <p>Любая система координат в ГИС состоит из нескольких компонентов:</p>
 <ul>
 <li><p>картографическая проекция, в которую входят:</p>
@@ -205,24 +323,25 @@
 <li><p>начало системы координат;</p></li>
 <li><p>единицы измерения.</p></li>
 </ul>
-<blockquote>
+<blockquote class="blockquote">
 <p>Система координат базируется на картографической проекции, которая определяет используемый эллипсоид (в иностранной литературе часто называемый датумом) и способ проецирования поверхности Земли на плоскость (используемую поверхность относимости и расположение центра проецирования). К полученному изображению Земли на плоскости добавляется начало системы координат и ее оси.</p>
 </blockquote>
-</section></section>
-<section>
-<section id="понятие-картографической-проекции" class="title-slide slide level1 center">
+</section>
+<section id="понятие-картографической-проекции" class="level1">
 <h1>Понятие картографической проекции</h1>
 <p>Картографическая проекция - это математически определенный способ отображения поверхности Земли (либо другого небесного тела) на плоскость.</p>
 <p>Основная суть проекций связана с тем, что фигуру небесного тела заменяют на другую, которую легко развернуть на плоскость.</p>
-
-<img data-src="images/clipboard-3339632769.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2">
-
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3339632769.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-1989715046.png"></p>
+<figure class="figure">
+<p><img src="images/clipboard-1989715046.png" class="img-fluid figure-img"></p>
 <figcaption>Источник: https://www.esa.int/ESA_Multimedia/Images/2004/10/The_Earth_s_gravity_field_geoid_as_it_will_be_seen_by_GOCE</figcaption>
 </figure>
 </div>
@@ -230,89 +349,89 @@
 <video width="1000" height="700" controls="">
   <source src="images/2103_061_AR_EN.mp4" type="video/mp4">
 </video>
-</div></div>
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-1163119614.png" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-1675107331.png" class="r-stretch"></section>
-<section class="slide level2">
-
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+</div>
+</div>
+<hr>
+<p><img src="images/clipboard-1163119614.png" class="img-fluid"></p>
+<hr>
+<p><img src="images/clipboard-1675107331.png" class="img-fluid"></p>
+<hr>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Важно</strong></p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Важно</span>Важно
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Картографические проекции могут искажать размеры, форму и углы между линиями. Невозможно получить проекцию без искажений двух из трех величин. Как правило, подбор проекции осуществляется, исходя из того, какой из этих параметров важнее всего сохранить неизменным, пожертвовав остальными двумя.</p>
 </div>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2081667498.png" class="img-fluid figure-img"></p>
+<figcaption>Источник: https://www.nytimes.com/2026/09/04/world/africa/world-map-projection-africa.html</figcaption>
+</figure>
 </div>
-
-<img data-src="images/clipboard-2081667498.png" class="r-stretch quarto-figure-center"><p class="caption">Источник: https://www.nytimes.com/2026/09/04/world/africa/world-map-projection-africa.html</p><p><a href="https://news.un.org/en/story/2026/09/1168284">ООН одобрило</a> рекомендации по переходу от проекции Меркатора к проекции “Равная Земля” (Equal earth).</p>
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-3703581029.png" width="749" class="r-stretch quarto-figure-center"><p class="caption">Из книги: Elements of map projections with application on map and chart conctruction</p></section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-2556514745.png" class="quarto-figure quarto-figure-center r-stretch" width="783"></section>
-<section class="slide level2">
-
+<p><a href="https://news.un.org/en/story/2026/09/1168284">ООН одобрило</a> рекомендации по переходу от проекции Меркатора к проекции “Равная Земля” (Equal earth).</p>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3703581029.png" class="img-fluid figure-img" width="749"></p>
+<figcaption>Из книги: Elements of map projections with application on map and chart conctruction</figcaption>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-2556514745.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="783"></p>
+</figure>
+</div>
+<hr>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-4207930156.png" class="quarto-figure quarto-figure-center" width="505"></p>
+<figure class="figure">
+<p><img src="images/clipboard-4207930156.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="505"></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-3679214702.png" class="quarto-figure quarto-figure-center" width="762"></p>
+<figure class="figure">
+<p><img src="images/clipboard-3679214702.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="762"></p>
 </figure>
 </div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<p>Для того, чтобы оценивать искажения и их характер существуют <strong>эллипсы Тиссо или эллипсы искажений</strong> - бесконечно малый эллипс в любой точке карты, являющийся отображением бесконечно малой окружности в соответствующей точке на поверхности земного эллипсоида или шара<a href="#/footnotes" class="footnote-ref" id="fnref3" role="doc-noteref" data-footnote-href="#/fn3" onclick=""><sup>3</sup></a>.</p>
+</div>
+</div>
+<hr>
+<p>Для того, чтобы оценивать искажения и их характер существуют <strong>эллипсы Тиссо или эллипсы искажений</strong> - бесконечно малый эллипс в любой точке карты, являющийся отображением бесконечно малой окружности в соответствующей точке на поверхности земного эллипсоида или шара<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-2264906371.png" class="quarto-figure quarto-figure-center" width="613"></p>
+<figure class="figure">
+<p><img src="images/clipboard-2264906371.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="613"></p>
 </figure>
 </div>
-<aside></aside></section>
-<section class="slide level2">
-
+<hr>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-857065884.png" width="863"></p>
+<figure class="figure">
+<p><img src="images/clipboard-857065884.png" class="img-fluid figure-img" width="863"></p>
 <figcaption>Эллипсы Тиссо в проекции Меркатора</figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-231530803.png" width="1260"></p>
+<figure class="figure">
+<p><img src="images/clipboard-231530803.png" class="img-fluid figure-img" width="1260"></p>
 <figcaption>Эллипсы Тиссо в проекции Галля-Питерса</figcaption>
 </figure>
 </div>
-</div></div>
-</section></section>
-<section>
-<section id="section" class="title-slide slide level1 center">
+</div>
+</div>
+</section>
+<section id="section" class="level1">
 <h1></h1>
 <p>Классификация по виду проецирующей поверхности:</p>
 <div class="columns">
@@ -322,61 +441,55 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-593814791.png" class="quarto-figure quarto-figure-center" width="436"></p>
+<figure class="figure">
+<p><img src="images/clipboard-593814791.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="436"></p>
 </figure>
 </div>
-</div></div>
-</section>
-<section class="slide level2">
-
+</div>
+</div>
+<hr>
 <ul>
 <li><strong><em>конические проекции</em></strong>, которые вписывают объемное тело в конус, касающийся тела по одной линии. Линия касания является линией отсутствия искажений, в то время как при удалении от нее эти искажения возрастают, при этом, при приближении к вершине конуса, искажение происходит в сторону уменьшения, а при приближении к основанию - в сторону увеличения. Впоследствии конус разворачивается на плоскость;</li>
 </ul>
-
-<img data-src="images/clipboard-3139131823.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<p><img src="images/clipboard-3139131823.png" class="img-fluid"></p>
+<hr>
 <ul>
 <li><strong><em>цилиндрические проекции</em></strong> используют в качестве поверхности проецирования цилиндр, касающийся поверхности объемного тела по одной линии. Эта линия будет определять истинный масштаб карты и будет линией отсутствия искажений, при удалении от которой искажения будут возрастать;</li>
 </ul>
-
-<img data-src="images/clipboard-27985362.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<p><img src="images/clipboard-27985362.png" class="img-fluid"></p>
+<hr>
 <p>Классификация по ориентированию относительно оси вращения:</p>
 <ul>
 <li><p><strong><em>нормальные или прямые</em></strong> (в случае с азимутальными проекциями - <strong><em>полярные</em></strong>) - ось вращения Земли совпадает с осью вращения поверхности проецирования (для азимутальных проекций - точка касания находится на одном из полюсов);</p></li>
 <li><p><strong><em>поперечные</em></strong> - ось вращения поверхности проецирования находится в плоскости экватора и перпедикулярна оси вращения Земли (для азимутальных проекций - точка касания находится на линии экватора);</p></li>
 <li><p><strong><em>косые</em></strong> - ось вращения поверхности проецирования расположена под произвольным углом по отношению к оси вращения Земли (для азимутальных проекций - расположение точки касания на поверхности Земли произвольно).</p></li>
 </ul>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1955169614.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-1955169614.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
-<section>
-<section id="реестр-систем-координат" class="title-slide slide level1 center">
+<section id="реестр-систем-координат" class="level1">
 <h1>Реестр систем координат</h1>
 <p>В настоящее время используется единая классификация систем координат в ГИС – <strong><em>реестр EPSG</em></strong>, изначально созданный <em>European petroleum survey group</em> и получивший от нее свою аббревиатуру.</p>
 <p>Кроме него также могут использоваться данные других реестров систем координат, например, одноименный реестр компании ESRI.</p>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Дополнительно</strong></p>
+<div class="callout-title-container flex-fill">
+Дополнительно
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Официальный сайт реестра - <a href="https://epsg.org/home.html" class="uri">https://epsg.org/home.html</a></p>
 <p>(Неофициальный) сайт реестра - <a href="https://epsg.io/" class="uri">https://epsg.io/</a></p>
 </div>
 </div>
-</div>
-</section>
-<section class="slide level2">
-
+<hr>
 <ul>
 <li><p><strong><em>EPSG:4326</em></strong></p>
 <p>WGS 84 - WGS84 - World Geodetic System 1984, used in GPS</p></li>
@@ -385,18 +498,15 @@
 <li><p><strong><em>ESRI:102025</em></strong></p>
 <p>Asia North Albers Equal Area Conic</p></li>
 </ul>
-</section></section>
-<section>
-<section id="как-подобрать-систему-координатпроекцию" class="title-slide slide level1 center">
+</section>
+<section id="как-подобрать-систему-координатпроекцию" class="level1">
 <h1>Как подобрать систему координат/проекцию?</h1>
 <p>Однозначного ответа, увы, здесь нет.</p>
-<div class="fragment">
+<p>. . .</p>
 <p>В первую очередь, необходимо понять, какой параметр объектов наиболее важно сохранить: <strong>размеры, длины или углы</strong>? Кроме того, следует учитывать расположение картографируемой области, так как для разных типов проекций искажения будут наименее выраженными в определенных областях.</p>
 <p>Если ориентироваться на минимизацию искажений, то можно использовать методику, предложенную в <a href="https://kartfak.ru/wp-content/uploads/2023/03/%D0%90%D1%82%D0%BB%D0%B0%D1%81_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%86%D0%B8%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2_%D0%97%D0%B0%D0%B3%D1%80%D0%B5%D0%B1%D0%B8%D0%BD.pdf">Атласе картографический проекций для крупных регионов России</a>.</p>
-</div>
-</section>
-<section id="экваториальная-зона" class="slide level2 smaller">
-<h2>Экваториальная зона</h2>
+<section id="экваториальная-зона" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="экваториальная-зона">Экваториальная зона</h2>
 <p>Если картографируемый участок находится в <strong>экваториальной зоне</strong>:</p>
 <ul>
 <li><strong>вытянут вдоль параллелей</strong>, то рекомендуется использовать <em>нормальную цилиндрическую или нормальную коническую проекции</em>
@@ -413,13 +523,11 @@
 </ul></li>
 <li><strong>вытянут в произвольном направлении</strong> (под углом к параллелям и меридианам), то рекомендуется использование <em>цилиндрической проекции</em> с таким расположением оси вращения, чтобы линия касания проходила максимально близко к центру участка.</li>
 </ul>
+<hr>
+<p><img src="images/clipboard-2630308725.png" class="img-fluid"></p>
 </section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-2630308725.png" class="r-stretch"></section>
-<section id="средние-широты" class="slide level2 smaller">
-<h2>Средние широты</h2>
+<section id="средние-широты" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="средние-широты">Средние широты</h2>
 <p>Если участок исследования расположен в <strong>средних широтах</strong> (применимо как к северному, так и южному полушарию):</p>
 <ul>
 <li><p><strong>вытянут вдоль параллелей</strong>, то рекомендуется использование <em>прямой конической проекции</em> для соответствующего полушария (северного или южного)</p>
@@ -435,13 +543,11 @@
 <li>универсальные поперечные проекции Меркатора - аналог проекции Гаусса-Крюгера (с 34 зоны для Северного полушария EPSG:32634 по 60 зону EPSG:32660, а также 1 и 2 зоны - EPSG:32601 и EPSG:32602 соответственно)</li>
 </ul></li>
 </ul>
+<hr>
+<p><img src="images/clipboard-4076587857.png" class="img-fluid"></p>
 </section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-4076587857.png" class="r-stretch"></section>
-<section id="приполярные-области" class="slide level2 smaller">
-<h2>Приполярные области</h2>
+<section id="приполярные-области" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="приполярные-области">Приполярные области</h2>
 <p>Если участок расположен в <strong>приполярной области</strong> (применимо к обоим полушариям):</p>
 <ul>
 <li><p><strong>вытянут вдоль параллелей или вытянут в произвольном направлении</strong>, то рекомендуется использовать <em>полярную азимутальную проекцию</em></p>
@@ -457,38 +563,38 @@
 <li><p>полярная равновеликая проекция Ламберта для Северного полюса (ESRI:102017)</p></li>
 </ul></li>
 </ul>
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-3096408436.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<hr>
+<p><img src="images/clipboard-3096408436.png" class="img-fluid"></p>
+<hr>
 <p>Для маленьких территорий (например, территория города) лучше брать системы координат UTM (Universal Transverse Mercator - универсальная поперечная проекция Меркатора) – по сути аналог системы координат Гаусса-Крюгера. Особенно, если вы хотите выполнять какие-либо измерения на вашей карте.</p>
-
-<img data-src="images/clipboard-1751020951.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
-<section id="универсальная-поперечная-проекция-меркатора-utm" class="title-slide slide level1 center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1751020951.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="универсальная-поперечная-проекция-меркатора-utm" class="level1">
 <h1>Универсальная поперечная проекция Меркатора (UTM)</h1>
 <p>Так как эта система координат зональная, то есть определяется только в пределах конкретных диапазонов долгот, то необходимо определять зону, в которой расположена ваша исследуемая территория.</p>
 <p>Определить зону можно по формуле:</p>
 <p><span class="math display">\[Номер\space зоны\space (UTM) = \dfrac{Долгота + 180^\circ}{6}\]</span> <span class="math display">\[Номер\space зоны\space(Гаусса-Крюгера) = \dfrac{Долгота} {6}\]</span></p>
 <p>Полученное число нужно округлить в большую сторону.</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>На заметку</strong></p>
+<div class="callout-title-container flex-fill">
+На заметку
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Существуют специальные онлайн-калькуляторы для определения номера зоны по координатам. Например, <a href="https://www.latlong.net/lat-long-utm.html" class="uri">https://www.latlong.net/lat-long-utm.html</a></p>
 </div>
 </div>
-</div>
 </section>
-
-<section id="сервисы-для-поиска-и-подбора-систем-координат" class="title-slide slide level1 center">
+<section id="сервисы-для-поиска-и-подбора-систем-координат" class="level1">
 <h1>Сервисы для поиска и подбора систем координат</h1>
 <ul>
 <li><p>Projection wizard <a href="https://projectionwizard.org/" class="uri">https://projectionwizard.org/</a></p></li>
@@ -499,8 +605,7 @@
 <li><p><a href="https://spatialreference.org/" class="uri">https://spatialreference.org/</a></p></li>
 </ul>
 </section>
-
-<section id="форматы-описания-систем-координат-в-гис" class="title-slide slide level1 center">
+<section id="форматы-описания-систем-координат-в-гис" class="level1">
 <h1>Форматы описания систем координат в ГИС</h1>
 <p>Есть два основных формата описания параметров систем координат:</p>
 <ul>
@@ -510,66 +615,59 @@
 <ul>
 <li>proj4 - строковое описание системы координат, базирующее на проекте <a href="https://github.com/OSGeo/PROJ">proj</a>.</li>
 </ul>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Дополнительно</strong></p>
+<div class="callout-title-container flex-fill">
+Дополнительно
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>proj как библиотека широко используется в работе с системами координат в различных языках программирования.</p>
 </div>
 </div>
-</div>
 </section>
-
-<section>
-<section id="формат-описания-wkt" class="title-slide slide level1 center">
+<section id="формат-описания-wkt" class="level1">
 <h1>Формат описания WKT</h1>
 <p>Международный формат описания WKT закреплен <a href="https://www.ogc.org/standards/wkt-crs/">стандартом Open Geospatial Consortium</a>.</p>
 <p>Описание системы координат состоит из <strong>ключевых слов и атрибутов</strong> этих ключевых слов. Ключевые слова указываются перед квадратными скобками, а атрибуты — внутри скобок. Кроме того, атрибуты могут содержать вложенные ключевые слова.</p>
 <p>Пример фрагмента описания системы координат: <code>KEYWORD1[attribute1,KEYWORD2[attribute2,attribute3]]</code></p>
+<hr>
+<p><img src="images/clipboard-3959220997.png" class="img-fluid"></p>
 </section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-3959220997.png" class="r-stretch"></section></section>
-<section>
-<section id="формат-описания-proj" class="title-slide slide level1 scrollable center">
-<h1>Формат описания PROJ</h1>
-
-<img data-src="images/clipboard-1086786894.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-3912507845.png" class="r-stretch"></section></section>
-<section id="есть-подвох" class="title-slide slide level1 center">
+<section id="формат-описания-proj" class="level1 scrollable">
+<h1 class="scrollable">Формат описания PROJ</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1086786894.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+<p><img src="images/clipboard-3912507845.png" class="img-fluid"></p>
+</section>
+<section id="есть-подвох" class="level1">
 <h1>Есть подвох</h1>
-<div class="fragment">
+<p>. . .</p>
 <p>Подвох в том, что значительное количество документов в кадастре и градостроительстве ведутся в <strong><em>местных системах координат</em></strong>.</p>
 <p>Местные системы координат определяются в границах субъектов РФ.</p>
-</div>
-<div class="fragment">
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<p>. . .</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Внимание</strong></p>
+<div class="callout-title-container flex-fill">
+Внимание
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Этих систем координат нет ни в каких реестрах, поэтому их параметры необходимо прописывать самостоятельно.</p>
 </div>
 </div>
-</div>
-</div>
 </section>
-
-<section>
-<section id="немного-про-местные-системы-координат" class="title-slide slide level1 center">
+<section id="немного-про-местные-системы-координат" class="level1">
 <h1>Немного про местные системы координат</h1>
 <p>Местные системы координат вообще вводились для ведения кадастра недвижимости.</p>
 <p>Все, что вносится в ЕГРН с координатами, должно быть вычислено в местной системе координат, но в силу своей специфики они имеют значительные ошибки и искажения.</p>
@@ -579,9 +677,7 @@
 <li><p>необходимо использовать нестандартный датум (эллипсоид);</p></li>
 <li><p>необходимы дополнительные преобразования.</p></li>
 </ul>
-</section>
-<section class="slide level2">
-
+<hr>
 <p>Первый вариант самый простой, так как необходимость изменения минимальна.</p>
 <p>Во втором варианте возможны несколько ситуаций:</p>
 <ul>
@@ -589,38 +685,41 @@
 <li><p>в EPSG нет параметров перехода от WGS 84 к нужному датуму;</p></li>
 <li><p>в EPSG есть параметры перехода от WGS 84, но они рассчитаны для другого датума.</p></li>
 </ul>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>На заметку</strong></p>
-</div>
-<div class="callout-content">
-<p>В некоторых случаях может использоваться до 7 параметров преобразования, например, в МСК-33<a href="#/footnotes" class="footnote-ref" id="fnref4" role="doc-noteref" data-footnote-href="#/fn4" onclick=""><sup>4</sup></a>.</p>
-<p><img data-src="images/clipboard-2572913437.png"></p>
+<div class="callout-title-container flex-fill">
+На заметку
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>В некоторых случаях может использоваться до 7 параметров преобразования, например, в МСК-33<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p><img src="images/clipboard-2572913437.png" class="img-fluid"></p>
 </div>
-<aside></aside></section>
-<section id="мск-47-зона-2" class="slide level2">
-<h2>МСК-47, зона 2</h2>
-
-<img data-src="images/clipboard-1828978222.png" class="quarto-figure quarto-figure-center r-stretch" width="565"></section>
-<section id="мск-москвы-на-эллипсоиде-бесселя5" class="slide level2">
-<h2>МСК Москвы на эллипсоиде Бесселя<a href="#/footnotes" class="footnote-ref" id="fnref5" role="doc-noteref" data-footnote-href="#/fn5" onclick=""><sup>5</sup></a></h2>
+</div>
+<hr>
+<section id="мск-47-зона-2" class="level2">
+<h2 class="anchored" data-anchor-id="мск-47-зона-2">МСК-47, зона 2</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1828978222.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="565"></p>
+</figure>
+</div>
+</section>
+<section id="мск-москвы-на-эллипсоиде-бесселя5" class="level2">
+<h2 class="anchored" data-anchor-id="мск-москвы-на-эллипсоиде-бесселя5">МСК Москвы на эллипсоиде Бесселя<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-2237266955.png"></p>
+<p><img src="images/clipboard-2237266955.png" class="img-fluid"></p>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/clipboard-759752856.png"></p>
-</div></div>
-<aside></aside></section>
-<section class="slide level2">
-
+<p><img src="images/clipboard-759752856.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
 <p>Что может случиться, если будет использована неправильная система координат?</p>
-<div class="fragment">
+<p>. . .</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>В период существования восточной и западной Германии, для разных ее частей использовали разные системы координат:</p>
@@ -631,34 +730,33 @@
 <p><strong>Разница в местоположении объектов достигала 600 м.</strong></p>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/clipboard-4122913766.png" width="750"></p>
+<figure class="figure">
+<p><img src="images/clipboard-4122913766.png" class="img-fluid figure-img" width="750"></p>
 <figcaption>Источник: https://www.linkedin.com/posts/natashlazarpro_tagderdeutscheneinheit-germanunityday-gis-share-7511051662938238976-YowK</figcaption>
 </figure>
 </div>
-</div></div>
 </div>
-</section></section>
-<section>
-<section id="системы-координат-в-qgis" class="title-slide slide level1 center">
+</div>
+<p>. . .</p>
+</section>
+</section>
+<section id="системы-координат-в-qgis" class="level1">
 <h1>Системы координат в QGIS</h1>
 <p>В QGIS каждый добавленный слой и набор данных имеет свою собственную систему координат, а также есть система координат проекта, в которой отрисовываются данные на экране и выполняются некоторые расчеты. Эти системы координат могут (а в некоторых случаях для расчетов - должны) совпадать, а могут быть различны и могут изменяться независимо друг от друга.</p>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Важно</strong></p>
+<div class="callout-title-container flex-fill">
+Важно
 </div>
-<div class="callout-content">
+</div>
+<div class="callout-body-container callout-body">
 <p>Взаимная независимость систем координат позволяет работать одновременно с данными в разных системах, при этом отображая их в той системе координат, которая более удобна пользователю.</p>
 </div>
 </div>
-</div>
-</section>
-<section class="slide level2">
-
+<hr>
 <p>Работа с системами координат в QGIS имеет несколько вариантов:</p>
 <ul>
 <li><p><strong>перепроецирование слоев</strong> (для растровых слоев иногда называемое деформацией) - пересчет слоя из одной системы координат в другую;</p></li>
@@ -666,12 +764,10 @@
 <li><p><strong>создание пользовательских систем координат</strong> - внесение параметров нестандартных систем координат в каталог программы;</p></li>
 <li><p><strong>перепроецирование на лету</strong> - изменение системы координат проекта, то есть системы координат, в первую очередь используемой для отображения данных на экране, которое не затрагивает системы координат отдельных слоев.</p></li>
 </ul>
+<hr>
+<p><img src="images/clipboard-1372825689.png" class="img-fluid"></p>
 </section>
-<section class="slide level2">
-
-
-<img data-src="images/clipboard-1372825689.png" class="r-stretch"></section></section>
-<section id="литература" class="title-slide slide level1 center">
+<section id="литература" class="level1">
 <h1>Литература</h1>
 <ol type="1">
 <li><p>Запорожченко А.В. Картографические проекции и методика их выбора для создания карт различных типов <a href="https://gistoolkit.ru/download/doc/projections.pdf" class="uri">https://gistoolkit.ru/download/doc/projections.pdf</a></p></li>
@@ -682,400 +778,433 @@
 
 </section>
 
-<section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Сноски</h2>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Сноски</h2>
 
 <ol>
-<li id="fn1"><p><a href="https://portal.tpu.ru/SHARED/p/POCELUEV/ucheba/Geodesy/Lab3.pdf" class="uri">https://portal.tpu.ru/SHARED/p/POCELUEV/ucheba/Geodesy/Lab3.pdf</a></p></li>
-<li id="fn2"><p>Прямоугольная система координат <a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82" class="uri">https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82</a></p></li>
-<li id="fn3"><p><a href="http://www.gisa.ru/13458.html" class="uri">http://www.gisa.ru/13458.html</a></p></li>
-<li id="fn4"><p>Постановление Губернатора Владимирской обл. от 26.10.2009 N 876 «Об утверждении Положения о местной системе координат Владимирской области (МСК-33)» <a href="https://docs.cntd.ru/document/965012231" class="uri">https://docs.cntd.ru/document/965012231</a></p></li>
-<li id="fn5"><p>Положение о пространственной местной системе координат Москвы (ПМСК) <a href="https://sngo.mggt.ru/documents/sngo/PMSK_Moscow.pdf" class="uri">https://sngo.mggt.ru/documents/sngo/PMSK_Moscow.pdf</a></p></li>
+<li id="fn1"><p><a href="https://portal.tpu.ru/SHARED/p/POCELUEV/ucheba/Geodesy/Lab3.pdf" class="uri">https://portal.tpu.ru/SHARED/p/POCELUEV/ucheba/Geodesy/Lab3.pdf</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Прямоугольная система координат <a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82" class="uri">https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="http://www.gisa.ru/13458.html" class="uri">http://www.gisa.ru/13458.html</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Постановление Губернатора Владимирской обл. от 26.10.2009 N 876 «Об утверждении Положения о местной системе координат Владимирской области (МСК-33)» <a href="https://docs.cntd.ru/document/965012231" class="uri">https://docs.cntd.ru/document/965012231</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Положение о пространственной местной системе координат Москвы (ПМСК) <a href="https://sngo.mggt.ru/documents/sngo/PMSK_Moscow.pdf" class="uri">https://sngo.mggt.ru/documents/sngo/PMSK_Moscow.pdf</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="images/logo_urbanistika_ITMO_itog_RUS_ikonka_black.png" class="slide-logo"></p>
-<div class="footer footer-default">
-<p>Балтыжакова Т.И. Геоинформатика и геоинформационные системы: лекции</p>
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: false,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1800,
-
-        height: 1000,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Скопировано");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Скопировано");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
-          return codeEl.innerText;
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026, Татьяна Балтыжакова, Институт дизайна и урбанистики, Университет ИТМО</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
 
 </body></html>

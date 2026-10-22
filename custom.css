@@ -4,7 +4,7 @@ $presentation-font-size-root: 45px;
 $code-block-font-size: 0.8em;
 $presentation-h1-font-size: 1.2em;
 
-$presentation-heading-color: #34353D;
+$presentation-heading-color: #7F00FF;
 
 /*-- scss:rules --*/
 .reveal a {
