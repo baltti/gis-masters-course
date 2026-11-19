@@ -44,7 +44,7 @@ website:
         - style.qmd
         - crs.qmd
         - spatial.qmd
-  #      - isochrone.qmd
+        - isochrone.qmd
   #      - layout.qmd
   #      - service-provision.qmd
   #      - geoportal.qmd
