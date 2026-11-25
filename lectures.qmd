@@ -40,7 +40,7 @@ logo: large
 # Визуализация пространственных данных
 
 ```{=html}
-<iframe src="https://baltti.github.io/gis-masters-course/03-visualisation.html" width="800" height="400"></iframe>
+<iframe src="https://baltti.github.io/gis-masters-course/04-visualisation.html" width="800" height="400"></iframe>
 ```
 
-[Открыть в новой вкладке](https://baltti.github.io/gis-masters-course/03-visualisation.html){target="_blank"}
+[Открыть в новой вкладке](https://baltti.github.io/gis-masters-course/04-visualisation.html){target="_blank"}
