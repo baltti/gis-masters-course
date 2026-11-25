@@ -36,3 +36,11 @@ logo: large
 ```
 
 [Открыть в новой вкладке](https://baltti.github.io/gis-masters-course/03-coordinate-reference-systems.html){target="_blank"}
+
+# Визуализация пространственных данных
+
+```{=html}
+<iframe src="https://baltti.github.io/gis-masters-course/03-visualisation.html" width="800" height="400"></iframe>
+```
+
+[Открыть в новой вкладке](https://baltti.github.io/gis-masters-course/03-visualisation.html){target="_blank"}

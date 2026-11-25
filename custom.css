@@ -4,7 +4,7 @@ $presentation-font-size-root: 45px;
 $code-block-font-size: 0.8em;
 $presentation-h1-font-size: 1.2em;
 
-$presentation-heading-color: #7F00FF;
+$presentation-heading-color: 'black';
 
 /*-- scss:rules --*/
 .reveal a {
@@ -12,7 +12,7 @@ $presentation-heading-color: #7F00FF;
 }
 
 .title {
-  color: #1010B5 !important;
+  color: #0B68FE !important;
 }
 
 .footnotes ol li p {
